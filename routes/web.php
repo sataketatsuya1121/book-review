@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/login/github', 'Auth\LoginController@redirectToProvider')->name('github');
-Route::get('/login/github/callback', 'Auth\LoginController@handleProviderCallback')->name('githubCall');
-Route::get('/login/google', 'Auth\LoginController@getGoogleAuth')->name('google');
-Route::get('/login/callback/google', 'Auth\LoginController@authGoogleCallback');
+// Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+// Route::get('/login/github', 'Auth\LoginController@redirectToProvider')->name('github');
+// Route::get('/login/github/callback', 'Auth\LoginController@handleProviderCallback')->name('githubCall');
+// Route::get('/login/google', 'Auth\LoginController@getGoogleAuth')->name('google');
+// Route::get('/login/callback/google', 'Auth\LoginController@authGoogleCallback');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/review', 'BookReviewController@index')->name('review');
