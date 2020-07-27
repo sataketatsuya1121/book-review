@@ -1,1 +1,10 @@
-{}
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/detail.js": "/js/detail.js",
+    "/js/index.js": "/js/index.js",
+    "/js/newBook.js": "/js/newBook.js",
+    "/js/slick.min.js": "/js/slick.min.js",
+    "/js/user.js": "/js/user.js",
+    "/js/userList.js": "/js/userList.js"
+}
