@@ -24,4 +24,3 @@ Broadcast::channel('registerChannel', function () {
 Broadcast::channel('reviewChannel', function () {
     return true;
 });
-

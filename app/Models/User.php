@@ -135,6 +135,12 @@ class User extends Authenticatable
                     ->get();
     }
 
+    public function getAuthUser(): \App\Models\User
+    {
+        return $this->with(['favorites'])
+                    ->findOrFail(Auth::id());
+    }
+
     /**
      * 全てのユーザーのメアドを取得
      *
@@ -186,11 +192,5 @@ class User extends Authenticatable
         return $this->with(['favorites', 'reviews.book', 'stocks.book'])
                     ->withCount('reviews')
                     ->find($userId);
-    }
-
-    public function getAuthUser(): \App\Models\User
-    {
-        return $this->with(['favorites'])
-                    ->findOrFail(Auth::id());
     }
 }

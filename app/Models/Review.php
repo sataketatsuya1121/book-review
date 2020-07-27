@@ -77,6 +77,33 @@ class Review extends Model
                     ->groupBy('ISBN');
     }
 
+    /**
+     * 最新投稿順位にGroup Byでコレクションを整える
+     *
+     * @param integer $limit
+     * @return Collection|null
+     */
+    public function getReviewGroupByIsbn(int $limit = null): Collection
+    {
+        return $this->select('evaluation', 'ISBN')
+                    ->take($limit)
+                    ->latest()
+                    ->get()
+                    ->groupBy('ISBN');
+    }
+
+    /**
+     * ページネーション込みでレビューのある本取得
+     *
+     * @return LengthAwarePaginator
+     */
+    public function getPaginatedBooks(): LengthAwarePaginator
+    {
+        return $this->select('evaluation', 'ISBN')
+                    ->groupBy('ISBN')
+                    ->paginate(config('const.book_review.LIMIT_BOOK'));
+    }
+
     public function sortByReviews(string $isbn):? LengthAwarePaginator
     {
         return $this->with('user', 'likes', 'comments.user')

@@ -11,7 +11,9 @@ use App\Models\Language;
 use App\Models\Department;
 use App\Models\UserDetail;
 use App\Traits\RakutenApi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Services\BookReviewService;
 use Illuminate\Contracts\View\View;
 use App\Services\AchievementService;
 use Illuminate\Support\Facades\Auth;
@@ -36,9 +38,20 @@ class BookReviewController extends Controller
         $this->userDetail = $userDetail;
     }
 
-    public function index(): View
+    public function index(BookReviewService $bookReviewService): View
     {
-        return view('book-review.index');
+        $reviewedBooks = $this->review->getReviewGroupByIsbn(config('const.book_review.LIMIT_BOOK'));
+        $evlAvgrages = $bookReviewService->arrangeArrayReview($reviewedBooks);
+        return view('book-review.index', compact('reviewedBooks', 'evlAvgrages'));
+    }
+
+    public function showResult(Request $request, BookReviewService $bookReviewService): View
+    {
+        $queryParams = $request->all();
+        $arrangeLatestIsbn = $this->review->getReviewGroupByIsbn();
+        $evlAvgrages = $bookReviewService->arrangeArrayReview($arrangeLatestIsbn);
+        $reviewedBooks = $this->review->getPaginatedBooks();
+        return view('book-review.result', compact('reviewedBooks', 'evlAvgrages', 'queryParams', 'arrangeLatestIsbn'));
     }
 
     public function showUserPage(AchievementService $achievementService, Favorite $favorite, int $userId): View
@@ -149,6 +162,7 @@ class BookReviewController extends Controller
 
     public function showStockListPage(): View
     {
-        return view('book-review.stockList');
+        $stocks = $this->stock->getStockBooks(Auth::id());
+        return view('book-review.stockList', compact('stocks'));
     }
 }
