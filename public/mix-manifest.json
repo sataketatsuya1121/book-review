@@ -4,6 +4,8 @@
     "/js/detail.js": "/js/detail.js",
     "/js/index.js": "/js/index.js",
     "/js/newBook.js": "/js/newBook.js",
+    "/js/ranking.js": "/js/ranking.js",
+    "/js/result.js": "/js/result.js",
     "/js/slick.min.js": "/js/slick.min.js",
     "/js/user.js": "/js/user.js",
     "/js/userList.js": "/js/userList.js"
