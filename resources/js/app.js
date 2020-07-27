@@ -347,14 +347,12 @@ $(function(){
 
   window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    key: "d42d7223c7cea8b1926e",
+    cluster: "5d33bbc36171a025551a",
     encrypted: true
   });
 
   console.log(window.Echo);
-  console.log(process.env.MIX_PUSHER_APP_KEY);
-  console.log(process.env.MIX_PUSHER_APP_CLUSTER);
 
   let pushNotifications = {
     rankUpChannel: "RankUpEvent",
