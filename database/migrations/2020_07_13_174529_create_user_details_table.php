@@ -20,8 +20,8 @@ class CreateUserDetailsTable extends Migration
             $table->integer('dept_id')->unsigned()->nullable();
             $table->date('birthday')->nullable();
             $table->date('joined_company_date')->nullable();
-            $table->string('introduce')->nullable();
-            $table->string('ISBN')->nullable();
+            $table->string('introduce', 255)->nullable();
+            $table->string('ISBN', 255)->nullable();
             $table->timestamps();
         });
     }

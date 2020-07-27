@@ -16,7 +16,7 @@ class CreateStocksTable extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('ISBN')->nullable();
+            $table->string('ISBN', 255)->nullable();
             $table->timestamps();
             $table->unique(['user_id', 'ISBN'], 'unique_user_id_ISBN');
         });

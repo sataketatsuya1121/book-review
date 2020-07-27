@@ -17,8 +17,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('review_id')->unsigned();
-            $table->text('content');
-            $table->string('ISBN');
+            $table->text('content', 1000);
+            $table->string('ISBN', 255);
             $table->timestamps();
             $table->softDeletes();
         });
