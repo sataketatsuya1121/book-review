@@ -348,7 +348,7 @@ $(function(){
   window.Echo = new Echo({
     broadcaster: 'pusher',
     key: "d42d7223c7cea8b1926e",
-    cluster: "5d33bbc36171a025551a",
+    cluster: "ap3",
     encrypted: true
   });
 
