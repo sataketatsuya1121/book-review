@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['api']], function () {
+    Route::post('/reviewCount', 'Api\BookReviewController@createReviewCountApi')->name('reviewCountApi');
+    Route::post('/starCount', 'Api\BookReviewController@createStarCountApi')->name('starCountApi');
 });
+
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::post('/notification', 'Api\BookReviewController@createNotificationApi')->name('notificationApi');
+});
+
