@@ -1,0 +1,506 @@
+.p-user {
+	&-profile {
+		position: relative;
+		&-btn {
+			position: absolute;
+			right: 0;
+			@include pc {
+				top: 160px;
+			}
+			@include pcmiddle {
+				top: 1.6rem;
+			}
+		}
+	}
+	&-header {
+		@include pc {
+			width: 940px;
+			height: 140px;
+		}
+		@include pcmiddle {
+			width: 9.4rem;
+			height: 1.4rem;
+		}
+		img {
+			object-fit: cover;
+			object-position: center center;
+			@include pc {
+				width: 940px;
+				height: 140px;
+				border-radius: 10px;
+			}
+			@include pcmiddle {
+				width: 9.4rem;
+				height: 1.4rem;
+				border-radius: .1rem;
+			}
+		}
+	}
+	&-icon {
+		position: relative;
+		@include pc {
+			margin-left: 40px;
+			top: -70px;
+			margin-bottom: -70px;
+			width: 140px;
+		}
+		@include pcmiddle {
+			margin-left: .4rem;
+			top: -.7rem;
+			margin-bottom: -.7rem;
+			width: 1.4rem;
+		}
+		img {
+			object-fit: cover;
+			object-position: center center;
+			@include pc {
+				width: 140px;
+				height: 140px;
+			}
+			@include pcmiddle {
+				width: 1.4rem;
+				height: 1.4rem;
+			}
+		}
+	}
+	&-review{
+		&-btns {
+			position: absolute;
+			display: flex;
+			@include pc {
+				top: 30px;
+				right: 15px;
+				font-size: 12px;
+			}
+			@include pcmiddle {
+				top: .3rem;
+				right: .3rem;
+				font-size: 0.12rem;
+			}
+		}
+		&-btn {
+			&-delete {
+				@include pc {
+					margin-left: 6px;
+				}
+				@include pcmiddle {
+					margin-left: .06rem;
+				}
+			}
+		}
+		&-evaluation {
+			@include pc {
+				margin-top: 20px;
+			}
+			@include pcmiddle {
+				margin-top: .2rem;
+			}
+		}
+		&-inner {
+			font-size: 0px;
+			@include pc {
+				margin-top: 70px;
+				padding-left: 20px;
+			}
+			@include pcmiddle {
+				margin-top: .7rem;
+				padding-left: .2rem;
+			}
+		}
+		&-lists {
+			display: none;
+			background-color: $lightGray;
+			@include pc {
+				padding: 10px;
+				border-radius: 0 10px 10px 10px;
+			}
+			@include pcmiddle {
+				padding: .1rem;
+				border-radius: 0 .1rem .1rem .1rem;
+			}
+		}
+		&-list {
+			color: $darkBlue;
+			display: flex;
+			position: relative;
+			@include pc {
+				padding: 45px;
+			}
+			@include pcmiddle {
+				padding: .45rem;
+			}
+			&-line {
+				margin: 0 auto;
+				color: #a9a9a9;
+				&:first-child {
+					display: none;
+				}
+				@include pc {
+					width: 840px;
+					border-top: 1px solid;
+				}
+				@include pcmiddle {
+					width: 8.4rem;
+					border-top: .01rem solid;
+				}
+			}
+		}
+		&-book {
+			&-img {
+				@include pc {
+					width: 120px;
+				}
+				@include pcmiddle {
+					width: 1.2rem;
+				}
+				&-link {
+					width: 100%;
+				}
+			}
+			&-content {
+				flex: 1;
+				word-break: break-all;
+				@include pc {
+					width: 400px;
+					margin-left: 40px;
+					padding-top: 6px;
+				}
+			}
+			&-ttl {
+				font-weight: bold;
+				@include pc {
+					font-size: 24px;
+				}
+				@include pcmiddle {
+					font-size: .24rem;
+				}
+			}
+			&-author {
+				font-weight: bold;
+				@include pc {
+					font-size: 14px;
+					margin-top: 14px;
+				}
+				@include pcmiddle {
+					font-size: .14rem;
+					margin-top: .14rem;
+				}
+			}
+			&-txt {
+				@include pc {
+					margin-top: 16px;
+					font-size: 14px;
+					line-height: 21px;
+				}
+				@include pcmiddle {
+					margin-top: .16rem;
+					font-size: .14rem;
+					line-height: .21rem;
+				}
+			}
+		}
+	}
+	&-modal {
+		&-bg {
+			@include pc {
+				width: 670px;
+			}
+			@include pcmiddle {
+				width: 6.7rem;
+			}
+		}
+    &-evaluation {
+      display: flex;
+      align-items: center;
+      &-title {
+        font-weight: 600;
+        @include pc {
+          font-size: 18px;
+        }
+        @include pcmiddle {
+          font-size: .18rem;
+        }
+      }
+      &-star {
+        display: inline-block;
+      }
+    }
+    &-detail {
+      @include pc {
+        margin-top: 20px;
+      }
+      @include pcmiddle {
+        margin-top: .2rem;
+      }
+      &-textbox {
+        @include pc {
+          margin-top: 20px;
+
+        }
+        @include pcmiddle {
+          margin-top: .2rem;
+        }
+      }
+    }
+    &-btn {
+      display: block;
+      cursor: pointer;
+      text-align: center;
+			color: #fff;
+			background-color: $lightBlue;
+      @include pc {
+        width: 180px;
+        margin: 20px auto 0;
+      }
+      @include pcmiddle {
+        width: 1.8rem;
+        margin: .2rem auto 0;
+      }
+    }
+	}
+	&-status{
+		width: 900px;
+		&-name{
+			display: inline-block;
+			&-text {
+				@include pc {
+					font-size: 22px;
+					margin-top: 20px;
+				}
+				@include pcmiddle {
+					font-size: .22rem;
+					margin-top: .2rem;
+				}
+			}
+		}
+		&-title{
+			display: inline-block;
+			@include pc {
+				margin-left:30px;
+			}
+			@include pcmiddle {
+				margin-left:.3rem;
+			}
+			&-regular{
+				color: #2CFF34;
+				&-img{
+					background-image: url(../img/title-regular.png);
+				}
+			}
+			&-bronze{
+				color: #BC7F1E;
+				&-img{
+					background-image: url(../img/title-bronze.png);
+				}
+			}
+			&-silver{
+				color: #C6C6C6;
+				&-img{
+					background-image: url(../img/title-silver.png);
+				}
+			}
+			&-gold{
+				color: #d4c904;
+				&-img{
+					background-image: url(../img/title-gold.png);
+				}
+			}
+		}
+	}
+	&-is{
+		&-title{
+			display: inline-block;
+			font-weight: bold;
+			@include pc {
+				font-size: 20px;
+				margin-left: 5px;
+			}
+			@include pcmiddle{
+				font-size: .2rem;
+				margin-left: .05rem;
+			}
+		}
+		&-img{
+			background-size: contain;
+			display: inline-block;
+			@include pc {
+				width: 20px;
+				height: 20px;
+			}
+			@include pcmiddle{
+				width: .2rem;
+				height: .2rem;
+			}
+		}
+	}
+	&-delete {
+		&-bg {
+			border: 4px solid #E86A6A;
+		}
+		&-message {
+			font-weight: 600;
+			text-align: center;
+			color: #E86A6A;
+			@include pc {
+				font-size: 18px;
+			}
+			@include pcmiddle {
+				font-size: .18rem;
+			}
+
+		}
+		&-btns {
+			display: flex;
+			text-align: center;
+			@include pc {
+				margin-top: 55px;
+			}
+			@include pcmiddle {
+				margin-top: .55rem;
+			}
+			&.is-enter {
+				display: inline-block;
+				@include pc {
+					width: 148px;
+					margin-right: 10px;
+				}
+				@include pcmiddle {
+					width: 1.48rem;
+					margin-right: .1rem;
+				}
+			}
+			&.is-back {
+				line-height: initial;
+				display: inline-block;
+				@include pc {
+					width: 148px;
+					margin-left: 10px;
+				}
+				@include pcmiddle {
+					width: 1.48rem;
+					margin-left: .1rem;
+				}
+			}
+		}
+	}
+	&-update {
+		&-submit {
+			@include pc {
+				margin-top: 16px;
+			}
+			@include pcmiddle {
+				margin-top: .16rem;
+			}
+		}
+	}
+	&-profile {
+		&-update {
+			&-delete {
+				display: block;
+				position: absolute;
+				@include pc {
+					left: 60px;
+					bottom: 30px;
+				}
+				@include pcmiddle {
+					left: .6rem;
+					bottom: .3rem;
+				}
+			}
+			&-submit {
+				@include pc{
+					width: 120px;
+					margin: 0 0 0 20px;
+				}
+				@include pcmiddle {
+					width: 1.2rem;
+					margin: 0 0 0 .2rem;
+				}
+			}
+			&-back {
+				margin: 0;
+				@include pc {
+					width: 120px;
+				}
+				@include pcmiddle {
+					width: 1.2rem;
+				}
+			}
+			&-btns {
+				display: flex;
+				justify-content: flex-end;
+				@include pc {
+					margin-top: 40px;
+				}
+				@include pcmiddle {
+					margin-top: .4rem;
+				}
+			}
+			&-input {
+				flex: 1;
+				@include pc {
+					width: 360px;
+					margin-left: 20px;
+					font-size: 16px;
+				}
+				@include pcmiddle {
+					width: 3.6rem;
+					margin-left: .2rem;
+					font-size: .16rem;
+				}
+			}
+			&-title {
+				@include pc {
+					width: 160px;
+				}
+				@include pcmiddle {
+					width: 1.6rem;
+				}
+			}
+			&-box {
+				display: flex;
+				align-items: center;
+				&:nth-of-type(n + 2) {
+					@include pc {
+						margin-top: 30px;
+					}
+					@include pcmiddle {
+						margin-top: .3rem;
+					}
+				}
+			}
+			&-content {
+				width: 200px;
+				border-radius: 2px;
+				border: 1px solid #707070;
+				width: 100%;
+				position: relative;
+				@include pc {
+					font-size: 16px;
+					height: 30px;
+					padding: 4px;
+				}
+				@include pcmiddle {
+					font-size: .16rem;
+					height: .3rem;
+					padding: .04rem;
+				}
+			}
+			// 未対応課題：c-modal-errのmargin-leftを消し、p-の方でそれぞれにつけるようにする
+			&-err {
+				@include pc {
+					margin-left: 170px;
+					margin-top: 10px;
+				}
+				@include pcmiddle {
+					margin-left: 1.7rem;
+					margin-top: .1rem;
+				}
+			}
+		}
+	}
+}
+.js-active-btn-user {
+	background-color: $lightGray;
+  pointer-events: none;
+}

@@ -1,0 +1,130 @@
+.p-books {
+	&-wrapper {
+		@include pc {
+			width: 900px;
+		}
+		@include pcmiddle {
+			width: 9rem;
+		}
+	}
+	&-contents {
+		position: relative;
+		@include pc {
+			margin: 25px 0;
+		}
+		@include pcmiddle {
+			margin: .25rem 0;
+		}
+		&:first-child {
+			margin-top: 0;
+		}
+		&-head {
+			font-size: 20px;
+			@include pcmiddle {
+				font-size: .2rem;
+			}
+		}
+	}
+	&-hr {
+    width: 100%;
+		border: none;
+		background: #D9D9D9;
+		@include pc {
+			height: 2px;
+		}
+		@include pcmiddle {
+			height: .02rem;
+		}
+		&:last-child {
+			display: none;
+		}
+	}
+}
+
+.slick {
+	text-align: center;
+	@include pc {
+		width: 730px;
+		margin: 25px auto 0;
+	}
+	@include pcmiddle {
+		width: 7.3rem;
+		margin: .25rem auto 0;
+	}
+	&-img {
+		@include pc {
+			width: 106px;
+		}
+		@include pcmiddle {
+			width: 1.06rem;
+		}
+	}
+	&-title {
+		color: $fontColor;
+		font-weight: 400;
+		text-align: center;
+		@include pc {
+			width: 106px;
+			margin-top: 10px;
+			font-size: 12px;
+		}
+		@include pcmiddle {
+			width: 1.06rem;
+			margin-top: .1rem;
+			font-size: .12rem;
+		}
+	}
+	&-review {
+		font-weight: 400;
+		@include pc {
+			margin-top: 4px;
+			font-size: 10px;
+		}
+		@include pcmiddle {
+			margin-top: .04rem;
+			font-size: .1rem;
+		}
+	}
+	&-star {
+		font-weight: 400;
+		@include pc {
+			margin-top: 4px;
+			font-size: 10px;
+		}
+		@include pcmiddle {
+			margin-top: .04rem;
+			font-size: .1rem;
+		}
+		&-text {
+			display: inline-block;
+		}
+	}
+	&-slide {
+		outline: none;
+		a {
+			position: relative;
+		}
+	}
+	&-prev { 
+		@include pc {
+			left: -50px;
+		}
+		@include pcmiddle {
+			left: -.5rem;
+		}
+		&::before {
+			color: $lightGray;
+		}
+	}
+	&-next {
+		@include pc {
+			right: -50px;
+		}
+		@include pcmiddle {
+			right: -.5rem;
+		}
+		&::before {
+			color: $lightGray;
+		}
+	}
+}

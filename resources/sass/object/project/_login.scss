@@ -1,0 +1,195 @@
+.p-login {
+  &-wrapper {
+    background: $lightBlue;
+    @include pc {
+      padding: 132.5px 0 23px;
+    }
+    @include pcmiddle {
+      padding: 1.325rem 0 .23rem;
+    }
+  }
+  &-box {
+    margin: 0 auto;
+    background: #FAFAF7;
+    text-align: center;
+    @include pc {
+      width: 735px;
+      padding: 23.6px 0 38.1px;
+    }
+    @include pcmiddle {
+      width: 7.35rem;
+      padding: .236rem 0 .381rem;
+    }
+    img {
+      @include pc {
+        width: 419px;
+        height: 108px;
+      }
+      @include pcmiddle {
+        width: 4.19rem;
+        height: 1.08rem;
+      }
+    }
+  }
+  &-contents {
+    @include pc {
+      margin-top: 40.4px;
+    }
+    @include pcmiddle {
+      margin-top: .404rem;
+    }
+    @include pcall {
+      display: flex;
+      justify-content: center;
+    }
+    &-heading {
+      @include pc {
+        font-size: 15px;
+      }
+      @include pcmiddle {
+        font-size: .15rem;
+      }
+    }
+    &-maillogin {
+      @include pc {
+        padding-right: 48px;
+      }
+      @include pcmiddle {
+        padding-right: .48rem;
+      }
+    }
+    & hr {
+      border: none;
+      background: #EFEFEF;
+      @include pc {
+      width: 2px;
+      }
+      @include pcmiddle {
+        width: .02rem;
+      }
+    }
+    &-accountlogin {
+      @include pc {
+        padding-left: 48px;
+      }
+      @include pcmiddle {
+        padding-left: .48rem;
+      }
+    }
+    &-form {
+      @include pc {
+        margin-top: 15.7px;
+      }
+      @include pcmiddle {
+        margin-top: .157rem;
+      }
+      &-input {
+        display: block;
+        border-radius: 0;
+        background: #F0F0F0;
+        color: #4A4A4A;
+        font-weight: 700;
+        @include pc {
+          width: 247px;
+          margin-top: 11.9px;
+          padding: 16px 0 16px 25px;
+          border-left: solid 7px $lightBlue!important;
+          font-size: 13px;
+        }
+        @include pcmiddle {
+          width: 2.47rem;
+          margin-top: .119rem;
+          padding: .16rem 0 .16rem .25rem;
+          border-left: solid .07rem $lightBlue!important;
+          font-size: .13rem;
+        }
+        &:first-child {
+          margin: 0;
+        }
+        &::placeholder {
+        color: #B3B3B3;
+        }
+      }
+      &-submit {
+        display: block;
+        @include pc{
+          margin-top: 21.3px;
+          padding: 14.3px 0;
+        }
+        @include pcmiddle {
+          margin-top: .213rem;
+          padding: .143rem 0;
+        }
+      }
+    }
+    &-sns {
+      @include pc {
+        margin-top: 15.7px;
+      }
+      @include pcmiddle {
+        margin-top: .157rem;
+      }
+      &-google {
+        background: #FFFFFF;
+        color: #5F6368;
+        background-image: url(../img/google-icon.png);
+        background-repeat: no-repeat;
+        @include pc {
+          padding:17.3px 0 17.3px 25px;
+          border: 1px solid #B3B3B3;
+          background-position: top 12px left 20px;
+          background-size: 23px;
+        }
+        @include pcmiddle {
+          padding: .173rem 0 .173rem .25rem;
+          border: .01rem solid #B3B3B3;
+          background-position: top .12rem left .2rem;
+          background-size: .23rem;
+        }
+      }
+      &-github {
+        background: #818282;
+        color: #F9F9F6;
+        @include pc {
+          margin-top: 11.9px;
+        }
+        @include pcmiddle {
+          margin-top: .119rem;
+        }
+      }
+      
+    }
+    &-newaccount {
+      @include pc {
+        margin-top: 21.8px;
+      }
+      @include pcmiddle {
+        margin-top: .218rem;
+      }
+      &-btn {
+        background: #E8AC6A;
+        @include pc {
+          margin-top: 15px;
+        }
+        @include pcmiddle {
+          margin-top: .15rem;
+        }
+      }
+    }
+  }
+  &-forgetpass {
+    text-align: center;
+    @include pc {
+      margin-top: 26.8px;
+      font-size: 14px;
+    }
+    @include pcmiddle {
+      margin-top: .268rem;
+      font-size: .14rem;
+    }
+    & a {
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

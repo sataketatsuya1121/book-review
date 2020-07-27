@@ -1,0 +1,80 @@
+.p-reset-request {
+  padding-top: 140px;
+  width: 100%;
+  &-content {
+    margin: 0 auto;
+    padding: 60px 60px;
+    background-color: #fff;
+    border-radius: 10px;
+    border-color: none;
+    @include pc {
+      width: 720px;
+    }
+    @include pcmiddle {
+      width: 7.20rem;
+    }
+    @include sp {
+      width: 3rem;
+      padding: .3rem;
+    }
+    &-desc {
+      color: #7C7C7C;
+      line-height: 1.5;
+      @include pc {
+        margin: 24px auto 0;
+        font-size: 14px;
+      }
+      @include pcmiddle {
+        margin: .24rem auto 0;
+        font-size: .14rem;
+      }
+      @include sp {
+        margin: .3rem auto 0;
+        font-size: .12rem;
+      }
+    }
+  }
+  &-form {
+    @include pc {
+      margin: 0 auto;
+      width: 480px;
+    }
+    @include pcmiddle {
+      margin: 0 auto;
+      width: 4.8rem;
+    }
+    &-lists {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      @include sp {
+        display: block;
+      }
+      &:nth-child(n + 2) {
+        margin-top: 20px;
+      }
+    }
+    &-input {
+      @include pc {
+        width: 340px;
+      }
+      @include pcmiddle {
+        width: 3.4rem;
+      }
+      @include sp {
+        margin: .1rem 0 .2rem;
+      }
+    }
+    &-submit {
+      @include pc{
+        margin: 30px auto 0;
+      }
+      @include pcmiddle {
+        margin: .6rem auto 0;
+      }
+      @include sp {
+        margin: .4rem auto 0;
+      }
+    }
+  }
+}

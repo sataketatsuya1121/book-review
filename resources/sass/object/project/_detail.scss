@@ -1,0 +1,486 @@
+.p-detail {
+  &-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include pc {
+      width: 780px;
+    }
+    @include pcmiddle {
+      width: 7.8rem;
+    }
+  }
+  &-book {
+    background: #F0F3F5;
+    font-weight: 400;
+    text-align: left;
+    @include pc {
+      width: 260px;
+      padding: 26px;
+      border-radius: 10px;
+    }
+    @include pcmiddle {
+      width: 2.60rem;
+      padding: .26rem;
+      border-radius: .1rem;
+    }
+    &__img {
+      margin: 0 auto;
+      @include pc {
+        width: 96px;
+      }
+      @include pcmiddle {
+        width: .96rem;
+      }
+    }
+    &__item {
+      @include pc {
+        margin-top: 25px;
+      }
+      @include pcmiddle {
+        margin-top: .25rem;
+      }
+    }
+    &__title {
+      font-weight: 600;
+      @include pc {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      @include pcmiddle {
+        font-size: .16rem;
+        line-height: .2rem;
+      }
+    }
+    &__author {
+      @include pc {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      @include pcmiddle {
+        margin-top: .2rem;
+        font-size: .12rem;
+        line-height: .16rem;
+      }
+    }
+    &__publish {
+      @include pc {
+        margin-top: 6px;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      @include pcmiddle {
+        margin-top: .06rem;
+        font-size: .12rem;
+        line-height: .16rem;
+      }
+    }
+    &__title {
+      font-weight: 600;
+      @include pc {
+        font-size: 14px;
+      }
+      @include pcmiddle {
+        font-size: .14rem;
+      }
+    }
+    &__text {
+      @include pc {
+        margin-top: 6px;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      @include pcmiddle {
+        margin-top: .06rem;
+        font-size: .12rem;
+        line-height: .16rem;
+      }
+    }
+    &__btn {
+      width: 100%;
+      @include pc {
+        margin-top: 10px;
+        font-size: 11px;
+      }
+      @include pcmiddle {
+        margin-top: .1rem;
+        font-size: .11rem;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+  &-reviews {
+    @include pc {
+      width: 450px;
+    }
+    @include pcmiddle {
+      width: 4.5rem;
+    }
+    &__btn {
+      @include pc {
+        width: 170px;
+        margin-top: 30px;
+        padding: 10px 10px;
+      }
+      @include pcmiddle {
+        width: 1.7rem;
+        margin-top: .3rem;
+        padding: .1rem .1rem;
+      }
+      &.btn-disabled {
+        background-color: #ccc;
+        cursor: default;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    &__sorts {
+      @include pc {
+        margin-top: 20px;
+      }
+      @include pcmiddle {
+        margin-top: .2rem;
+      }
+      p {
+        display: inline-block;
+        @include pc {
+          font-size: 13px;
+        }
+        @include pcmiddle {
+          font-size: .13rem;
+        }
+        &:nth-child(n + 2) {
+          @include pc {
+            margin-left: 10px;
+          }
+          @include pcmiddle {
+            margin-left: .1rem;
+          }
+        }
+        a {
+          color: $fontColor;
+          font-weight: 400;
+        }
+      }
+    }
+    &__item {
+      width: 100%;
+      @include pc {
+        padding: 30px 20px 30px 10px;
+      }
+      @include pcmiddle {
+        padding: .3rem .2rem .3rem .1rem;
+      }
+    }
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+    &__icon {
+      @include pc {
+        width: 45px;
+      }
+      @include pcmiddle {
+        width: .45rem;
+      }
+    }
+    &__name {
+      font-weight: 600;
+      @include pc {
+        width: 170px;
+        margin-left: 15px;
+        font-size: 16px;
+        line-height: 18px;
+      }
+      @include pcmiddle {
+        width: 1.55rem;
+        margin-left: .15rem;
+        font-size: .16rem;
+        line-height: .18rem;
+      }
+    }
+    &__evaluation {
+      font-weight: 400;
+      @include pc {
+        margin-left: 8px;
+      }
+      @include pcmiddle {
+        margin-left: .08rem;
+      }
+    }
+    &__tag {
+      display: inline-block;
+      @include pc {
+        font-size: 11px;
+      }
+      @include pcmiddle {
+        font-size: .11rem;
+      }
+    }
+    &__star {
+      display: inline-block;
+      @include pc {
+        margin-left: 5px;
+      }
+      @include pcmiddle {
+        margin-left: .05rem;
+      }
+      span {
+        @include pc {
+          font-size: 15px;
+        }
+        @include pcmiddle {
+          font-size: .15rem;
+        }
+      }
+    }
+    &__date {
+      font-weight: 400;
+      @include pc {
+        margin-left: 10px;
+        font-size: 11px;
+      }
+      @include pcmiddle {
+        margin-left: .1rem;
+        font-size: .11rem;
+      }
+    }
+    &__review {
+      font-weight: 400;
+      @include pc {
+        margin-top: 20px;
+        font-size: 15px;
+        line-height: 20px;
+      }
+      @include pcmiddle {
+        margin-top: .2rem;
+        font-size: .15rem;
+        line-height: .2rem;
+      }
+    }
+    &__btnarea {
+      display: flex;
+      justify-content: space-between;
+      @include pc {
+        margin-top: 25px;
+      }
+      @include pcmiddle {
+        margin-top: .25rem;
+      }
+    }
+    &__good {
+      @include pc {
+        margin-left: 5px;
+      }
+      @include pcmiddle {
+        margin-left: .05rem;
+      }
+    }
+    &__count {
+      display:inline-block;
+      @include pc {
+        margin-left: 3px;
+        font-size: 20px;
+      }
+      @include pcmiddle {
+        margin-left: .03rem;
+        font-size: .2rem;
+      }
+    }
+    &__goodmark {
+      display:inline-block;
+      @include pc {
+        margin-left: 2px;
+        font-size: 15px;
+      }
+      @include pcmiddle {
+        margin-left: .02rem;
+        font-size: .15rem;
+      }
+    }
+    &__commentbtan-area {
+      @include pc {
+        margin-left: 35px;
+      }
+      @include pcmiddle {
+        margin-left: .35rem;
+      }
+    }
+    &__commentbtn {
+      @include pc {
+        width: 130px;
+        margin-left: 15px;
+        padding: 10px 5px;
+      }
+      @include pcmiddle {
+        width: 1.3rem;
+        margin-left: .15rem;
+        padding: .1rem .05rem;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &.is-view {
+        transition: .6s;
+        &.active {
+          background:#ccc;
+        }
+      }
+      &.is-orange {
+        background-color: $orange;
+        color: #fff;
+      }
+    }
+  }
+  &-comments {
+    &__item {
+      + .p-detail-comments__item {
+        @include pc {
+          margin-top: 20px;
+        }
+        @include pcmiddle {
+          margin-top: .2rem;
+        }
+      }
+    }
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+    &__icon {
+      @include pc {
+        width: 30px;
+      }
+      @include pcmiddle {
+        width: .3rem;
+      }
+    }
+    &__name {
+      @include pc {
+        margin-left: 15px;
+        font-size: 13px;
+      }
+      @include pcmiddle {
+        margin-left: .15rem;
+        font-size: .13rem;
+      }
+    }
+    &__date {
+      font-weight: 400;
+      @include pc {
+        margin-left: 10px;
+        font-size: 10px;
+      }
+      @include pcmiddle {
+        margin-left: .1rem;
+        font-size: .1rem;
+      }
+    }
+    &__text {
+      font-weight: 400;
+      @include pc {
+        margin-top: 10px;
+        font-size: 11px;
+        line-height: 15px;
+      }
+      @include pcmiddle {
+        margin-top: .1rem;
+        font-size: .11rem;
+        line-height: .15rem;
+      }
+    }
+  }
+  &-modal {
+    &__evaluation {
+      display: flex;
+      align-items: center;
+    }
+    &__detail {
+      @include pc {
+        margin-top: 15px;
+      }
+      @include pcmiddle {
+        margin-top: .15rem;
+      }
+    }
+    &--bg {
+      @include pc {
+        width: 670px;
+      }
+      @include pcmiddle {
+        width: 6.7rem;
+      }
+    }
+    &__btn {
+      @include pc {
+        margin-top: 20px;
+      }
+      @include pcmiddle {
+        margin-top: .2rem;
+      }
+    }
+  }
+  &-err {
+    &__content {
+      @include pc {
+        padding: 125px;
+      }
+      @include pcmiddle {
+        padding: 1.25rem;
+      }
+    }
+    &--bg {
+      border: 4px solid #E86A6A;
+      @include pc {
+        height: 280px;
+      }
+      @include pcmiddle {
+        height: 2.8rem;
+      }
+    }
+    &__message {
+      font-weight: 600;
+      text-align: center;
+      color: #E86A6A;
+      @include pc {
+        font-size: 18px;
+      }
+      @include pcmiddle {
+        font-size: .18rem;
+      }
+    }
+  }
+}
+
+.likes-flag {
+  img {
+    @include pc {
+      width: 27px;
+    }
+    @include pcmiddle {
+      width: .27rem;
+    }
+  }
+}
+
+//ソート機能の付け替えcss
+.sort-active {
+  background: linear-gradient(transparent 60%, $lightBlue 60%);
+  font-weight: 600;
+  @include pc {
+    font-size: 15px;
+  }
+  @include pcmiddle {
+    font-size: .15rem;
+  }
+}
+.n {
+display:none;
+}
+.comments {
+display: none;
+}

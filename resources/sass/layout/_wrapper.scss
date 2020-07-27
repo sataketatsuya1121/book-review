@@ -1,0 +1,21 @@
+.l-wrapper {
+	@include pcall {
+		margin: 0 auto;
+	}
+	@include sp {
+		width: 100%;
+		margin: 0 auto;
+	}
+	&-inner {
+		margin: 0 auto;
+		@include pc {
+			padding: 52px 0 60px;
+		}
+		@include pcmiddle {
+			padding: .52rem 0 .6rem;
+		}
+	}
+	&-main {
+		display: flex;
+	}
+}

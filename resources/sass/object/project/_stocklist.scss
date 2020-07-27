@@ -1,0 +1,66 @@
+.p-stocklist {
+  &-wrapper {
+    @include pc {
+      width: 740px;
+    }
+    @include pcmiddle {
+      width: 7.4rem;
+    }
+  }
+  &__head {
+    @include pc {
+      margin-left: -60px;
+    }
+    @include pcmiddle {
+      margin-left: -.6rem;
+    }
+  }
+  &__list {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    @include pc {
+      margin-top: 30px;
+    }
+    @include pcmiddle {
+      margin-top: .3rem;
+    }
+  }
+  &__item {
+    @include pc {
+      width: 116px;
+      margin:26px 0 0 39px;
+    }
+    @include pcmiddle {
+      width: 1.16rem;
+      margin:.26rem 0 0 .39rem;
+    }
+    &:nth-child(5n+1) {
+      margin-left: 0;
+    }
+    &:nth-child(-n+5) {
+      margin-top: 0
+    }
+  }
+  &__img {
+    @include pc {
+      width: 116px;
+    }
+    @include pcmiddle {
+      width: 1.16rem;
+    }
+  }
+  &__title {
+    font-weight: 400;
+    @include pc {
+      margin-top: 10px;
+      font-size: 10px;
+      line-height: 12px;
+    }
+    @include pcmiddle {
+      margin-top: .1rem;
+      font-size: .1rem;
+      line-height: .12rem;
+    }
+  }
+}

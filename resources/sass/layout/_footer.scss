@@ -1,0 +1,47 @@
+.l-footer {
+	background-color: $lightBlue;
+	@include pc {
+		padding: 27px 0;
+	}
+	@include pcmiddle {
+		padding: .27rem 0;
+	}
+	&-copy {
+		font-weight: 300;
+		text-align: center;
+		color: #fff;
+		@include pc {
+			font-size: 14px;
+		}
+		@include pcmiddle {
+			font-size: .14rem;
+		}
+		@include sp {
+			font-size: .1rem;
+			padding-top: .4rem;
+			right: .2rem;
+		}
+	}
+	&-common {
+		position: relative;
+		background: #d9d9d9;
+		z-index: 100;
+		@include pc {
+			padding: 12px 0;
+		}
+		@include pcmiddle {
+			padding: .12rem 0;
+		}
+		&-copy {
+			color: #fff;
+			font-weight: 300;
+			text-align: center;
+			@include pc {
+				font-size: 12px;
+			}
+			@include pcmiddle {
+				font-size: .12rem;
+			}
+		}
+	}
+}

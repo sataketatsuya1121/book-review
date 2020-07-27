@@ -1,0 +1,293 @@
+.l-header {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 100;
+	@include pc {
+		padding: 20px 38px 20px 30px;
+	}
+	@include pcmiddle {
+		padding: .2rem .38rem .2rem .3rem;
+	}
+	&-sidebar {
+		display: flex;
+		align-items: center;
+	}
+	&-barmenu {
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		@include pc {
+			width: 26px;
+			height: 19px;
+		}
+		@include pcmiddle {
+			width: .26rem;
+			height: .19rem;
+		}
+		&-bar {
+			background: $fontColor;
+			@include pc {
+				width: 26px;
+				height: 3px;
+			}
+			@include pcmiddle {
+				width: .26rem;
+				height: .03rem;
+			}
+			&.is-second {
+				position: absolute;
+				@include pc {
+					top: 8px;
+				}
+				@include pcmiddle {
+					top: .08rem;
+				}
+			}
+			&.is-third {
+				position: absolute;
+				@include pc {
+					top: 16px;
+				}
+				@include pcmiddle {
+					top: .16rem;
+				}
+			}
+		}
+	}
+	&-logo {
+		& img {
+			@include pc {
+				width: 130px;
+				height: 35px;
+				margin-left: 18px;
+			}
+			@include pcmiddle {
+				width: 1.3rem;
+				height: .35rem;
+				margin-left: .18rem;
+			}
+		}
+	}
+	&-search {
+		&-box {
+			display: inline-block;
+			@include pc {
+				margin-left: 27px;
+			}
+			@include pcmiddle {
+				margin-left: .27rem;
+			}
+			input[type="text"] {
+				background-color: #fff;
+				color: $fontColor;
+				font-weight: 400;
+				@include pc {
+					width: 371px;
+					height: 35px;
+					padding: 10px 20px;
+					border: 1px solid #B3B3B3;
+					border-radius: 5px;
+					font-size: 14px;
+				}
+				@include pcmiddle {
+					width: 3.71rem;
+					height: .35rem;
+					padding: .1rem .2rem;
+					border: .01rem solid #B3B3B3;
+					border-radius: .05rem;
+					font-size: .14rem;
+				}
+			}
+			input[type="submit"] {
+        position: relative;
+        background: url(../img/icon-search.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        @include pc {
+					width: 13px;
+					height: 13px;
+					top: 1px;
+					right: 30px;
+        }
+        @include pcmiddle {
+					width: .13rem;
+					height: .13rem;
+					top: .01rem;
+					right: .30rem;
+        }
+      }
+		}
+	}
+	&-myarea {
+		display: flex;
+		align-items: center;
+		&-icon {
+			@include pc {
+				margin-left: 23px;
+			}
+			@include pcmiddle {
+				margin-left: .23rem;
+			}
+			&:first-child {
+				margin: 0;
+			}
+			img {
+				@include pc {
+					width: 26px;
+				}
+				@include pcmiddle {
+					width: .26rem;
+				}
+			}
+			&-user {
+				@include pc {
+					margin-left: 23px;
+				}
+				@include pcmiddle {
+					margin-left: .23rem;
+				}
+				& img {
+					border-radius: 50%;
+					object-fit: cover;
+    			object-position: center center;
+					@include pc {
+						width: 45px;
+					}
+					@include pcmiddle {
+						width: .45rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+//ハンバーガーメニュー動作時のcss
+
+.bar-none {
+	opacity: 0;
+}
+.rotate-bar {
+	transform: rotate(45deg);
+	@include pc {
+		top: 8px;
+	}
+	@include pcmiddle {
+		top: .08rem;
+	}
+	@include sp {
+		top: .08rem;
+	}
+	&-reverse {
+		transform: rotate(-45deg);
+		@include pc {
+			bottom: 8px;
+		}
+		@include pcmiddle {
+			bottom: .08rem;
+		}
+		@include sp {
+			bottom: .08rem;
+		}
+	}
+}
+
+// 通知アイコンのcss
+.bell {
+  margin: 0 10px;
+  position: relative;
+
+  &-dropdown {
+    border-radius: 50%;
+    padding: 6px;
+  }
+
+  &-dropdown:hover {
+    background-color: #fff;
+  }
+
+  &-icon {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &-icon:hover {
+    color: #148BA8;
+  }
+
+  &-notifications {
+    position: absolute;
+    top: 50px;
+    right: -70px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    display: none;
+    padding: 10px 0;
+    background-color: #fff;
+  }
+
+  &-notifications:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 65px;
+    transform: translateX(-50%);
+    border: 10px solid;
+    border-color: transparent transparent black transparent;
+  }
+
+  &-allread {
+    margin-bottom: 5px;
+  }
+
+  &-allread:hover {
+    color: red;
+  }
+
+  &-list {
+
+    &-item {
+      font-size: 7px;
+      margin-top: 5px;
+      background-color: #ccc;
+      padding: 3px 0;
+
+      > a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+
+    &-item:first-child {
+      margin-top: 0;
+    }
+
+    > a {
+      color: red;
+    }
+  }
+
+  &-active {
+    display: block;
+  }
+}
+
+.notification-count {
+  margin: 5px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 20px;
+  background-color: gray;
+}

@@ -1,0 +1,164 @@
+.p-register {
+  &-wrapper {
+    background: $lightBlue;
+    @include pc {
+      padding: 132.5px 0 60px;
+    }
+    @include pcmiddle {
+      padding: 1.325rem 0 .6rem;
+    }
+  }
+  &-box {
+    position: relative;
+    margin: 0 auto;
+    background: #FAFAF7;
+    text-align: center;
+    @include pc {
+      width: 735px;
+      padding: 32px 66px 38.1px;
+    }
+    @include pcmiddle {
+      width: 7.35rem;
+      padding: .32rem .66rem .381rem;
+    }
+    &__head {
+      @include pc {
+        font-size: 25px;
+      }
+      @include pcmiddle {
+        font-size: .25rem;
+      }
+    }
+    &__backbtn {
+      position: absolute;
+      border-radius: 50%;
+      background-color: #EFEFEF;
+      @include pc {
+        width: 47px;
+        height: 47px;
+        top: 19px;
+        left: 18px;
+      }
+      @include pcmiddle {
+        width: .47rem;
+        height: .47rem;
+        top: .19rem;
+        left: .18rem;
+      }
+      img {
+        position: absolute;
+        @include pc {
+          top: 13px;
+          left: 14px;
+          width: 18px;
+        }
+        @include pcmiddle {
+          top: .13rem;
+          left: .14rem;
+          width: .18rem;
+        }
+      }
+    }
+  }
+  &-formarea {
+    text-align: left;
+    @include pc {
+      margin-top: 33px;
+    }
+    @include pcmiddle {
+      margin-top: .33rem;
+    }
+    &__item {
+      display: flex;
+      align-items: center;
+      @include pc {
+        margin-top: 25px;
+      }
+      @include pcmiddle {
+        margin-top: .25rem;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    &__text {
+      @include pc {
+        width: 180px;
+      }
+      @include pcmiddle {
+        width: 1.8rem;
+      }
+      &.is-small {
+        @include pc {
+          margin: 0 2px;
+          font-size: 14px;
+        }
+        @include pcmiddle {
+          margin: 0 .02rem;
+          font-size: .14rem;
+        }
+      }
+    }
+    &__input {
+      @include pc {
+        margin-left: 52px;
+      }
+      @include pcmiddle {
+        margin-left: .52rem;
+      }
+      input {
+        border: 1px solid $lightGray;
+        background: $whiteGray;
+        @include pc {
+          padding: 6px 6px 6px 15px;
+        }
+        @include pcmiddle {
+          padding: .06rem .06rem .06rem .15rem;
+        }
+      }
+      select {
+        margin-left: 0;
+        border: 1px solid $lightGray;
+        background: $whiteGray;
+        @include pc {
+          padding-left: 15px;
+        }
+        @include pcmiddle {
+          padding-left: .15rem;
+        }
+        option {
+          @include pc {
+            font-size: 13px;
+          }
+          @include pcmiddle {
+            font-size: .13rem;
+          }
+        }
+      }
+      &.is-short {
+        @include pc {
+          width: 150px;
+        }
+        @include pcmiddle {
+          width: 1.5rem;
+        }
+      }
+    }
+    &__submit {
+      @include pc {
+        margin-top: 46px;
+      }
+      @include pcmiddle {
+        margin-top: .46rem;
+      }
+      &--mypagebtn {
+        @include pc {
+          margin-top: 96px;
+        }
+        @include pcmiddle {
+          margin-top: .96rem;
+        }
+      }
+    }
+  }
+}

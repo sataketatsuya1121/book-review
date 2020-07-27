@@ -1,0 +1,200 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.7;
+    transition: .5s;
+  }
+  &.disabled {
+    pointer-events: none; /* aタグのリンクを無効にする */
+    cursor: default;
+  }
+}
+
+html {
+  font-size: 10px;
+  &.is-modal-open {
+    overflow-y: hidden;
+  }
+}
+
+body {
+  width: 100%;
+  color: $fontColor;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1;
+  &.is-modal-open {
+    overflow-y: hidden;
+    // padding-right: 15px;
+  }
+  // &.is-modal-open-nobar {
+  //   overflow-y: hidden;
+  // }
+}
+
+
+
+
+// 100px・・・1としたときのコンテンツ幅で割ることでremで可変幅をレイアウトするためのルート指定。
+// 100pxを起点としている理由は、当サイト対象ブラウザのedgeだと小数点第3桁を認識できないので1000pxを起点にしたとすると、0.1px単位でのrem指定ができなくなってしまうので
+// デザイン上の0.1px・・・0.001rem
+// デザイン上の1px・・・0.01rem
+// デザイン上の10px・・・0.1rem
+// デザイン上の100px・・・1rem
+// デザイン上の1000px・・・10rem
+
+@media screen and (min-width: 768px ) and (max-width: $pc-middle-width) {
+  body {
+    font-size: 0.1rem;
+  }
+  html {
+    font-size: calc(100vw / 12.8);
+  }
+}
+
+@include sp {
+  body {
+    font-size: 0.1rem;
+  }
+  html {
+    font-size: calc(100vw / 7.5);
+  }
+}
+
+// ↑上記変更して使用してください
+
+main  {
+  @include pc {
+    min-height: calc(100vh - 121px);
+  }
+  @include pcmiddle {
+    min-height: calc(100vh - 1.21rem);
+  }
+  @include sp{
+    min-height: calc(100vh - 1.21rem);
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+.bg-lightblue {
+  position: relative;
+  background-color: $lightBlue;
+  @include pc {
+    min-height: calc(100vh - 67.6px);
+  }
+  @include pcmiddle {
+    min-height: calc(100vh - .676rem);
+  }
+}
+
+.bg-whitegray {
+  background-color: $whiteGray;
+  transition: all .5s;
+  @include pc {
+    margin-top: 85px;
+    padding-left: 230px;
+  }
+  @include pcmiddle {
+    margin-top: .85rem;
+    padding-left: 2.3rem;
+  }
+  &.activeside {
+    @include pc {
+      padding-left: 86px;
+    }
+    @include pcmiddle {
+      padding-left: .86rem;
+    }
+  }
+}
+
+.is-display-none {
+  display: none;
+}
+
+.is-star-colord {
+  color: #FFF100;
+}
+
+#scroll-top {
+  position: fixed;
+  cursor: pointer;
+  display: none;
+  z-index: 1;
+  @include pc {
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 80px;
+  }
+  @include pcmiddle {
+    width: .4rem;
+    height: .4rem;
+    right: .2rem;
+    bottom: .8rem;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+	@include pc {
+		margin-top: 30px;
+	}
+	@include pcmiddle {
+		margin-top: .3rem;
+	}
+	.page-item {
+		&:nth-child(n + 2) {
+			@include pc {
+				margin-left: 6px;
+			}
+			@include pcmiddle {
+				margin-left: .06rem;
+			}
+		}
+	}
+	.page-link {
+		border-radius: 50%!important;
+		background-color: #ccc;
+		color: #fff;
+		font-weight: bold;
+		padding: 0;
+		text-align: center;
+    border: none;
+    display: block;
+		@include pc {
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 12px;
+		}
+		@include pcmiddle{
+			width: .3rem;
+			height: .3rem;
+			line-height: .3rem;
+			font-size: .12rem;
+		}
+  }
+  .page-item.active .page-link {
+    background-color: $lightBlue;
+  }
+	.page-item.disabled .page-link {
+		display: none;
+	}
+}

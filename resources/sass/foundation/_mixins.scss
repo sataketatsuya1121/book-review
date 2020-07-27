@@ -1,0 +1,26 @@
+@mixin pc {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin pcmiddle {
+  @media screen and (min-width: 768px) and (max-width: $pc-middle-width) {
+    @content;
+  }
+}
+
+@mixin pcall {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+//⬆︎ブレークポイントを決めてから使用してください！
+

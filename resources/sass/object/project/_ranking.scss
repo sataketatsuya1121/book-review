@@ -1,0 +1,211 @@
+.p-ranking {
+  &-wrapper {
+    @include pc {
+      width: 770px;
+      padding: 40px 0 45px;
+    }
+    @include pcmiddle {
+      width: 7.7rem;
+      padding: .4rem 0 .45rem;
+    }
+  }
+  &-category {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    justify-content: space-between;
+    @include pc {
+      width: 558px;
+    }
+    @include pcmiddle {
+      width: 5.58rem;
+    }
+    &__item {
+      position: relative;
+      text-align: center;
+      @include pc {
+        width: 92px;
+      }
+      @include pcmiddle {
+        width: .92rem;
+      }
+    }
+    &__link {
+      img {
+        position: absolute;
+        z-index: 1;
+        @include pc {
+          top: 19px;
+          left: 19.5px;
+          width: 52px;
+        }
+        @include pcmiddle {
+          top: .19rem;
+          left: .195rem;
+          width: .52rem;
+        }
+      }
+    }
+    &__circle {
+      display: inline-block;
+      background: $lightBlue;
+      @include pc {
+        width: 92px;
+        height: 92px;
+        border-radius: 50px;
+      }
+      @include pcmiddle {
+        width: .92rem;
+        height: .92rem;
+        border-radius: .5rem;
+      }
+    }
+    &__text {
+      display: inline-block;
+      font-size: 400;
+      white-space: nowrap;
+      @include pc {
+        margin-top: 12px;
+        font-size: 13px;
+      }
+      @include pcmiddle {
+        margin-top: .12rem;
+        font-size: .13rem;
+      }
+    }
+  }
+  &-order {
+    display: flex;
+    text-align: center;
+    align-items: flex-end;
+    justify-content: center;
+    @include pc {
+      margin-top: 64px;
+    }
+    @include pcmiddle {
+      margin-top: .64rem;
+    }
+    &__link {
+      &.is-first {
+        @include pc {
+          width: 200px;
+        }
+        @include pcmiddle {
+          width: 2rem;
+        }
+      }
+      &.is-second {
+        @include pc {
+          width: 159px;
+        }
+        @include pcmiddle {
+          width: 1.59rem;
+        }
+      }
+      &.is-third {
+        @include pc {
+          width: 113px;
+        }
+        @include pcmiddle {
+          width: 1.13rem;
+        }
+      }
+      &.is-fourth {
+        @include pc {
+          width: 90px;
+        }
+        @include pcmiddle {
+          width: .9rem;
+        }
+      }
+      &.is-fifth {
+        @include pc {
+          width: 71px;
+        }
+        @include pcmiddle {
+          width: .71rem;
+        }
+      }
+    }
+    &__rank {
+      font-weight: 600;
+      @include pc {
+        margin-top: 15px;
+        font-size: 20px;
+      }
+      @include pcmiddle {
+        margin-top: .15rem;
+        font-size: .2rem;
+      }
+    }
+  }
+  &-book {
+    @include pc {
+      width: 740px;
+      margin-top: 75px;
+    }
+    @include pcmiddle {
+      width: 7.4rem;
+      margin-top: .75rem;
+    }
+    &__head {
+      @include pc {
+        margin-left: -30px;
+        font-size: 23px;
+      }
+      @include pcmiddle {
+        margin-left: -.3rem;
+        font-size: .23rem;
+      }
+    }
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      @include pc {
+        margin-top: 38px;
+      }
+      @include pcmiddle {
+        margin-top: .38rem;
+      }
+    }
+    &__item {
+      @include pc {
+        width: 116px;
+        margin: 30px 0 0 40px;
+      }
+      @include pcmiddle {
+        width: 1.16rem;
+        margin: .3rem 0 0 .4rem;
+      }
+      &:nth-child(5n + 1) {
+        margin-left: 0;
+      }
+      &:nth-child(-n + 5) {
+        margin-top: 0;
+      }
+    }
+    &__link {
+      & img {
+        @include pc {
+          width: 116px;
+        }
+        @include pcmiddle {
+          width: 1.16rem;
+        }
+      }
+      & span {
+        display: block;
+        font-weight: 400;
+        @include pc {
+          margin-top: 10px;
+          font-size: 10px;
+        }
+        @include pcmiddle {
+          margin-top: .1rem;
+          font-size: .1rem;
+        }
+      }
+    }
+  }
+}
