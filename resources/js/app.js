@@ -352,6 +352,10 @@ $(function(){
     encrypted: true
   });
 
+  console.log(window.Echo);
+  console.log(process.env.MIX_PUSHER_APP_KEY);
+  console.log(process.env.MIX_PUSHER_APP_CLUSTER);
+
   let pushNotifications = {
     rankUpChannel: "RankUpEvent",
     registerChannel: "RegisterEvent",
