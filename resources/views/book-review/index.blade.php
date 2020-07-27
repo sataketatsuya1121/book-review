@@ -4,147 +4,46 @@
 <div class="l-wrapper-inner p-books-wrapper">
   <div class="p-books-contents">
     <h2 class="p-books-contents-head">レビューのある本</h2>
-    <a class="c-button-more">もっとみる</a>
+    <a href="{{ route('showResult') }}" class="p-books-contents-more">もっとみる</a>
     <ul class="slick">
+      @foreach ($reviewedBooks as $index => $reviewedBook)
       <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気1</p>
-          <p class="slick-review">レビュー件数： 2件</p>
+        <a href="{{ route('detail', $reviewedBook->first()->book->ISBN) }}">
+        <img class="slick-img" alt="" src="{{ $reviewedBook->first()->book->img }}" />
+          <p class="slick-title">{{ Str::limit($reviewedBook->first()->book->title, 15) }}</p>
+          <p class="slick-review">レビュー件数： {{ $reviewedBook->count() }}件</p>
           <div class="c-evaluation">
             <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="2">
+            <div class="c-evaluation-star" data-count="{{ $evlAvgrages[$index] }}">
+              @for ($i = 0; $i < $evlAvgrages[$index]; $i++)
               <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
+              @endfor
+              @for ($i = 0; $i < 5 - $evlAvgrages[$index]; $i++)
               <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
+              @endfor
             </div>
           </div>
         </a>
       </li>
-      <!-- ここから下は消して下さい。 -->
-      <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気2</p>
-          <p class="slick-review">レビュー件数： 2件</p>
-          <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="3">
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気3</p>
-          <p class="slick-review">レビュー件数： 12件</p>
-          <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="5">
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気4</p>
-          <p class="slick-review">レビュー件数： 8件</p>
-          <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="4">
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気5</p>
-          <p class="slick-review">レビュー件数： 2件</p>
-          <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="1">
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気6</p>
-          <p class="slick-review">レビュー件数： 6件</p>
-          <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="3">
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a>
-          <img class="slick-img" alt="" src="img/book-img.png" />
-          <p class="slick-title">嫌われる勇気7</p>
-          <p class="slick-review">レビュー件数： 4件</p>
-          <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="3">
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
-            </div>
-          </div>
-        </a>
-      </li>
-      <!-- ここまで -->
+      @endforeach
     </ul>
   </div>
   <hr class="p-books-hr">
   <div class="p-books-contents">
     <h2 class="p-books-contents-head">プログラミング</h2>
-    <a class="c-button-more">もっとみる</a>
+    <a href="{{ route('showResult') }}?search_query=プログラミング" class="p-books-contents-more">もっとみる</a>
     <ul class="slick program"></ul>
   </div>
   <hr class="p-books-hr">
   <div class="p-books-contents">
     <h2 class="p-books-contents-head">自己啓発</h2>
-    <a class="c-button-more">もっとみる</a>
+    <a href="{{ route('showResult') }}?search_query=自己啓発" class="p-books-contents-more">もっとみる</a>
     <ul class="slick self"></ul>
   </div>
   <hr class="p-books-hr">
   <div class="p-books-contents">
     <h2 class="p-books-contents-head">ビジネスマナー</h2>
-    <a class="c-button-more">もっとみる</a>
+    <a href="{{ route('showResult') }}?search_query=ビジネスマナー" class="p-books-contents-more">もっとみる</a>
     <ul class="slick business"></ul>
   </div>
   <hr class="p-books-hr">

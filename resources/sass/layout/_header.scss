@@ -233,7 +233,6 @@
     text-align: center;
     display: none;
     padding: 10px 0;
-    background-color: #fff;
   }
 
   &-notifications:before {
@@ -248,10 +247,6 @@
 
   &-allread {
     margin-bottom: 5px;
-  }
-
-  &-allread:hover {
-    color: red;
   }
 
   &-list {

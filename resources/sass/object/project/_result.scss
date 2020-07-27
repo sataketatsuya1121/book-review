@@ -1,0 +1,39 @@
+.p-result {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+
+  &-list {
+    margin-left: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 15px;
+    list-style: none;
+
+    > a {
+      text-decoration: none;
+      color: black;
+      display: inline-block;
+    }
+
+    &-image {
+      margin-bottom: 5px;
+    }
+
+    &-title {
+      margin-bottom: 5px;
+    }
+
+    &-review {
+      font-size: 13px;
+    }
+
+    &-evaluation {
+      font-size: 13px;
+    }
+  }
+
+  &-disactive {
+    display: none;
+  }
+}

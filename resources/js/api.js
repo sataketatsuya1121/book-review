@@ -5,7 +5,7 @@ let base =$('#js-getUrl').data();
 let baseUrl = base.name;
 let getBooksCount = 30;
 let reviewCountArray;
-let apiRequestCount = 0;
+let apiRequestCount = 1;
 
 exports.getBooksApiByCategory = function(booksGenreId, category) {
   $.ajax({
@@ -24,7 +24,7 @@ exports.getBooksApiByCategory = function(booksGenreId, category) {
     $.each(data.Items, function(i, item) {
       $('.' + category).append(`<li><a href="${baseUrl + '/' + item.Item.isbn + '/detail'}"><img class="slick-img" alt="" src="${item.Item.mediumImageUrl}" /><p class="slick-title">${substr(item.Item.title, 15, '...')}</p></a></li>`);
     });
-    if(apiRequestCount === 3) {
+    if(apiRequestCount === 4) {
       $('.slick').slick({
         settings: 'slick',
         slidesToShow: 5,
@@ -32,6 +32,46 @@ exports.getBooksApiByCategory = function(booksGenreId, category) {
         swipe: true,
       });
     }
+  }).fail(function(err) {
+    console.log(err);
+  });
+}
+
+// ランキング取得
+let rank = ['zero', 'first', 'second', 'third', 'fourth', 'fifth'];
+exports.getBooksApiByRanking = function(booksGenreId) {
+  $.ajax({
+    url: rakutenUrl.name,
+    type: 'GET',
+    datatype: 'json',
+    data: {
+      applicationId: rakutenId.name,
+      booksGenreId: booksGenreId,
+      hits: getBooksCount,
+      page: 1,
+      sort: 'sales',
+    },
+  }).done(function(data) {
+    $('.p-ranking-order').html('');
+    $('.p-ranking-book__list').html('');
+    $.each(data.Items, function(i, item) {
+      if(i<=4) {
+        i++;
+        $('.p-ranking-order').append(`<div class="p-ranking-order__item">
+          <a href="${baseUrl + '/' + item.Item.isbn + '/detail'}" class="p-ranking-order__link is-${rank[i]}">
+            <img alt="" src="${item.Item.largeImageUrl}">
+          </a>
+          <p class="p-ranking-order__rank">${i}</p>
+        </div>`);
+        return true;
+      }
+      $('.p-ranking-book__list').append(`<li class="p-ranking-book__item">
+        <a href="${baseUrl + '/' + item.Item.isbn + '/detail'}" class="p-ranking-book__link">
+          <img alt="" src="${item.Item.largeImageUrl}">
+          <span>${substr(item.Item.title, 35, '...')}</span>
+        </a>
+      </li>`);
+    });
   }).fail(function(err) {
     console.log(err);
   });

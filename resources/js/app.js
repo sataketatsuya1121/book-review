@@ -263,13 +263,6 @@ $(function(){
     };
   });
 
-  // サイドバーの挙動
-  $('.l-header-barmenu').on('click', function() {
-    $('.l-sidebar').toggleClass('activeside');
-    $('.l-sidebar-item-text').stop().fadeToggle(150);
-    $('.bg-whitegray').toggleClass('activeside');
-  });
-
   //絞り込み年数
   var time = new Date();
   var year = time.getFullYear();
@@ -280,6 +273,12 @@ $(function(){
     $('#month').append('<option value="' + i + '">' + i + '</option>');
   }
 
+  // サイドバーの挙動
+  $('.l-header-barmenu').on('click', function() {
+    $('.l-sidebar').toggleClass('activeside');
+    $('.l-sidebar-item-text').stop().fadeToggle(150);
+    $('.bg-whitegray').toggleClass('activeside');
+  });
   // バックエンドで作成したAPIから、通知情報を取得
   let csrf_token= $('#js-getToken').data();
   let cookies = document.cookie; //全てのcookieを取り出して
@@ -345,9 +344,6 @@ $(function(){
 
   //Pusher通信
   window.Pusher = require('pusher-js');
-
-  console.log(process.env.MIX_PUSHER_APP_KEY);
-  console.log(process.env.MIX_PUSHER_APP_CLUSTER);
 
   window.Echo = new Echo({
     broadcaster: 'pusher',

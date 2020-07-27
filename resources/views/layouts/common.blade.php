@@ -26,7 +26,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="l-header-search">
+    <form class="l-header-search" action="{{ route('showResult') }}">
 			<label>
 				<input class="c-form-input-radio" type="radio"  name="condition"value="title" checked>
 				<span><p>タイトル</p></span>
@@ -46,25 +46,24 @@
 				<input type="text" name="keyword" placeholder="キーワードを入力">
 				<input type="submit" value="">
 			</div>
-		</div>
+		</form>
 		<div class="l-header-myarea">
 			<a href="{{ route('logout') }}" class="l-header-myarea-icon">
 				<img src="{{ asset('img/icon_login.png') }}">
 			</a>
-
-      {{-- 佐竹編集ここから --}}
+			<a class="l-header-myarea-icon">
+				<img src="{{ asset('img/icon_bell.png') }}">
+      </a>
       <div class="bell">
-        <a class="l-header-myarea-icon bell-dropdown">
-          <img src="{{ asset('img/icon_bell.png') }}" class="bell-icon">
-        </a>
-        <div class="bell-notifications" id="dropdown=menu">
-          <button type="button" class="bell-allread">全て既読する</button>
-          <ul class="bell-list">
-          </ul>
+          <button type="button" class="bell-dropdown">
+            <i class="fas fa-bell bell-icon"></i>
+          </button>
+          <div class="bell-notifications" id="dropdown=menu">
+            <button type="button" class="bell-allread">全て既読する</button>
+            <ul class="bell-list">
+            </ul>
+          </div>
         </div>
-      </div>
-      {{-- ここまで --}}
-
 			<a href="{{ route('mypage') }}" class="l-header-myarea-icon-user">
 				<img src="{{ Auth::user()->avatar ?: 'https://www.pondokindahmall.co.id/assets/img/default.png' }}" alt="">
 			</a>
