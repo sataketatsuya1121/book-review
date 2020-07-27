@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/login/github', 'Auth\LoginController@redirectToProvider')->name('github');
+Route::get('/login/github/callback', 'Auth\LoginController@handleProviderCallback')->name('githubCall');
+Route::get('/login/google', 'Auth\LoginController@getGoogleAuth')->name('google');
+Route::get('/login/callback/google', 'Auth\LoginController@authGoogleCallback');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/review', 'BookReviewController@index')->name('review');
+    Route::post('/review', 'BookReviewController@index')->name('review');
+    Route::get('/review/{userId}/user', 'BookReviewController@showUserPage')->name('user');
+    Route::get('/review/mypage', 'BookReviewController@showMypage')->name('mypage');
+    Route::put('/review/{reviewId}', 'BookReviewController@updateBookReview')->name('updateReview');
+    Route::delete('/review/{reviewId}', 'BookReviewController@destroyBookReview')->name('destroyReview');
+    Route::post('/review/create', 'BookReviewController@storeBookReview')->name('createReview');
+    Route::get('/review/{isbn}/detail', 'BookReviewController@showDetailPage')->name('detail');
+
+    Route::post('/review/{reviewId}/like', 'LikeController@like')->name('like');
+    Route::post('/review/{reviewId}/unLike', 'LikeController@unLike')->name('unLike');
+
+    Route::put('/review/{userId}/update', 'UserController@updateUser')->name('updateUser');
+    Route::delete('/review/user/destroy', 'UserController@destroyUser')->name('destroyUser');
+
+    Route::post('/review/{isbn}/stock', 'StockController@storeStock')->name('stock');
+    Route::delete('/review/{isbn}/unstock', 'StockController@destroyStock')->name('unstock');
+    Route::delete('/review/{isbn}/unstock_mypage', 'StockController@destroyMypageStock')->name('unstockMypage');
+
+    Route::post('/review/comment', 'CommentController@postComment')->name('postComment');
+    Route::put('/review/{commentId}/comment', 'CommentController@editComment')->name('editComment');
+    Route::delete('/review/{commentId}/comment', 'CommentController@destroyComment')->name('deleteComment');
+    Route::get('/review/user_list', 'UserController@showUserList')->name('userList');
+
+    Route::post('/review/{favoriteId}/favorite', 'FavoriteController@favorite')->name('favorite');
+    Route::post('/review/{favoriteId}/unFavorite', 'FavoriteController@unFavorite')->name('unFavorite');
+
+    Route::get('/review/ranking', 'BookReviewController@showRankingPage')->name('ranking');
+    Route::get('/review/new_book', 'BookReviewController@showNewBookPage')->name('newBook');
+    Route::get('/review/stock_list', 'BookReviewController@showStockListPage')->name('stockList');
+
+    Route::get('/mark/{notificationId}/{isbn}/review', 'NotificationController@markAsReadReview')->name('markReview');
+    Route::get('/mark/{notificationId}/{isbn}/user', 'NotificationController@markAsReadUser')->name('markUser');
+    Route::post('/markAsRead', 'NotificationController@markAsReadAllNotifications')->name('markAsReadApi');
+
+    Route::get('/results', 'BookReviewController@showResult')->name('showResult');
 });
