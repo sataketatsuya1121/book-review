@@ -26,7 +26,7 @@ class LikeController extends Controller
     public function like(int $reviewId)
     {
         if ($this->like->checkLikeDone($reviewId)) {
-            return response()->json(config('const.abort'));
+            return config('const.abort');
         }
         $this->like->storeLike($reviewId);
         return true;
@@ -42,7 +42,7 @@ class LikeController extends Controller
     public function unLike(int $reviewId)
     {
         if (!$this->like->checkLikeDone($reviewId)) {
-            return response()->json(config('const.abort'));
+            return config('const.abort');
         }
         $this->like->destroyLikeById($reviewId);
         return true;

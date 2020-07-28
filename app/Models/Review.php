@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Kyslik\ColumnSortable\Sortable;
 
 class Review extends Model
@@ -83,13 +84,14 @@ class Review extends Model
      * @param integer $limit
      * @return Collection|null
      */
-    public function getReviewGroupByIsbn(int $limit = null): Collection
+    public function getReviewGroupByIsbn(int $limit = null)
     {
-        return $this->select('evaluation', 'ISBN')
+        return $this->with(['book'])
+                    ->select(DB::raw('count(*) as review_count, AVG(evaluation) as evaluation_avg, ISBN'))
                     ->take($limit)
-                    ->latest()
-                    ->get()
-                    ->groupBy('ISBN');
+                    ->groupBy('ISBN')
+                    ->oldest()
+                    ->paginate(config('const.book_review.MAX_PAGINATE_NUM'));
     }
 
     /**

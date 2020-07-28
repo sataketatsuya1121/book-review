@@ -36,6 +36,11 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::APP;
 
+    protected function redirectTo()
+    {
+        return '/review/my_info';
+    }
+
     /**
      * Create a new controller instance.
      *

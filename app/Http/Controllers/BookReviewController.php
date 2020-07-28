@@ -6,8 +6,6 @@ use App\Models\Book;
 use App\Models\User;
 use App\Models\Stock;
 use App\Models\Review;
-use App\Models\Favorite;
-use App\Models\Language;
 use App\Models\Department;
 use App\Models\UserDetail;
 use App\Traits\RakutenApi;
@@ -41,37 +39,31 @@ class BookReviewController extends Controller
     public function index(BookReviewService $bookReviewService): View
     {
         $reviewedBooks = $this->review->getReviewGroupByIsbn(config('const.book_review.LIMIT_BOOK'));
-        $evlAvgrages = $bookReviewService->arrangeArrayReview($reviewedBooks);
-        return view('book-review.index', compact('reviewedBooks', 'evlAvgrages'));
+        return view('book-review.index', compact('reviewedBooks'));
     }
 
-    public function showResult(Request $request, BookReviewService $bookReviewService): View
+    public function showResult(Request $request, string $category, BookReviewService $bookReviewService): View
     {
-        $queryParams = $request->all();
-        $arrangeLatestIsbn = $this->review->getReviewGroupByIsbn();
-        $evlAvgrages = $bookReviewService->arrangeArrayReview($arrangeLatestIsbn);
-        $reviewedBooks = $this->review->getPaginatedBooks();
-        return view('book-review.result', compact('reviewedBooks', 'evlAvgrages', 'queryParams', 'arrangeLatestIsbn'));
+        if ($category === 'review') {
+            $reviewedBooks = $this->review->getReviewGroupByIsbn();
+            return view('book-review.result', compact('category', 'reviewedBooks'));
+        } else {
+            $queryParams = $request->all();
+            return view('book-review.result', compact('category', 'queryParams'));
+        }
     }
 
     public function showUserPage(AchievementService $achievementService, Favorite $favorite, int $userId): View
     {
         $user = User::findOrFail($userId)->getUser(Auth::id());
-        $userReviewsCount = $user->reviews()->count();
         $achievement = $achievementService->getAchievement($user->reviews_count);
-        $reviews = $this->review->getReviews($userId);
-        $stocks = $this->stock->getStockBooks($userId);
         $authFavorited = $favorite->checkFavoriteDone($userId);
-        $languages = Language::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
         $userProfile = $this->userDetail->getByUserProfile($userId);
         return view('book-review.user', compact(
                     'user',
-                    'reviews',
                     'achievement',
-                    'stocks',
                     'authFavorited',
-                    'languages',
                     'departments',
                     'userProfile'
                 ));
@@ -80,19 +72,12 @@ class BookReviewController extends Controller
     public function showMypage(AchievementService $achievementService): View
     {
         $user = User::findOrFail(Auth::id())->getUser(Auth::id());
-        $userReviewsCount = $user->reviews()->count();
         $achievement = $achievementService->getAchievement($user->reviews_count);
-        $reviews = $this->review->getReviews(Auth::id());
-        $stocks = $this->stock->getStockBooks(Auth::id());
-        $languages = Language::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
         $userProfile = $this->userDetail->getByUserProfile(Auth::id());
         return view('book-review.user', compact(
                     'user',
-                    'reviews',
                     'achievement',
-                    'stocks',
-                    'languages',
                     'departments',
                     'userProfile'
                 ));
@@ -104,7 +89,9 @@ class BookReviewController extends Controller
         $book = $this->fetchRakutenApiByIsbn($isbn);
         $isMyReview = $reviews->contains('user_id', Auth::id());
         $isMyStock = $this->stock->isStockBook(Auth::id(), $isbn);
-        return view('book-review.detail', compact('reviews', 'book', 'isMyReview', 'isMyStock'));
+        $isRecomend = $this->userDetail->isRecomendBook(Auth::id(), $isbn);
+        $hasRecomend = $this->userDetail->hasRecomendBook(Auth::id());
+        return view('book-review.detail', compact('reviews', 'book', 'isMyReview', 'isMyStock', 'isRecomend', 'hasRecomend'));
     }
 
     public function storeBookReview(

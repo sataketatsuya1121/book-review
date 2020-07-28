@@ -26,7 +26,7 @@ class FavoriteController extends Controller
     public function favorite(int $fav_user_id)
     {
         if ($this->favorite->checkFavoriteDone($fav_user_id)) {
-            return response()->json(config('const.abort'));
+            return config('const.abort');
         }
         $this->favorite->storeFavorite($fav_user_id);
         return true;
@@ -42,7 +42,7 @@ class FavoriteController extends Controller
     public function unFavorite(int $fav_user_id)
     {
         if (!$this->favorite->checkFavoriteDone($fav_user_id)) {
-            return response()->json(config('const.abort'));
+            return config('const.abort');
         }
         $this->favorite->destroyFavoriteById($fav_user_id);
         return true;

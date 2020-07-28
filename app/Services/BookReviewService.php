@@ -28,12 +28,4 @@ class BookReviewService
             $this->book->deleteBookByIsbn($isbn);
         }
     }
-
-    public function arrangeArrayReview($reviewedBooks): array
-    {
-        foreach ($reviewedBooks as $index => $reviewedBook) {
-            $evlAvgrages[$index] = round($reviewedBook->pluck('evaluation')->avg(), 1);
-        }
-        return $evlAvgrages;
-    }
 }

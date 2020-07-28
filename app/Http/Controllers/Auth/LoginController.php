@@ -90,7 +90,7 @@ class LoginController extends Controller
 
         // クッキーにapiトークンをセット
         $this->apiTokenService->setApiTokenToCookie($user->email);
-        return redirect()->to(RouteServiceProvider::APP);
+        return redirect()->route('myInfo');
     }
 
     /**
@@ -118,7 +118,7 @@ class LoginController extends Controller
 
             // クッキーにapiトークンをセット
             $this->apiTokenService->setApiTokenToCookie($user->email);
-            return redirect()->to(RouteServiceProvider::APP);
+            return redirect()->route('myInfo');
         } else {
             $user = User::create([
                 'name' => $guser->getNickName() ?? $guser->getName() ?? $guser->getNick(),
@@ -131,7 +131,7 @@ class LoginController extends Controller
 
             // クッキーにapiトークンをセット
             $this->apiTokenService->setApiTokenToCookie($user->email);
-            return redirect()->to(RouteServiceProvider::APP);
+            return redirect()->route('myInfo');
         }
     }
 

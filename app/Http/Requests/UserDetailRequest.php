@@ -2,12 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\EmailRule;
-use App\Models\UserDetail;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class UserDetailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,22 +24,15 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar' => 'file|image',
-            'sub_avatar' => 'file|image',
-            'name' => 'required|max:20',
-            'email' => new EmailRule,
-            'birthday' => 'nullable|date_format:Y-m-d',
             'joined_company_date' => 'nullable|string|max:255',
             'dept_id' => 'nullable|integer',
             'lang' => 'nullable|string|max:255',
-            'introduce' => 'nullable|string|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => '入力必須の項目です。',
             'max' => ':max文字以内で入力して下さい。',
         ];
     }

@@ -89,16 +89,16 @@ class User extends Authenticatable
 
     public function getAllUsers(): Collection
     {
-        return $this->with(['userDetail.language', 'userDetail.department'])
+        return $this->with(['userDetail.department'])
                     ->orderBy('created_at', 'DESC')
                     ->get();
     }
 
     public function getUserByFavorite(Collection $favorite): Collection
     {
-        $favoritedUser = $this->with(['userDetail.language', 'userDetail.department'])
+        $favoritedUser = $this->with(['userDetail.department'])
                             ->find($favorite->pluck('fav_user_id'));
-        $notFavoritedUser = $this->with(['userDetail.language', 'userDetail.department'])
+        $notFavoritedUser = $this->with(['userDetail.department'])
                                 ->whereNotIn('id', $favorite->pluck('fav_user_id'))
                                 ->get()
                                 ->sortByDesc('created_at');
@@ -107,7 +107,7 @@ class User extends Authenticatable
 
     public function getUserBySearch(\Illuminate\Http\Request $request): Collection
     {
-        return $this->with(['userDetail.language', 'userDetail.department'])
+        return $this->with(['userDetail.department'])
                     ->when($request->filled('keyword'), function($query) use ($request) {
                         return $query->where('name', 'like', '%' . $request->input('keyword') . '%');
                     })
