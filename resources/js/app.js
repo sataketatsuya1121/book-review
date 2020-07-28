@@ -292,6 +292,9 @@ $(function(){
         apiToken = cArray[1];  // [key,value]
     }
   }
+  console.log(cookies);
+  console.log(cookiesArray);
+  console.log(apiToken);
 
   function getNotificationApi() {
     return $.ajax({
@@ -347,20 +350,38 @@ $(function(){
 
   window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: "d42d7223c7cea8b1926e",
-    cluster: "ap3",
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: true
   });
-
-  console.log(window.Echo);
-  console.log(process.env.MIX_PUSHER_APP_KEY);
-  console.log(process.env.MIX_PUSHER_APP_CLUSTER);
 
   let pushNotifications = {
     rankUpChannel: "RankUpEvent",
     registerChannel: "RegisterEvent",
     reviewChannel: "ReviewEvent",
   }
+
+  console.log(Notification.permission);
+  console.log(window.Echo);
+
+  Push.Permission.request(onGranted, onDenied);
+
+  function onGranted() {
+      console.log('Granted!');
+  }
+
+  function onDenied() {
+      console.log('Denied...');
+  }
+
+  Notification.requestPermission().then(function (permission) {
+    // If the user accepts, let's create a notification
+    if (permission === "granted") {
+      console.log('you are permission granted!');
+    } else {
+      console.log('you are not permission granted');
+    }
+  });
 
   for (let key in pushNotifications) {
     window.Echo.channel(key)
@@ -378,14 +399,17 @@ $(function(){
 
   //デスクトップ通知
   function push(message){
-    Push.create('Book Reviewからのお知らせです', {
-      body: message,
-      icon: '../favicon.ico',
-      timeout: 5000,
-      onClick: function () {
-          window.focus();
-          this.close();
-      }
-    });
+    if (Push.Permission.has()) {
+      Push.create('Book Reviewからのお知らせです', {
+        body: message,
+        icon: '../favicon.ico',
+        timeout: 5000,
+        onClick: function () {
+            window.focus();
+            this.close();
+        }
+      });
+    }
   }
 });
+
