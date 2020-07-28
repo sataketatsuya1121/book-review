@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->integer('evaluation')->unsigned()->default(0);
             $table->integer('likes_count')->unsigned()->default(0);
             $table->text('content', 1000);
-            $table->string('ISBN', 255);
+            $table->string('ISBN');
             $table->timestamps();
             $table->softDeletes();
 
