@@ -115,7 +115,7 @@ $(function(){
     if(targetModal === '.js-user-modal') {
       deleteModalState = true;
     }
-    $(targetModal).fadeIn(500);
+    $(targetModal).fadeIn(300);
     $('.is-first-review').addClass('is-paused');
 
     currentTextLength = $('.js-input-text').val().length;
@@ -126,6 +126,7 @@ $(function(){
   });
 
   $(".js-modal-close").on('click', (e) => {
+    $('.p-user-dotbox').fadeOut(300);
     $(targetModal).fadeOut(300);
     bodyFixedOff();
     $('.is-first-review').removeClass('is-paused');
@@ -251,16 +252,23 @@ $(function(){
       errKey = Object.keys(errors);
       errValue = Object.values(errors);
       errKey.forEach(function(value, i, array) {
-        $('#' + errKey[i] + '-err').html('<span class="c-err-text c-modal-err">' + errValue[i] + '</span>');
+        $('#' + errKey[i] + '-err').html('<span class="c-err__text c-modal-err">' + errValue[i] + '</span>');
       });
     } else {
-      $('.c-err-text .c-modal-err').html('');
+      $('.c-err__text .c-modal-err').html('');
       if(isIOS || isSafari) {
         $('.c-modal').append('<div class="now-loading">Now Loading...</div>')
       } else {
         $('.c-modal').append('<div id="submit-loading" class="loading"></div>');
       }
     };
+  });
+
+  // サイドバーの挙動
+  $('.l-header__barmenu').on('click', function() {
+    $('.l-sidebar').toggleClass('activeside');
+    $('.l-sidebar__text').stop().fadeToggle(150);
+    $('.bg-whitegray').toggleClass('activeside');
   });
 
   //絞り込み年数
@@ -272,6 +280,20 @@ $(function(){
   for (var i = 1; i <= 12; i++) {
     $('#month').append('<option value="' + i + '">' + i + '</option>');
   }
+
+  $('.l-header__category').on('click', function() {
+    $('.l-header-modal').stop().fadeToggle();
+  });
+
+  $('.l-header-modal__category').on('click', function() {
+    $('.l-header-modal__select').hide();
+    $('.l-header-modal__detail').fadeIn();
+  });
+
+  $('.l-header-modal__back').on('click', function() {
+    $('.l-header-modal__detail').hide();
+    $('.l-header-modal__select').fadeIn();
+  });
 
   // サイドバーの挙動
   $('.l-header-barmenu').on('click', function() {
@@ -288,14 +310,10 @@ $(function(){
 
   for(var c of cookiesArray){ //一つ一つ取り出して
     var cArray = c.split('='); //さらに=で分割して配列に
-    if (cArray[0] == 'api_token' || cArray[0] == ' api_token') { // 取り出したいkeyと合致したら
+    if( cArray[0] == ' api_token'){ // 取り出したいkeyと合致したら
         apiToken = cArray[1];  // [key,value]
     }
   }
-  console.log(cookies);
-  console.log(cookiesArray);
-  console.log(cArray);
-  console.log(apiToken);
 
   function getNotificationApi() {
     return $.ajax({
@@ -400,4 +418,3 @@ $(function(){
     }
   }
 });
-

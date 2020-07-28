@@ -58,72 +58,71 @@ $(function(){
     $('.js-' + target).text(targetValue);
   });
 
-  var active = 'js-active';
-  var activeBtn = 'js-active-btn-user'
-  $('[data-tab-trigger]').on('click', function() {
-    $('.js-active-btn-user').removeClass(activeBtn);
-    $(this).addClass(activeBtn);
+  $('[data-tab-trigger]').click(function(){
+    var activeBtn = 'js-active-btn-user'
+    var activeContents = 'js-active'
     var target = $(this).data('tab-trigger');
-    $('.js-active').removeClass(active);
-    $('[data-tab-target = ' + target + ']').addClass(active).hide().fadeIn(500);
+
+    $('#user-line').removeClass().addClass('#user-line').addClass(target);
+    $('.js-active-btn-user').removeClass(activeBtn);
+		$('[data-tab-trigger = ' + target + ']').addClass(activeBtn);
+    $('.js-active').removeClass(activeContents);
+			$('[data-tab-target = ' + target + ']').addClass(activeContents).hide().fadeIn(300);
   });
 
   let achievement = $('#js-archievement').data();
   if (achievement.name === 1) {
-    $('.p-user-status-title').append(`<div class="p-user-status-title-gold-img p-user-is-img"></div>`);
-    $('.p-user-status-title').append(`<p class="p-user-status-title-gold p-user-is-title">ゴールドランク</p>`);
+    $('.p-user-profile__title').prepend(`<div class="p-user-profile__goldrank p-user-profile__crown"></div>`);
   } else if (achievement.name === 2) {
-    $('.p-user-status-title').append(`<div class="p-user-status-title-silver-img p-user-is-img"></div>`);
-    $('.p-user-status-title').append(`<p class="p-user-status-title-silver p-user-is-title">シルバーランク</p>`);
+    $('.p-user-profile__title').prepend(`<div class="p-user-profile__silverrank p-user-profile__crown"></div>`);
   } else if (achievement.name === 3) {
-    $('.p-user-status-title').append(`<div class="p-user-status-title-bronze-img p-user-is-img"></div>`);
-    $('.p-user-status-title').append(`<p class="p-user-status-title-bronze p-user-is-title">ブロンズランク</p>`);
+    $('.p-user-profile__title').prepend(`<div class="p-user-profile__bronzerank p-user-profile__crown"></div>`);
   } else {
-    $('.p-user-status-title').append(`<div class="p-user-status-title-regular-img p-user-is-img"></div>`);
-    $('.p-user-status-title').append(`<p class="p-user-status-title-regular p-user-is-title">レギュラーランク</p>`);
+    $('.p-user-profile__title').prepend(`<div class="p-user-profile__regularrank p-user-profile__crown"></div>`);
   }
 
   let csrf_token= $('#js-get-token').data();
   let img_normalicon =$('#js-get-img-normal').data();
   let img_goodicon =$('#js-get-img-good').data();
-  let favoriteState = true;
   $('.favorites-flag').each(function() {
     $(this).on('click', (e) => {
       var favoriteId = $(this).find('.favoriteId').data('favoriteid');
-      if ($(this).hasClass('done') && favoriteState) {
-        favoriteState = false;
+      if ($(this).hasClass('done')) {
         $.ajax({
           type: 'POST',
           url: '/review/' + favoriteId + '/unFavorite',
           dataType: 'json',
-          data: { _token: csrf_token.name, favoriteId: favoriteId },
+          data: {
+            _token: csrf_token.name,
+            favoriteId: favoriteId,
+          },
           context: this,
         }).done(function(data) {
-          if (data == '404') {
-            console.log('404');
+          if (data === 404) {
+            console.log(data);
           } else {
             $(this).removeClass('done');
             $(this).children('img').attr('src', img_normalicon.name);
-            favoriteState = true;
           }
         }).fail(function(msg) {
           console.log('NG' + msg.responseText);
         });
-      } else if (!$(this).hasClass('done') && favoriteState) {
-        favoriteState = false;
+      } else if (!$(this).hasClass('done')) {
         $.ajax({
           type: 'POST',
           url: '/review/' + favoriteId + '/favorite',
           dataType: 'json',
-          data: { _token: csrf_token.name, favoriteId: favoriteId },
+          data: {
+            _token: csrf_token.name,
+            favoriteId: favoriteId,
+          },
           context: this,
         }).done(function(data) {
-          if (data == '404') {
-            console.log('404');
+          if (data === 404) {
+            console.log(data);
           } else {
             $(this).addClass('done');
             $(this).children('img').attr('src', img_goodicon.name);
-            favoriteState = true;
           }
         }).fail(function(msg) {
           console.log('NG' + msg.responseText);
@@ -131,4 +130,52 @@ $(function(){
       }
     });
   })
+  
+
+  $('.p-user-detailmodal__dot').on('click', function() {
+    $('.p-user-dotbox').stop().fadeToggle(100);
+  });
+
+  $('.js-dotbox-delete').on('click', function () {
+    $('.p-user-dotbox').fadeOut(100);
+    $('.js-deletemodal').fadeIn(100);
+  });
+
+  $('.js-dotbox-cancel').on('click', function() {
+    $('.p-user-dotbox , .js-deletemodal').fadeOut(100);
+  });
+
+  $('.js-edit-close').on('click', function() {
+    $('.p-user-editmodal__bg').fadeOut();
+    setTimeout(function() {
+      $('.p-user-detailmodal__bg').show();
+    },500);
+  });
+
+  $('.js-editmodal-back').on('click', function() {
+    $('.p-user-editmodal__bg').hide();
+    $('.p-user-detailmodal__bg').fadeIn();
+  });
+
+  $('.js-user-modal').on('click', function() {
+    $('.js-user-deletemodal').fadeIn(300);
+  });
+
+  $('.js-modal-close').on('click', function() {
+    $('.c-modal').fadeOut();
+  });
+
+  $('.js-modal-open').on('click', function() {
+    let target = $(this).attr('data-target');
+    targetModal = ".js-" + target + "-modal";
+    console.log(targetModal);
+
+    if(target === 'edit') {
+      $('.p-user-dotbox').fadeOut(100);
+      $('.p-user-detailmodal__bg').hide();
+      $(targetModal).fadeIn(300);
+    } else {
+      $(targetModal).fadeIn(300);
+    }
+  });
 });

@@ -12,13 +12,13 @@
             <input id="email" type="email" class="p-login-contents-form-input @error('email') is-invalid @enderror" placeholder="メールアドレス" name="email" value="{{ old('email') }}">
             @if ($errors->has('email'))
             <span class="invalid-feedback" role="alert">
-              <span class="c-err-text is-login">{{ $errors->first('email') }}</span>
+              <span class="c-err__text is-login">{{ $errors->first('email') }}</span>
             </span>
             @endif
             <input id="password" type="password" class="p-login-contents-form-input @error('password') is-invalid @enderror" placeholder="パスワード" name="password">
             @if ($errors->has('password'))
             <span class="invalid-feedback" role="alert">
-              <span class="c-err-text is-login">{{ $errors->first('password') }}</span>
+              <span class="c-err__text is-login">{{ $errors->first('password') }}</span>
             </span>
             @endif
             <input type="submit" class="p-login-contents-form-submit c-button" value="ログイン">

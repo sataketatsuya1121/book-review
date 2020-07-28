@@ -5,4 +5,7 @@
   @include pc {
     height: 2px;
   }
+  @include pcmiddle {
+    height: .02rem;
+  }
 }

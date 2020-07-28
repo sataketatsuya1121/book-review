@@ -14,11 +14,11 @@
 	@include pcmiddle {
 		padding: .2rem .38rem .2rem .3rem;
 	}
-	&-sidebar {
+	&__sidebar {
 		display: flex;
 		align-items: center;
 	}
-	&-barmenu {
+	&__barmenu {
 		display: inline-block;
 		position: relative;
 		cursor: pointer;
@@ -30,37 +30,37 @@
 			width: .26rem;
 			height: .19rem;
 		}
-		&-bar {
-			background: $fontColor;
+	}
+	&__bar {
+		background: $fontColor;
+		@include pc {
+			width: 26px;
+			height: 3px;
+		}
+		@include pcmiddle {
+			width: .26rem;
+			height: .03rem;
+		}
+		&.is-second {
+			position: absolute;
 			@include pc {
-				width: 26px;
-				height: 3px;
+				top: 8px;
 			}
 			@include pcmiddle {
-				width: .26rem;
-				height: .03rem;
+				top: .08rem;
 			}
-			&.is-second {
-				position: absolute;
-				@include pc {
-					top: 8px;
-				}
-				@include pcmiddle {
-					top: .08rem;
-				}
+		}
+		&.is-third {
+			position: absolute;
+			@include pc {
+				top: 16px;
 			}
-			&.is-third {
-				position: absolute;
-				@include pc {
-					top: 16px;
-				}
-				@include pcmiddle {
-					top: .16rem;
-				}
+			@include pcmiddle {
+				top: .16rem;
 			}
 		}
 	}
-	&-logo {
+	&__logo {
 		& img {
 			@include pc {
 				width: 130px;
@@ -74,95 +74,259 @@
 			}
 		}
 	}
-	&-search {
-		&-box {
-			display: inline-block;
-			@include pc {
-				margin-left: 27px;
-			}
-			@include pcmiddle {
-				margin-left: .27rem;
-			}
-			input[type="text"] {
-				background-color: #fff;
-				color: $fontColor;
-				font-weight: 400;
-				@include pc {
-					width: 371px;
-					height: 35px;
-					padding: 10px 20px;
-					border: 1px solid #B3B3B3;
-					border-radius: 5px;
-					font-size: 14px;
-				}
-				@include pcmiddle {
-					width: 3.71rem;
-					height: .35rem;
-					padding: .1rem .2rem;
-					border: .01rem solid #B3B3B3;
-					border-radius: .05rem;
-					font-size: .14rem;
-				}
-			}
-			input[type="submit"] {
-        position: relative;
-        background: url(../img/icon-search.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        @include pc {
-					width: 13px;
-					height: 13px;
-					top: 1px;
-					right: 30px;
-        }
-        @include pcmiddle {
-					width: .13rem;
-					height: .13rem;
-					top: .01rem;
-					right: .30rem;
-        }
-      }
+	&__category {
+		display: inline-block;
+		cursor: pointer;
+		@include pc {
+			margin-left: 20px;
+			font-size: 13px;
+		}
+		@include pcmiddle {
+			margin-left: .2rem;
+			font-size: .13rem;
 		}
 	}
-	&-myarea {
-		display: flex;
-		align-items: center;
-		&-icon {
+	&__search-box {
+		display: inline-block;
+		@include pc {
+			margin-left: 27px;
+		}
+		@include pcmiddle {
+			margin-left: .27rem;
+		}
+		input[type="text"] {
+			background-color: #fff;
+			color: $fontColor;
+			font-weight: 400;
 			@include pc {
-				margin-left: 23px;
+				width: 371px;
+				height: 35px;
+				padding: 10px 20px;
+				border: 1px solid #B3B3B3;
+				border-radius: 5px;
+				font-size: 14px;
 			}
 			@include pcmiddle {
-				margin-left: .23rem;
+				width: 3.71rem;
+				height: .35rem;
+				padding: .1rem .2rem;
+				border: .01rem solid #B3B3B3;
+				border-radius: .05rem;
+				font-size: .14rem;
 			}
-			&:first-child {
-				margin: 0;
+		}
+		input[type="submit"] {
+			position: relative;
+			background: url(../img/icon-search.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-color: transparent;
+			@include pc {
+				width: 13px;
+				height: 13px;
+				top: 1px;
+				right: 30px;
 			}
-			img {
+			@include pcmiddle {
+				width: .13rem;
+				height: .13rem;
+				top: .01rem;
+				right: .30rem;
+			}
+		}
+	}
+	&__myarea {
+		display: flex;
+		align-items: center;
+	}
+	&__icon {
+		@include pc {
+			margin-left: 23px;
+		}
+		@include pcmiddle {
+			margin-left: .23rem;
+		}
+		&:first-child {
+			margin: 0;
+		}
+		img {
+			@include pc {
+				width: 26px;
+			}
+			@include pcmiddle {
+				width: .26rem;
+			}
+		}
+	}
+	&__usericon {
+		@include pc {
+			margin-left: 23px;
+		}
+		@include pcmiddle {
+			margin-left: .23rem;
+		}
+		& img {
+			border-radius: 50%;
+			object-fit: cover;
+			object-position: center center;
+			@include pc {
+				width: 45px;
+			}
+			@include pcmiddle {
+				width: .45rem;
+			}
+		}
+	}
+	&-modal {
+		&__bg {
+			@include pc {
+				top: 360px!important;
+				width: 780px;
+				min-height: 469.6px;
+				margin-top: 10px;
+				padding: 70px 55px!important;
+			}
+			@include pcmiddle {
+				top: 3.6rem!important;
+				width: 7.8rem;
+				min-height: 4.696rem;
+				margin-top: .1rem;
+				padding: .7rem .55rem!important;
+			}
+			&::before {
+				content: '';
+				position: absolute;
 				@include pc {
-					width: 26px;
+					top: -33px;
+					left: 277px;
+					border-right: 33px solid transparent;
+					border-bottom: 60px solid #fff;
+					border-left: 33px solid transparent;
 				}
 				@include pcmiddle {
-					width: .26rem;
+					top: -.33rem;
+					left: 2.77rem;
+					border-right: .33rem solid transparent;
+					border-bottom: .6rem solid #fff;
+					border-left: .33rem solid transparent;
 				}
 			}
-			&-user {
+		}
+		&__close {
+			cursor:pointer;
+			background: url('../img/close-icon.png') center/cover;
+			position: absolute;
+			@include pc {
+				top: 19px;
+				right: 14px;
+				width: 36px;
+				height: 36px;
+			}
+			@include pcmiddle {
+				top: .19rem;
+				right: .14rem;
+				width: .36rem;
+				height: .36rem;
+			}
+		}
+		&__back {
+			cursor:pointer;
+			background: url('../img/icon_back.png') center/cover;
+			position: absolute;
+			@include pc {
+				top: 16px;
+				left: 16px;
+				width: 43px;
+				height: 43px;
+			}
+			@include pcmiddle {
+				top: .16rem;
+				left: .16rem;
+				width: .43rem;
+				height: .43rem;
+			}
+			&::before {
+				background: #EFEFEF;
+				content: '';
 				@include pc {
-					margin-left: 23px;
+					width: 47px;
+					height: 47px;
 				}
 				@include pcmiddle {
-					margin-left: .23rem;
+					width: .47rem;
+					height: .47rem;
 				}
-				& img {
-					border-radius: 50%;
-					object-fit: cover;
-    			object-position: center center;
-					@include pc {
-						width: 45px;
-					}
-					@include pcmiddle {
-						width: .45rem;
-					}
+			}
+		}
+		&__category {
+			font-weight: 400;
+			cursor: pointer;
+			@include pc {
+				width: 200px;
+				margin: 25px 0 0 35px;
+				font-size: 15px;
+			}
+			@include pcmiddle {
+				width: 2rem;
+				margin: .25rem 0 0 .35rem;
+				font-size: .15rem;
+			}
+			&:nth-child(-n + 3) {
+				margin-top: 0;
+			}
+			&:nth-child(3n + 1) {
+				margin-left: 0;
+			}
+			&:hover {
+				opacity: .6;
+				transition: 0;
+			}
+		}
+		&__head {
+			@include pc {
+				margin-top:10px;
+				padding-left: 20px;
+				font-size: 20px;
+			}
+			@include pcmiddle {
+				margin-top:.1rem;
+				padding-left: .2rem;
+				font-size: .2rem;
+			}
+		}
+		&__line {
+			@include pc {
+				margin-top: 20px;
+			}
+			@include pcmiddle {
+				margin-top: .2rem;
+			}
+		}
+		&__select {
+			display: none;
+			&.active {
+				display: block;
+			}
+			&-content {
+				display: flex;
+				margin: 0 auto;
+				flex-wrap: wrap;
+			}
+		}
+		&__detail {
+			display: none;
+			&.active {
+				display: block;
+			}
+			&-content {
+				display: flex;
+				margin: 0 auto;
+				flex-wrap: wrap;
+				@include pc {
+					margin-top: 26px;
+				}
+				@include pcmiddle {
+					margin-top: .26rem;
 				}
 			}
 		}

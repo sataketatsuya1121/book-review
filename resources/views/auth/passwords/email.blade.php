@@ -5,24 +5,24 @@
       <div class="l-wrapper">
         <div class="p-reset-request-content">
             <div class="">
-                <p class="c-section-title p-reset-request-content-title">パスワードのリセット</p>
+                <p class="c-section__title p-reset-request-content-title">パスワードのリセット</p>
                 <div class="p-reset-request-content-desc">ご登録されているメールアドレス宛に、パスワードの再設定用URLをお送りします。<br> 下記にメールアドレスを記載して、再登録用メールのURLから、再度アクセスを行ってください。</div>
 
                 <div class="p-reset-request-form">
                     <form method="POST" action="{{ url('/password/email') }}">
                     @csrf
                         <div class="p-reset-request-form-lists">
-                            <p class="c-form-input-title">メールアドレス</p>
+                            <p class="c-form__title">メールアドレス</p>
                             <div class="p-reset-request-form-input">
-                                <input id="email" type="email" class="c-form-input-text form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                <input id="email" type="email" class="c-form__text form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                    <span class="c-err-text is-login">{{ $message }}</span>
+                                    <span class="c-err__text is-login">{{ $message }}</span>
                                 </span>
                                 @enderror
                                 @error('error')
                                 <span class="invalid-feedback" role="alert">
-                                    <span class="c-err-text is-login">{{ session('error') }}</span>
+                                    <span class="c-err__text is-login">{{ session('error') }}</span>
                                 </span>
                                 @enderror
                                 @if (session('status'))
@@ -41,10 +41,10 @@
                         @csrf
 
                         <div class="p-reset-request-content-form">
-                            <label for="email" class="c-form-input-title">メールアドレス</label>
+                            <label for="email" class="c-form__title">メールアドレス</label>
 
                             <div class="">
-                                <input id="email" type="email" class="c-form-input-text p-reset-request-content-form-input" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                <input id="email" type="email" class="c-form__text p-reset-request-content-form-input" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

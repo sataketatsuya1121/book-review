@@ -34,6 +34,7 @@
 		}
   }
   &-star-icon {
+    color: $fontColor;
     @include pc {
       font-size: 14px;
     }
@@ -45,6 +46,9 @@
     }
     &.is-form-star {
       cursor: pointer;
+    }
+    &.is-star-colord {
+      color: #FFD000!important;
     }
   }
   &-nothing {

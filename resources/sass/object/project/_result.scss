@@ -1,39 +1,144 @@
 .p-result {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
-
-  &-list {
-    margin-left: 35px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 15px;
-    list-style: none;
-
-    > a {
-      text-decoration: none;
-      color: black;
-      display: inline-block;
+  &-wrapper {
+    @include pc {
+      width: 740px;
     }
-
-    &-image {
-      margin-bottom: 5px;
-    }
-
-    &-title {
-      margin-bottom: 5px;
-    }
-
-    &-review {
-      font-size: 13px;
-    }
-
-    &-evaluation {
-      font-size: 13px;
+    @include pcmiddle {
+      width: 7.4rem;
     }
   }
-
-  &-disactive {
+  &-paginate {
+    @include pc {
+      margin-top: 60px;
+    }
+    @include pcmiddle {
+      margin-top: .6rem;
+    }
+  }
+  &-head {
+    @include pc {
+      margin: 0 0 50px -110px;
+    }
+    @include pcmiddle {
+      margin: 0 0 .5rem -1.1rem;
+    }
+    &__tabs {
+      position: relative;
+      @include pc {
+        margin-top: 10px;
+      }
+      @include pcmiddle {
+        margin-top: .1rem;
+      }
+    }
+    &__tab {
+      display: inline-block;
+      color: $lightGray;
+      transition: all .3s ease-in;
+      cursor: pointer;
+      @include pc {
+        margin-left: 38px;
+        padding-top: 8px;
+        font-size: 16px;
+      }
+      @include pcmiddle {
+        margin-left: .38rem;
+        padding-top: .08rem;
+        font-size: .16rem;
+      }
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+  &__link {
+    display: block;
+  }
+  li {
+    text-align: center;
+    @include pc {
+      width: 116px;
+      margin: 40px 0 0 40px;
+    }
+    @include pcmiddle {
+      width: 1.16rem;
+      margin: .4rem 0 0 .4rem;
+    }
+    &:nth-child(-n+5) {
+      margin-top: 0;
+    }
+    &:nth-child(5n+1) {
+      margin-left: 0;
+    }
+  }
+  &__title {
+    color: $fontColor;
+    font-weight: 400;
+    @include pc {
+      margin-top: 10px;
+      font-size: 11px;
+    }
+    @include pcmiddle {
+      margin-top: .1rem;
+      font-size: .1rem;
+    }
+  }
+  &__review {
+    color: $fontColor;
+    font-weight: 400;
+    @include pc {
+      margin-top: 6px;
+      font-size: 10px;
+    }
+    @include pcmiddle {
+      margin-top: .06rem;
+      font-size: .1rem;
+    }
+  }
+  &--disactive {
     display: none;
   }
+}
+#result-line{
+  display: block;
+  position: absolute;
+  top: 0;
+  background: $fontColor;
+  transition: all .3s ease-in;
+  @include pc {
+    width: 42px;
+    height: 2px;
+  }
+  @include pcmiddle {
+    width: .42rem;
+    height: .02rem;
+  }
+  &.release {
+    transition: all .3s ease-in;
+    @include pc {
+      left: -5px;
+    }
+    @include pcmiddle {
+      left: -.05rem;
+    }
+  }
+  &.sales {
+    transition: all .3s ease-in;
+    @include pc {
+      left: 66px;
+      width: 76px;  
+    }
+    @include pcmiddle {
+      left: .66rem;
+      width: .76rem; 
+    }
+  }
+}
+.active-tabbtn {
+  color: $fontColor;
+}
+.active-tabcontents {
+  display: block!important;
 }

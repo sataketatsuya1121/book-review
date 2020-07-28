@@ -1,94 +1,90 @@
 .p-user {
+	&-wrapper {
+		margin: 0 auto;
+		@include pc {
+			width: 750px;
+		}
+		@include pcmiddle {
+			width: 7.5rem;
+		}
+	}
 	&-profile {
-		position: relative;
-		&-btn {
-			position: absolute;
-			right: 0;
+		display: flex;
+		&__btn {
 			@include pc {
-				top: 160px;
+				font-size: 13px;
+				padding: 9px;
+				margin-left: 10px;
 			}
 			@include pcmiddle {
-				top: 1.6rem;
+				font-size: .13rem;
+				padding: .09rem;
+				margin-left: .1rem;
 			}
 		}
-	}
-	&-header {
-		@include pc {
-			width: 940px;
-			height: 140px;
-		}
-		@include pcmiddle {
-			width: 9.4rem;
-			height: 1.4rem;
-		}
-		img {
-			object-fit: cover;
-			object-position: center center;
+		&__favarea {
+			text-align: center;
 			@include pc {
-				width: 940px;
-				height: 140px;
-				border-radius: 10px;
+				margin-top: 15px;
 			}
 			@include pcmiddle {
-				width: 9.4rem;
-				height: 1.4rem;
-				border-radius: .1rem;
+				margin-top: .15rem;
 			}
 		}
-	}
-	&-icon {
-		position: relative;
-		@include pc {
-			margin-left: 40px;
-			top: -70px;
-			margin-bottom: -70px;
-			width: 140px;
-		}
-		@include pcmiddle {
-			margin-left: .4rem;
-			top: -.7rem;
-			margin-bottom: -.7rem;
-			width: 1.4rem;
-		}
-		img {
-			object-fit: cover;
-			object-position: center center;
+		&__fav {
+			background: $orange;
+			color: #fff;
 			@include pc {
 				width: 140px;
-				height: 140px;
-			}
-			@include pcmiddle {
-				width: 1.4rem;
-				height: 1.4rem;
-			}
-		}
-	}
-	&-review{
-		&-btns {
-			position: absolute;
-			display: flex;
-			@include pc {
-				top: 30px;
-				right: 15px;
+				padding: 9px;
+				border-radius: 5px;
 				font-size: 12px;
 			}
 			@include pcmiddle {
-				top: .3rem;
-				right: .3rem;
-				font-size: 0.12rem;
+				width: 1.6rem;
+				padding: .09rem 0;
+				border-radius: .05rem;
+				font-size: .12rem;
 			}
 		}
-		&-btn {
-			&-delete {
-				@include pc {
-					margin-left: 6px;
-				}
-				@include pcmiddle {
-					margin-left: .06rem;
-				}
+		&__line {
+			display: flex;
+			align-items: center;
+		}
+		&__name {
+			@include pc {
+				width: 190px;
+				margin-top: 5px;
+			}
+			@include pcmiddle {
+				width: 1.9rem;
+				margin-top: .05rem;
 			}
 		}
-		&-evaluation {
+		&__img {
+			object-fit: cover;
+			object-position: center center;
+			@include pc {
+				width: 160px;
+				height: 160px;
+				margin-left: 25px;
+			}
+			@include pcmiddle {
+				width: 1.6rem;
+				height: 1.6rem;
+				margin-left: .25rem;
+			}
+		}
+		&__status {
+			@include pc {
+				margin: 20px 0 0 70px;
+			}
+			@include pcmiddle {
+				margin: .2rem 0 0 .7rem;
+			}
+		}
+		&__title {
+			display: flex;
 			@include pc {
 				margin-top: 20px;
 			}
@@ -96,411 +92,759 @@
 				margin-top: .2rem;
 			}
 		}
-		&-inner {
-			font-size: 0px;
-			@include pc {
-				margin-top: 70px;
-				padding-left: 20px;
-			}
-			@include pcmiddle {
-				margin-top: .7rem;
-				padding-left: .2rem;
-			}
-		}
-		&-lists {
-			display: none;
-			background-color: $lightGray;
-			@include pc {
-				padding: 10px;
-				border-radius: 0 10px 10px 10px;
-			}
-			@include pcmiddle {
-				padding: .1rem;
-				border-radius: 0 .1rem .1rem .1rem;
-			}
-		}
-		&-list {
-			color: $darkBlue;
-			display: flex;
-			position: relative;
-			@include pc {
-				padding: 45px;
-			}
-			@include pcmiddle {
-				padding: .45rem;
-			}
-			&-line {
-				margin: 0 auto;
-				color: #a9a9a9;
-				&:first-child {
-					display: none;
-				}
-				@include pc {
-					width: 840px;
-					border-top: 1px solid;
-				}
-				@include pcmiddle {
-					width: 8.4rem;
-					border-top: .01rem solid;
-				}
-			}
-		}
-		&-book {
-			&-img {
-				@include pc {
-					width: 120px;
-				}
-				@include pcmiddle {
-					width: 1.2rem;
-				}
-				&-link {
-					width: 100%;
-				}
-			}
-			&-content {
-				flex: 1;
-				word-break: break-all;
-				@include pc {
-					width: 400px;
-					margin-left: 40px;
-					padding-top: 6px;
-				}
-			}
-			&-ttl {
-				font-weight: bold;
-				@include pc {
-					font-size: 24px;
-				}
-				@include pcmiddle {
-					font-size: .24rem;
-				}
-			}
-			&-author {
-				font-weight: bold;
-				@include pc {
-					font-size: 14px;
-					margin-top: 14px;
-				}
-				@include pcmiddle {
-					font-size: .14rem;
-					margin-top: .14rem;
-				}
-			}
-			&-txt {
-				@include pc {
-					margin-top: 16px;
-					font-size: 14px;
-					line-height: 21px;
-				}
-				@include pcmiddle {
-					margin-top: .16rem;
-					font-size: .14rem;
-					line-height: .21rem;
-				}
-			}
-		}
-	}
-	&-modal {
-		&-bg {
-			@include pc {
-				width: 670px;
-			}
-			@include pcmiddle {
-				width: 6.7rem;
-			}
-		}
-    &-evaluation {
-      display: flex;
-      align-items: center;
-      &-title {
-        font-weight: 600;
-        @include pc {
-          font-size: 18px;
-        }
-        @include pcmiddle {
-          font-size: .18rem;
-        }
-      }
-      &-star {
-        display: inline-block;
-      }
-    }
-    &-detail {
-      @include pc {
-        margin-top: 20px;
-      }
-      @include pcmiddle {
-        margin-top: .2rem;
-      }
-      &-textbox {
-        @include pc {
-          margin-top: 20px;
-
-        }
-        @include pcmiddle {
-          margin-top: .2rem;
-        }
-      }
-    }
-    &-btn {
-      display: block;
-      cursor: pointer;
-      text-align: center;
-			color: #fff;
-			background-color: $lightBlue;
-      @include pc {
-        width: 180px;
-        margin: 20px auto 0;
-      }
-      @include pcmiddle {
-        width: 1.8rem;
-        margin: .2rem auto 0;
-      }
-    }
-	}
-	&-status{
-		width: 900px;
-		&-name{
-			display: inline-block;
-			&-text {
-				@include pc {
-					font-size: 22px;
-					margin-top: 20px;
-				}
-				@include pcmiddle {
-					font-size: .22rem;
-					margin-top: .2rem;
-				}
-			}
-		}
-		&-title{
-			display: inline-block;
-			@include pc {
-				margin-left:30px;
-			}
-			@include pcmiddle {
-				margin-left:.3rem;
-			}
-			&-regular{
-				color: #2CFF34;
-				&-img{
-					background-image: url(../img/title-regular.png);
-				}
-			}
-			&-bronze{
-				color: #BC7F1E;
-				&-img{
-					background-image: url(../img/title-bronze.png);
-				}
-			}
-			&-silver{
-				color: #C6C6C6;
-				&-img{
-					background-image: url(../img/title-silver.png);
-				}
-			}
-			&-gold{
-				color: #d4c904;
-				&-img{
-					background-image: url(../img/title-gold.png);
-				}
-			}
-		}
-	}
-	&-is{
-		&-title{
-			display: inline-block;
-			font-weight: bold;
-			@include pc {
-				font-size: 20px;
-				margin-left: 5px;
-			}
-			@include pcmiddle{
-				font-size: .2rem;
-				margin-left: .05rem;
-			}
-		}
-		&-img{
+		&__crown {
 			background-size: contain;
 			display: inline-block;
 			@include pc {
-				width: 20px;
-				height: 20px;
+				margin-top: -10px;
+				width: 35px;
+				height: 35px;
 			}
 			@include pcmiddle{
-				width: .2rem;
-				height: .2rem;
+				margin-top: -.1rem;
+				width: .35rem;
+				height: .35rem;
+			}
+		}
+		&__regularrank{
+			background-image: url(../img/title-regular.png);
+		}
+		&__bronzerank{
+			background-image: url(../img/title-bronze.png);
+		}
+		&__silverrank{
+			background-image: url(../img/title-silver.png);
+		}
+		&__goldrank{
+			background-image: url(../img/title-gold.png);
+		}
+		& span {
+			+ span {
+				@include pc {
+					margin-left: 56px;
+				}
+				@include pcmiddle {
+					margin-left: .56rem;
+				}
+			}
+		}
+		&__table {
+			width: 100%;
+			border-collapse: separate;
+			& th {
+				text-align: left;
+				vertical-align: top;
+				white-space: nowrap;
+				@include pc {
+					width: 130px;
+				}
+				@include pcmiddle {
+					width: 1.3rem;
+				}
+			}
+			& td {
+				@include pc {
+					width: 320px;
+				}
+				@include pcmiddle {
+					width: 3.2rem;
+				}
+			}
+		}
+		&__info {
+			font-weight: 400;
+			@include pc {
+				margin-top: 10px;
+				border-spacing: 0 15px;
+				font-size: 15px;
+			}
+			@include pcmiddle {
+				margin-top: .1rem;
+				border-spacing: 0 .15rem;
+				font-size: .15rem;
+			}
+			& td {
+				& p {
+					@include pc {
+						margin-left: 10px;
+					}
+					@include pcmiddle {
+						margin-left: .1rem;
+					}
+				}
 			}
 		}
 	}
-	&-delete {
-		&-bg {
-			border: 4px solid #E86A6A;
-		}
-		&-message {
-			font-weight: 600;
-			text-align: center;
-			color: #E86A6A;
+	&__text {
+		&.is-large {
 			@include pc {
-				font-size: 18px;
+				font-size: 25px;
 			}
 			@include pcmiddle {
-				font-size: .18rem;
+				font-size: .25rem;
 			}
-
 		}
-		&-btns {
+		&.is-middle {
+			@include pc {
+				font-size: 16px;
+				line-height: 20px;
+			}
+			@include pcmiddle {
+				font-size: .16rem;
+				line-height: .2rem;
+			}
+		}
+		&.is-small {
+			@include pc {
+				font-size: 14px;
+				line-height: 18px;
+			}
+			@include pcmiddle {
+				font-size: .14rem;
+				line-height: .18rem;
+			}
+		}
+	}
+	&-review{
+		@include pc {
+			margin-top: 80px;
+		}
+		@include pcmiddle {
+			margin-top: .8rem;
+		}
+		&__tab {
 			display: flex;
-			text-align: center;
+			position: relative;
+			justify-content: center;
+		}
+		&__lists {
+			display: none;
 			@include pc {
-				margin-top: 55px;
+				margin-top: 20px;
 			}
 			@include pcmiddle {
-				margin-top: .55rem;
+				margin-top: .2rem;
 			}
-			&.is-enter {
-				display: inline-block;
+			&.js-active {
+				display: block;
+			}
+		}
+		&__list {
+			width: 33.3%;
+			box-sizing: border-box;
+			text-align: center;
+			&:nth-child(n + 4) {
 				@include pc {
-					width: 148px;
-					margin-right: 10px;
+					margin-top: 25px;
 				}
 				@include pcmiddle {
-					width: 1.48rem;
-					margin-right: .1rem;
-				}
-			}
-			&.is-back {
-				line-height: initial;
-				display: inline-block;
-				@include pc {
-					width: 148px;
-					margin-left: 10px;
-				}
-				@include pcmiddle {
-					width: 1.48rem;
-					margin-left: .1rem;
+					margin-top: .25rem;
 				}
 			}
 		}
-	}
-	&-update {
-		&-submit {
+		&__review {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		&__evaluation {
+			@include pc {
+				margin-top: 5px;
+			}
+			@include pcmiddle {
+				margin-top: .05rem;
+			}
+		}
+		&__img {
+			cursor: pointer;
+			@include pc {
+				width: 175px;
+			}
+			@include pcmiddle {
+				width: 1.75rem;
+			}
+		}
+		&__content {
+			flex: 1;
+			word-break: break-all;
+			@include pc {
+				width: 400px;
+				margin-left: 40px;
+				padding-top: 6px;
+			}
+		}
+		&__title {
+    	margin: 0 auto;
+			font-weight: 400;
+			@include pc {
+				width: 200px;
+				margin-top: 13px;
+				font-size: 14px;
+				line-height: 18px;
+			}
+			@include pcmiddle {
+				width: 2rem;
+				margin-top: .13rem;
+				font-size: .14rem;
+				line-height: .18rem;
+			}
+		}
+		&__author {
+			font-weight: bold;
+			@include pc {
+				font-size: 14px;
+				margin-top: 14px;
+			}
+			@include pcmiddle {
+				font-size: .14rem;
+				margin-top: .14rem;
+			}
+		}
+		&__txt {
 			@include pc {
 				margin-top: 16px;
+				font-size: 14px;
+				line-height: 21px;
 			}
 			@include pcmiddle {
 				margin-top: .16rem;
+				font-size: .14rem;
+				line-height: .21rem;
+			}
+		}
+		&__star {
+			margin: 0;
+		}
+		&__recommend {
+			text-align: center;
+			& img {
+				cursor: pointer;
+				@include pc {
+					width: 280px;
+					margin-bottom: 20px;
+				}
+				@include pcmiddle {
+					width: 3.8rem;
+					margin-bottom: .2rem;
+				}
 			}
 		}
 	}
-	&-profile {
-		&-update {
-			&-delete {
-				display: block;
-				position: absolute;
-				@include pc {
-					left: 60px;
-					bottom: 30px;
-				}
-				@include pcmiddle {
-					left: .6rem;
-					bottom: .3rem;
-				}
+	// ここから下は更新・削除モーダル
+	&-detailmodal {
+		&__bg {
+			padding: 0;
+			border-radius: 0;
+		}
+		&__content {
+			display: flex;
+			align-items: flex-start;
+			overflow: auto;
+			@include pc {
+				min-height: 350px;
+				max-height: 500px;
 			}
-			&-submit {
-				@include pc{
-					width: 120px;
-					margin: 0 0 0 20px;
-				}
-				@include pcmiddle {
-					width: 1.2rem;
-					margin: 0 0 0 .2rem;
-				}
+			@include pcmiddle {
+				min-height: 3.5rem;
+				max-height: 5rem;
 			}
-			&-back {
-				margin: 0;
-				@include pc {
-					width: 120px;
-				}
-				@include pcmiddle {
-					width: 1.2rem;
-				}
+			img {
+				width: 70%;
 			}
-			&-btns {
-				display: flex;
-				justify-content: flex-end;
-				@include pc {
-					margin-top: 40px;
-				}
-				@include pcmiddle {
-					margin-top: .4rem;
-				}
+		}
+		&__dot {
+			position: absolute;
+			@include pc {
+				top: 22px;
+				right: 34px;
+				font-size: 18px;
 			}
-			&-input {
-				flex: 1;
-				@include pc {
-					width: 360px;
-					margin-left: 20px;
-					font-size: 16px;
-				}
-				@include pcmiddle {
-					width: 3.6rem;
-					margin-left: .2rem;
-					font-size: .16rem;
-				}
+			@include pcmiddle {
+				top: .22rem;
+				right: .34rem;
+				font-size: .18rem;
 			}
-			&-title {
-				@include pc {
-					width: 160px;
-				}
-				@include pcmiddle {
-					width: 1.6rem;
-				}
-			}
-			&-box {
-				display: flex;
-				align-items: center;
-				&:nth-of-type(n + 2) {
-					@include pc {
-						margin-top: 30px;
-					}
-					@include pcmiddle {
-						margin-top: .3rem;
-					}
-				}
-			}
-			&-content {
-				width: 200px;
-				border-radius: 2px;
-				border: 1px solid #707070;
+		}
+		&__review {
+			@include pc {
 				width: 100%;
-				position: relative;
+				padding:16px 31px;
+			}
+			@include pcmiddle {
+				width: 100%;
+				padding: .16rem .31rem;
+			}
+		}
+		&__me {
+			display: flex;
+			align-items: center;
+		}
+		&__icon {
+			img {
 				@include pc {
-					font-size: 16px;
-					height: 30px;
-					padding: 4px;
+					width: 41px;
+					height: 41px;
 				}
 				@include pcmiddle {
-					font-size: .16rem;
-					height: .3rem;
-					padding: .04rem;
+					width: .41rem;
+					height: .41rem;
 				}
 			}
-			// 未対応課題：c-modal-errのmargin-leftを消し、p-の方でそれぞれにつけるようにする
-			&-err {
+		}
+		&__name {
+			@include pc {
+				margin-left: 10px;
+				font-size: 16px;
+			}
+			@include pcmiddle {
+				margin-left: .1rem;
+				font-size: .16rem;
+			}
+		}
+		&__item {
+			@include pc {
+				margin-top: 30px;
+			}
+			@include pcmiddle {
+				margin-top: .3rem;
+			}
+		}
+		&__title {
+			display: inline-block;
+			@include pc {
+				max-width: 200px;
+				font-size: 16px;
+				line-height: 20px;
+			}
+			@include pcmiddle {
+				max-width: 2rem;
+				font-size: .16rem;
+				line-height: .2rem;
+			}
+		}
+		&__author {
+			display: inline-block;
+			font-weight: 400;
+			@include pc {
+				width: 163px;
+				margin-left: 20px;
+				font-size: 10px;
+				line-height: 14px;
+			}
+			@include pcmiddle {
+				width: 1.63rem;
+				margin-left: .2rem;
+				font-size: .1rem;
+				line-height: .14rem;
+			}
+		}
+		&__datas {
+			display: flex;
+			@include pc {
+        margin-top: 10px;
+      }
+      @include pcmiddle {
+        margin-top: .1rem;
+      }
+		}
+		&__evaluation {
+			display: inline-block;
+      font-weight: 400;
+    }
+    &__tag {
+      @include pc {
+        font-size: 11px;
+      }
+      @include pcmiddle {
+        font-size: .11rem;
+      }
+    }
+    &__star {
+      display: inline-block;
+      @include pc {
+        margin-left: 5px;
+      }
+      @include pcmiddle {
+        margin-left: .05rem;
+      }
+      span {
+        @include pc {
+          font-size: 15px;
+        }
+        @include pcmiddle {
+          font-size: .15rem;
+        }
+      }
+		}
+		&__date {
+			font-weight: 400;
+			@include pc {
+				margin: 3px 0 0 5px;
+			}
+			@include pcmiddle {
+				margin: .03rem 0 0 .05rem;
+			}
+		}
+		&__text {
+			font-weight: 400;
+			@include pc {
+				font-size: 15px;
+				line-height: 21px;
+			}
+			@include pcmiddle {
+				font-size: .15rem;
+				line-height: .21rem;
+			}
+		}
+	}
+	&-dotbox {
+		display: none;
+		position: absolute;
+		border: 1px solid $lightGray;
+		background: #fff;
+		font-weight: 400;
+		overflow: hidden;
+		text-align: center;
+		@include pc {
+			top: 45px;
+			right: 30px;
+			width: 100px;
+			border-radius: 7px;
+			font-size: 13px;
+		}
+		@include pcmiddle {
+			top: .45rem;
+			right: .3rem;
+			width: 1rem;
+			border-radius: .07rem;
+			font-size: .13rem;
+		}
+		&__text {
+			border-top: 1px solid $lightGray;
+			cursor: pointer;
+			@include pc {
+				padding: 10px;
+			}
+			@include pcmiddle {
+				padding: .1rem;
+			}
+			&:first-child {
+				border-top: none;
+			}
+			&:hover {
+				opacity: 0.6;
+			}
+			&.is-delete {
+				color: #E3342F;
+			}
+		}
+	}
+	&-deletemodal {
+		display: none;
+		margin-right: 13px;
+		position: fixed;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+		&.is-delete {
+			z-index: 50;
+		}
+		&__content {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			border: 1px solid $lightGray;
+			background: #fff;
+			font-weight: 400;
+			text-align: center;
+			overflow: hidden;
+			z-index: 10;
+			@include pc {
+				width: 300px;
+				margin-top: 42.5px;
+				border: 1px solid $lightGray;
+				border-radius: 7px;
+				font-size: 13px;
+			}
+			@include pcmiddle {
+				width: 3rem;
+				margin-top: .425rem;
+				border-radius: .07rem;
+				font-size: .13rem;
+			}
+		}
+		&__text {
+			border-top: 1px solid $lightGray;
+			cursor: pointer;
+			@include pc {
+				padding: 18px;
+			}
+			@include pcmiddle {
+				padding: .18rem;
+			}
+			&:first-child {
+				border-top: none;
+			}
+			&:hover {
+				opacity: 0.6;
+			}
+			&.is-delete {
+				color: #E3342F;
+			}
+			&.is-normal {
+				cursor: default;
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	&-editmodal {
+		&__bg {
+			display: none;
+			border-radius: 0;
+		}
+		&__content {
+			text-align: center;
+		}
+		&__star {
+			justify-content: center;
+			@include pc {
+				margin: 10px 0 0 0;
+			}
+			@include pcmiddle {
+				margin: .1rem 0 0 0;
+			}
+		}
+		&__staricon {
+			@include pc {
+				margin-left: 5px;
+				font-size: 26px;
+			}
+			@include pcmiddle {
+				margin-left: .05rem;
+				font-size: .26rem;
+			}
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		&__evaluation {
+			@include pc {
+				font-size: 20px;
+			}
+			@include pcmiddle {
+				font-size: .2rem;
+			}
+		}
+		&__text {
+			@include pc {
+				margin-top:20px;
+				font-size: 20px;
+			}
+			@include pcmiddle {
+				margin-top:.2rem;
+				font-size: .2rem;
+			}
+		}
+		&__submit {
+			@include pc {
+				margin-top: 40px;
+			}
+			@include pcmiddle {
+				margin-top: .4rem;
+			}
+		}
+		&__back {
+			cursor: pointer;
+			background: url('../img/icon_back.png') center/cover;
+			position: absolute;
+			@include pc {
+				top: 16px;
+				left: 16px;
+				width: 43px;
+				height: 43px;
+			}
+			@include pcmiddle {
+				top: .16rem;
+				left: .16rem;
+				width: .43rem;
+				height: .43rem;
+			}
+			&::before {
+				background: #EFEFEF;
+				content: '';
 				@include pc {
-					margin-left: 170px;
-					margin-top: 10px;
+					margin-left: 23px;
+					width: 47px;
+					height: 47px;
 				}
 				@include pcmiddle {
-					margin-left: 1.7rem;
-					margin-top: .1rem;
+					margin-left: .23rem;
+					width: .47rem;
+					height: .47rem;
 				}
+			}
+		}
+	}
+	&-profilemodal {
+		width: 60%;
+		@include pc {
+			padding: 30px 60px;
+		}
+		@include pcmiddle {
+			padding: .3rem .6rem;
+		}
+		&__table {
+			width: 100%;
+			border-collapse: separate;
+			& th {
+				text-align: left;
+				vertical-align: middle;
+				white-space: nowrap;
+				@include pc {
+					width: 130px;
+				}
+				@include pcmiddle {
+					width: 1.3rem;
+				}
+			}
+			& td {
+				@include pc {
+					width: 320px;
+				}
+				@include pcmiddle {
+					width: 3.2rem;
+				}
+			}
+		}
+		&__new {
+			@include pc {
+				border-spacing: 0 15px;
+			}
+			@include pcmiddle {
+				border-spacing: 0 .15rem;
+			}
+			& input,select,textarea {
+				width: 80%;
+				opacity: 0.6;
+				border: 1px solid #ccc!important;
+				outline: none;
+				@include pc {
+					font-size: 14px;
+					line-height: 18px;
+				}
+				@include pcmiddle {
+					font-size: .14rem;
+					line-height: .18rem;
+				}
+			}
+		}
+		&__label {
+			color: #D9D9D9;
+			font-weight: 400;
+			@include pc {
+				margin-left: 10px;
+			}
+			@include pcmiddle {
+				margin-left: .1rem;
+			}
+		}
+		&__btns {
+			display: flex;
+			justify-content: center;
+			@include pc {
+				margin-top: 10px;
+			}
+			@include pcmiddle {
+				margin-top: .1rem;
+			}
+		}
+		&__btn {
+			@include pc {
+				width: 178px;
+				padding: 12px 0;
+				font-size: 14px;
+			}
+			@include pcmiddle {
+				width: 1.78rem;
+				padding: .12rem 0;
+				font-size: .14rem;
+			}
+			&.is-delete {
+				margin: 0;
+				background-color: $fontColor;
+			}
+		}
+		&__submit {
+			@include pc {
+				margin: 0 0 0 20px;
+			}
+			@include pcmiddle {
+				margin: 0 0 0 .02rem;
+			}
+		}
+		&__input {
+			@include pc {
+				padding: 5px;
+				border-radius: 5px;
+			}
+			@include pcmiddle {
+				padding: .05rem;
+				border-radius: .05rem;
+			}
+		}
+		&__textarea {
+			@include pc {
+				height: 100px;
+				padding: 5px;
+				border-radius: 5px;
+			}
+			@include pcmiddle {
+				height: 1rem;
+				padding: .05rem;
+				border-radius: .05rem;
 			}
 		}
 	}
 }
-.js-active-btn-user {
-	background-color: $lightGray;
-  pointer-events: none;
+#user-line{
+  display: block;
+  position: absolute;
+  background: $fontColor;
+  transition: all .3s ease-in;
+  @include pc {
+		top: -2px;
+    width: 125px;
+    height: 2px;
+  }
+  @include pcmiddle {
+		top: -.02rem;
+    width: 1.25rem;
+    height: .02rem;
+  }
+  &.tab01 {
+		transition: all .3s ease-in;
+		@include pc {
+			left: 197px;
+		}
+		@include pcmiddle {
+			left: 1.97rem;
+		}
+  }
+  &.tab02 {
+    transition: all .3s ease-in;
+    @include pc {
+      left: 429px;
+      width: 125px;
+    }
+    @include pcmiddle {
+      left: 4.29rem;
+      width: 1.25rem;
+    }
+  }
 }

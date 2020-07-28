@@ -22,7 +22,7 @@ exports.getBooksApiByCategory = function(booksGenreId, category) {
   }).done(function(data) {
     apiRequestCount++;
     $.each(data.Items, function(i, item) {
-      $('.' + category).append(`<li><a href="${baseUrl + '/' + item.Item.isbn + '/detail'}"><img class="slick-img" alt="" src="${item.Item.mediumImageUrl}" /><p class="slick-title">${substr(item.Item.title, 15, '...')}</p></a></li>`);
+      $('.' + category).append(`<li><a href="${baseUrl + '/' + item.Item.isbn + '/detail'}"><img class="slick__img" alt="" src="${item.Item.mediumImageUrl}" /><p class="slick__title">${substr(item.Item.title, 15, '...')}</p></a></li>`);
     });
     if(apiRequestCount === 4) {
       $('.slick').slick({
@@ -108,7 +108,7 @@ exports.getBooksApiByNew = function() {
 }
 
 // キーワードなしでのAPI通信
-exports.getBooksApi = function(count, sortName) {
+exports.getBooksApi = function(count, sortName, booksGenreId = '001') {
   let deferred = new $.Deferred();
   $.ajax({
     url: rakutenUrl.name,
@@ -116,7 +116,7 @@ exports.getBooksApi = function(count, sortName) {
     datatype: 'json',
     data: {
       applicationId: rakutenId.name,
-      booksGenreId: '001',
+      booksGenreId: booksGenreId,
       hits: getBooksCount,
       page: count,
       sort: sortName,
@@ -134,9 +134,10 @@ exports.getBooksApi = function(count, sortName) {
 }
 
 //キーワードありでのAPI通信
-exports.getBooksOnKeyword = function(count, condition, keyword, sortName) {
+exports.getBooksOnKeyword = function(count, condition, keyword, sortName, booksGenreId = '001') {
+  $('input[value="' + condition +'"]').prop("checked", true);
   let deferred = new $.Deferred();
-  $('.c-section-title').html('<h2 class="c-section-title">検索結果一覧</h2>');
+  $('.c-section__title').html('<h2 class="c-section__title">検索結果一覧</h2>');
   if(condition === 'title') {
     $.ajax({
       url: rakutenUrl.name,
@@ -144,7 +145,7 @@ exports.getBooksOnKeyword = function(count, condition, keyword, sortName) {
       datatype: 'json',
       data: {
         applicationId: rakutenId.name,
-        booksGenreId: '001',
+        booksGenreId: booksGenreId,
         hits: getBooksCount,
         page: count,
         title: keyword,
@@ -196,12 +197,12 @@ exports.getBooksOnKeyword = function(count, condition, keyword, sortName) {
 // getBooksOnKeyword関数の処理の共通化
 function getBooksCommon(data, count, deferred) {
   if(data.hits == 0) {
-    $('.p-books-wrapper').append(`<p class="p-books-error c-err-card is-long">検索結果は0件です。</p>`);
+    $('.p-books-lists').html(`<p class="p-books-error c-err-card is-long">検索結果は0件です。</p>`);
     $(window).off();
   } else {
     getReviewCountApi(data.Items, count, deferred);
     if(data.hits < 30) {
-      $('.p-books-wrapper').append(`<p class="p-books-error">これ以上書籍はありません。</p>`);
+      $('.p-books-lists').append(`<p class="p-books-error">これ以上書籍はありません。</p>`);
       $(window).off();
     }
   }
@@ -234,22 +235,32 @@ function getStarCountApi(Items, count, deferred) {
       books: Items,
     },
   }).done(function(data) {
+    $('.p-books-lists').html('');
     $.each(Items, function(i, item) {
-      $('.p-books-lists').append(`<li class="p-books-list"><a href="${baseUrl + '/' + item.Item.isbn + '/detail'}" class="p-books-link"><div
-      class="p-books-img"><img src="${item.Item.mediumImageUrl}" alt=""></div><div class="p-books-data"><p class="p-books-ttl">${substr(item.Item.title, 35, '...')}</p><p class="p-books-author">著者：${substr(item.Item.author, 20, '...')}</p><p class="p-books-publish">出版社：${substr(item.Item.publisherName, 20, '...')}</p></div><div class="p-books-info"><div class="c-evaluation"><div class="c-evaluation-stars"><p class="c-evaluation-txt">平均評価</p><div class="c-evaluation-star" data-count="${data[item.Item.isbn]}"></div></div></div><p class="p-books-review">レビュー件数：<span>${reviewCountArray[item.Item.isbn]}</span>件</p></div></a></li>`);
+      $('.p-books-lists').append(`<li class="">
+        <a href="${baseUrl + '/' + item.Item.isbn + '/detail'}" class="p-result__link">
+          <img src="${item.Item.mediumImageUrl}" alt="" class="p-result__img">
+          <p class="p-result__title">${substr(item.Item.title, 35, '...')}</p>
+          <p class="p-result__review">レビュー件数：<span>${reviewCountArray[item.Item.isbn]}</span>件</p>
+          <div class="c-evaluation">
+            <p class="c-evaluation-txt">評価</p>
+            <div class="c-evaluation-star" data-count="${data[item.Item.isbn]}"></div>
+          </div>
+        </a>
+      </li>`);
     });
-    addAvarageStar(count);
+    addAvarageStar();
     return deferred.resolve();
   });
 }
 
 //APIから取得した書籍情報に対して、平均評価の星を追加
-function addAvarageStar(count) {
+function addAvarageStar(count = 1) {
   $('.c-evaluation-star').slice((count - 1) * getBooksCount, count * getBooksCount).each(function() {
     let evaluationNumber = $(this).data('count');
     let remainingEvaluationNumber = 5 - evaluationNumber;
     if(evaluationNumber == 0) {
-      $(this).append('<p class="c-evaluation-nothing">なし</p>');
+      $(this).append('<p class="c-evaluation-txt">なし</p>');
     } else {
       for(let i = 0; i < evaluationNumber; i++) {
         $(this).append('<span class="c-evaluation-star-icon is-star-colord">★</span>');

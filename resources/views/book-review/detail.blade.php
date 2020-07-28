@@ -27,17 +27,21 @@
         読みたい本リストに追加
       </a>
       @endif
-      <!-- ↑のように切り替えできるようお願いします！ -->
-      <a class="p-detail-book__btn c-button-small is-orange">おすすめの本に設定</a>
-      <a class="p-detail-book__btn c-button-small is-remove">おすすめの本から削除</a>
+      @if ($isRecomend)
+      <a class="p-detail-book__btn c-button-small recommend is-remove">おすすめの本から削除</a>
+      @elseif (filled($hasRecomend))
+      <a class="p-detail-book__btn c-button-small recommend is-orange">おすすめ本を変更する</a>
+      @else
+      <a class="p-detail-book__btn c-button-small recommend is-orange">おすすめの本に設定</a>
+      @endif
     </div>
   </div>
 
   <div class="p-detail-reviews">
-    <h2 class="c-section-title">レビュー一覧</h2>
+    <h2 class="c-section__title">レビュー一覧</h2>
     @if (empty($reviews->first()))
-    <div class="c-err-card">
-      <p class="c-err-card-msg">レビュー履歴がありません</p>
+    <div class="c-err__card">
+      <p>レビュー履歴がありません</p>
       <button class="c-button p-detail-reviews__btn is-first-review is-paused js-modal-open" data-target="post">投稿する</button>
     </div>
     @else
@@ -121,7 +125,7 @@
           <p class="p-detail-comments__text">{!! nl2br(e($comment->content)) !!}</p>
           <!-- @if ($comment->user->id === Auth::id())
           {{ Form::open(['route' => ['editComment', $comment->id], 'method' => 'PUT']) }}
-            {{ Form::textarea('content', $comment->content, ['class' => 'c-form-input-textbox p-detail-modal-detail-textbox js-comment-text js-form-input', 'placeholder' => 'テキストを入力してください。']) }}
+            {{ Form::textarea('content', $comment->content, ['class' => 'c-form__textbox p-detail-modal-detail-textbox js-comment-text js-form-input', 'placeholder' => 'テキストを入力してください。']) }}
             {{ Form::submit('編集したコメントを投稿する') }}
           {{ Form::close() }}
           {{ Form::open(['route' => ['deleteComment', $comment->id], 'method' => 'delete']) }}
@@ -151,7 +155,7 @@
       {{ Form::hidden('ISBN', $book['isbn']) }}
       <a class="c-modal-close js-modal-close"></a>
       <div class="p-detail-modal__evaluation">
-        <p class="c-form-input-title">評価</p>
+        <p class="c-form__title">評価</p>
         <div class="c-evaluation-star">
           <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
           <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
@@ -163,8 +167,8 @@
         <span id="input-star-err"></span>
       </div>
       <div class="p-detail-modal__detail">
-        <p class="c-form-input-title">内容</p><span id="input-text-err"></span>
-        {{ Form::textarea('content', null, ['class' => 'c-form-input-textbox js-form-input js-input-text', 'placeholder' => 'テキストを入力してください。']) }}
+        <p class="c-form__title">内容</p><span id="input-text-err"></span>
+        {{ Form::textarea('content', null, ['class' => 'c-form__textbox js-form-input js-input-text', 'placeholder' => 'テキストを入力してください。']) }}
         <br>
         <span class="c-modal-text-count"></span>
         {{ Form::submit('投稿する', ['class' => 'c-button p-detail-modal__btn js-form-submit js-form-submit-review']) }}
@@ -195,8 +199,8 @@
       {{ Form::hidden('review_id', null, ['class' => 'comment-review-id']) }}
       <a class="c-modal-close js-modal-close"></a>
       <div class="p-detail-modal__detail">
-        <p class="c-form-input-title">内容</p><span id="input-comment-err"></span>
-        {{ Form::textarea('content', null, ['class' => 'c-form-input-textbox js-comment-text js-form-input', 'placeholder' => 'テキストを入力してください。']) }}
+        <p class="c-form__title">内容</p><span id="input-comment-err"></span>
+        {{ Form::textarea('content', null, ['class' => 'c-form__textbox js-comment-text js-form-input', 'placeholder' => 'テキストを入力してください。']) }}
         <br>
         <span class="c-modal-comment-count"></span>
         {{ Form::submit('コメントを投稿する', ['class' => 'c-button p-detail-modal__btn js-form-submit-comment js-form-submit is-orange']) }}

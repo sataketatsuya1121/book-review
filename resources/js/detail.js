@@ -20,47 +20,48 @@ $(function() {
     })
   })
 
-  let likeState = true;
   $('.likes-flag').each(function() {
     $(this).on('click', (e) => {
       var reviewId = $(this).find('.reviewId').data('reviewid');
       var likesCount = parseInt($(this).nextAll('.likes-count').text());
-      if ($(this).hasClass('done') && likeState) {
-        likeState = false;
+      if ($(this).hasClass('done')) {
         $.ajax({
           type: 'POST',
           url: '/review/' + reviewId + '/unLike',
           dataType: 'json',
-          data: { _token: csrf_token.name, reviewId: reviewId },
+          data: {
+            _token: csrf_token.name,
+            reviewId: reviewId,
+          },
           context: this,
         }).done(function(data) {
-          if (data == '404') {
-            console.log('404');
+          if (data === 404) {
+            console.log(data);
           } else {
             $(this).removeClass('done');
             $(this).nextAll('.likes-count').text(likesCount -= 1);
             $(this).children('img').attr('src', img_normalicon.name);
-            likeState = true;
           }
         }).fail(function(msg) {
           console.log('NG' + msg.responseText);
         });
-      } else if (!$(this).hasClass('done') && likeState) {
-        likeState = false;
+      } else if (!$(this).hasClass('done')) {
         $.ajax({
           type: 'POST',
           url: '/review/' + reviewId + '/like',
           dataType: 'json',
-          data: { _token: csrf_token.name, reviewId: reviewId },
+          data: {
+            _token: csrf_token.name,
+            reviewId: reviewId,
+          },
           context: this,
         }).done(function(data) {
-          if (data == '404') {
-            console.log('404');
+          if (data === 404) {
+            console.log(data);
           } else {
             $(this).addClass('done');
             $(this).nextAll('.likes-count').text(likesCount += 1);
             $(this).children('img').attr('src', img_goodicon.name);
-            likeState = true;
           }
         }).fail(function(msg) {
           console.log('NG' + msg.responseText);
@@ -80,36 +81,37 @@ $(function() {
   });
 
   //ストック機能
-  let stockState = true;
   var isbn = stock_readbook.name;
   $('.stock').on('click', function() {
-    if ($(this).hasClass('is-remove') && stockState) {
-      stockState = false;
+    if ($(this).hasClass('is-remove')) {
       $.ajax({
         type: 'DELETE',
         url: '/review/' + isbn + '/unstock',
         dataType: 'json',
-        data: { _token: csrf_token.name, isbn: isbn },
+        data: {
+          _token: csrf_token.name,
+          isbn: isbn,
+        },
         context: this,
       }).done(function(data) {
         $(this).removeClass('is-remove');
         $(this).text('読みたい本リストに追加');
-        stockState = true;
       }).fail(function(msg) {
         console.log('NG' + msg.responseText);
       });
-    } else if (!$(this).hasClass('is-remove') && stockState) {
-      stockState = false;
+    } else if (!$(this).hasClass('is-remove')) {
       $.ajax({
         type: 'POST',
         url: '/review/' + isbn + '/stock',
         dataType: 'json',
-        data: { _token: csrf_token.name, isbn: isbn },
+        data: {
+          _token: csrf_token.name,
+          isbn: isbn,
+        },
         context: this,
       }).done(function(data) {
         $(this).addClass('is-remove');
         $(this).text('リストから削除');
-        stockState = true;
       }).fail(function(msg) {
         console.log('NG' + msg.responseText);
       });
@@ -147,4 +149,48 @@ $(function() {
     }
     $(this).html(text);
   });
+
+    //おすすめ本機能
+    var isbn = stock_readbook.name;
+    $('.recommend').on('click', function() {
+      if ($(this).hasClass('is-remove')) {
+        $.ajax({
+          type: 'DELETE',
+          url: '/review/' + isbn + '/unRecommend',
+          dataType: 'json',
+          data: {
+            _token: csrf_token.name,
+            isbn: isbn,
+          },
+          context: this,
+        }).done(function(data) {
+          if (data === 404) {
+            console.log(data);
+          } else {
+            $(this).removeClass('is-remove');
+            $(this).addClass('is-orange');
+            $(this).text('おすすめの本に設定');
+          }
+        }).fail(function(msg) {
+          console.log('NG' + msg.responseText);
+        });
+      } else if (!$(this).hasClass('is-remove')) {
+        $.ajax({
+          type: 'POST',
+          url: '/review/' + isbn + '/recommend',
+          dataType: 'json',
+          data: {
+            _token: csrf_token.name,
+            isbn: isbn,
+          },
+          context: this,
+        }).done(function(data) {
+          $(this).removeClass('is-orange');
+          $(this).addClass('is-remove');
+          $(this).text('おすすめの本から削除');
+        }).fail(function(msg) {
+          console.log('NG' + msg.responseText);
+        });
+      }
+    });
 });

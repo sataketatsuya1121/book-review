@@ -80,5 +80,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/mark/{notificationId}/{isbn}/user', 'NotificationController@markAsReadUser')->name('markUser');
     Route::post('/markAsRead', 'NotificationController@markAsReadAllNotifications')->name('markAsReadApi');
 
-    Route::get('/results/{category}', 'BookReviewController@showResult')->name('showResult');
+    // Route::get('/results/{category}', 'BookReviewController@showResult')->name('showResult');
 });

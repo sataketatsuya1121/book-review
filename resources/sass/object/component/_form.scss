@@ -48,207 +48,204 @@ option {
 }
 
 .c-form {
-  &-input {
-    &-title {
-      font-weight: 400;
-      display: inline-block;
+  &__title {
+    font-weight: 400;
+    display: inline-block;
+    @include pc {
+      font-size: 18px;
+    }
+    @include pcmiddle {
+      font-size: .18rem;
+    }
+    @include sp {
+      font-size: .12rem;
+    }
+  }
+  &__text {
+    border-radius: 5px;
+    border: 1px solid #B5B5B5;
+    background-color: #fff;
+    color: $fontColor;
+    @include pc {
+      padding: 8px;
+      font-size: 16px;
+      width: 340px;
+    }
+    @include pcmiddle {
+      padding: .08rem;
+      font-size: .16rem;
+      width: 3.4rem;
+    }
+    @include sp {
+      padding: .02rem;
+      font-size: .25rem;
+      width: 2.5rem;
+    }
+  }
+  &__textbox {
+    resize: none;
+    width: 100%;
+    border: 1px solid #B5B5B5;
+    background-color: #fff;
+    color: $fontColor;
+    @include pc {
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    @include pcmiddle {
+      margin-top: .2rem;
+      font-size: .16rem;
+      padding: .2rem;
+      border-radius: .1rem;
+    }
+    @include sp {
+      font-size: .1rem;
+      padding: .1rem;
+      border-radius: .1rem;
+    }
+    &.is-review {
       @include pc {
-        font-size: 18px;
+        height:236px;
       }
       @include pcmiddle {
-        font-size: .18rem;
-      }
-      @include sp {
-        font-size: .12rem;
+        height:2.36rem;
       }
     }
-    &-text {
-      border-radius: 5px;
-      border: 1px solid #B5B5B5;
-      background-color: #fff;
-      color: $fontColor;
-      @include pc {
-        padding: 8px;
-        font-size: 16px;
-        width: 340px;
-      }
-      @include pcmiddle {
-        padding: .08rem;
-        font-size: .16rem;
-        width: 3.4rem;
-      }
-      @include sp {
-        padding: .02rem;
-        font-size: .25rem;
-        width: 2.5rem;
-      }
-    }
-    &-textbox {
-      resize: none;
-      width: 100%;
-      border: 1px solid #B5B5B5;
-      background-color: #fff;
-      color: $fontColor;
-      @include pc {
-        margin-top: 15px;
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 20px;
-      }
-      @include pcmiddle {
-        margin-top: .2rem;
-        font-size: .16rem;
-        padding: .2rem;
-        border-radius: .1rem;
-      }
-      @include sp {
-        font-size: .1rem;
-        padding: .1rem;
-        border-radius: .1rem;
-      }
-      &.is-review {
-        @include pc {
-          height:236px;
-        }
-        @include pcmiddle {
-          height:2.36rem;
-        }
-      }
-    }
-    &-radio {
-      display: none;
-      + span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        @include pc {
-          padding-left: 20px;
-          margin-left: 10px;
-        }
-        @include pcmiddle {
-          padding-left: 0.2rem;
-          margin-left: .1rem;
-        }
-        &:first-child {
-          margin: 0;
-        }
-        & p {
-          @include pc {
-            font-size: 13px;
-          }
-          @include pcmiddle {
-            font-size: .13rem;
-          }
-        }
-      }
-      + span::before {
-        content: "";
-        display: block;
-        background-color: #ffffff;
-        border-radius: 50%;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        @include pc {
-          width: 16px;
-          height: 16px;
-          border: 1px solid #B3B3B3;
-        }
-        @include pcmiddle {
-          width: 0.16rem;
-          height: 0.16rem;
-          border: 0.01rem solid #B3B3B3;
-        }
-      }
-      + span::after {
-        content: "";
-        opacity: 0;
-        background-color: $lightBlue;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: .3s;
-        @include pc {
-          left: 3px;
-          width: 10px;
-          height: 10px;
-        }
-        @include pcmiddle {
-          left: 0.03rem;
-          width: 0.1rem;
-          height: 0.1rem;
-        }
-      }
-      &:checked + span::after {
-        opacity: 1;
-      }
-    }
-    &-file {
+  }
+  &__radio {
+    display: none;
+    + span {
       cursor: pointer;
       display: inline-block;
       position: relative;
-      text-align: center;
-      color: #ffffff;
-      background-color: $lightBlue;
-      font-weight: bold;
       @include pc {
-        width: 140px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 14px;
-        border-radius: 4px;
-      }
-      @include pcmiddle {
-        width: 1.4rem;
-        height: 0.3rem;
-        line-height: 0.3rem;
-        font-size: 0.14rem;
-        border-radius: .04rem;
-      }
-      @include sp {
-        width: 1.2rem;
-        height: 0.3rem;
-        line-height: 0.3rem;
-        font-size: 0.1rem;
-        border-radius: .04rem;
-      }
-      &:hover {
-        opacity: .7;
-      }
-    }
-    &-file-name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-height: 1.3;
-      @include pc {
-        font-size: 14px;
+        padding-left: 20px;
         margin-left: 10px;
-        width: 180px;
       }
       @include pcmiddle {
-        font-size: 0.14rem;
-        margin-left: 0.1rem;
-        width: 1.8rem;
+        padding-left: 0.2rem;
+        margin-left: .1rem;
       }
-      @include sp {
-        font-size: 0.1rem;
-        width: .8rem;
+      &:first-child {
+        margin: 0;
+      }
+      & p {
+        @include pc {
+          font-size: 13px;
+        }
+        @include pcmiddle {
+          font-size: .13rem;
+        }
       }
     }
+    + span::before {
+      content: "";
+      display: block;
+      background-color: #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      @include pc {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #B3B3B3;
+      }
+      @include pcmiddle {
+        width: 0.16rem;
+        height: 0.16rem;
+        border: 0.01rem solid #B3B3B3;
+      }
+    }
+    + span::after {
+      content: "";
+      opacity: 0;
+      background-color: $lightBlue;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: .3s;
+      @include pc {
+        left: 3px;
+        width: 10px;
+        height: 10px;
+      }
+      @include pcmiddle {
+        left: 0.03rem;
+        width: 0.1rem;
+        height: 0.1rem;
+      }
+    }
+    &:checked + span::after {
+      opacity: 1;
+    }
   }
-}
-
-.c-form-input-catogory {
-  display: inline-block;
-  @include pc {
-    margin-left: 20px;
-    font-size: 13px;
+  &__file {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+    background-color: $lightBlue;
+    font-weight: bold;
+    @include pc {
+      width: 140px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+    @include pcmiddle {
+      width: 1.4rem;
+      height: 0.3rem;
+      line-height: 0.3rem;
+      font-size: 0.14rem;
+      border-radius: .04rem;
+    }
+    @include sp {
+      width: 1.2rem;
+      height: 0.3rem;
+      line-height: 0.3rem;
+      font-size: 0.1rem;
+      border-radius: .04rem;
+    }
+    &:hover {
+      opacity: .7;
+    }
   }
-  @include pcmiddle {
-    margin-left: .2rem;
-    font-size: .13rem;
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+    @include pc {
+      font-size: 14px;
+      margin-left: 10px;
+      width: 180px;
+    }
+    @include pcmiddle {
+      font-size: 0.14rem;
+      margin-left: 0.1rem;
+      width: 1.8rem;
+    }
+    @include sp {
+      font-size: 0.1rem;
+      width: .8rem;
+    }
+  }
+  &__catogory {
+    display: inline-block;
+    @include pc {
+      margin-left: 20px;
+      font-size: 13px;
+    }
+    @include pcmiddle {
+      margin-left: .2rem;
+      font-size: .13rem;
+    }
   }
 }

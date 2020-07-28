@@ -20,7 +20,7 @@
       width: .86rem;
     }
   }
-  &-item {
+  &__item {
     img {
       vertical-align: middle;
       @include pc {
@@ -49,16 +49,16 @@
         opacity: 1;
       }
     }
-    &-text {
-      vertical-align: middle;
-      @include pc {
-        margin-left: 10px;
-        font-size: 16px;
-      }
-      @include pcmiddle {
-        margin-left: .1rem;
-        font-size: .16rem;
-      }
+  }
+  &__text {
+    vertical-align: middle;
+    @include pc {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+    @include pcmiddle {
+      margin-left: .1rem;
+      font-size: .16rem;
     }
   }
 }

@@ -127,10 +127,6 @@ img {
   display: none;
 }
 
-.is-star-colord {
-  color: #FFF100;
-}
-
 #scroll-top {
   position: fixed;
   cursor: pointer;
@@ -159,42 +155,44 @@ img {
 	@include pcmiddle {
 		margin-top: .3rem;
 	}
-	.page-item {
+	&__item {
 		&:nth-child(n + 2) {
 			@include pc {
-				margin-left: 6px;
+				margin-left: 10px;
 			}
 			@include pcmiddle {
-				margin-left: .06rem;
+				margin-left: .1rem;
 			}
-		}
+    }
+    &.disabled {
+      display: none;
+    }
 	}
-	.page-link {
-		border-radius: 50%!important;
-		background-color: #ccc;
-		color: #fff;
-		font-weight: bold;
+	&__link {
+		color: $fontColor;
+		font-weight: 400;
 		padding: 0;
 		text-align: center;
     border: none;
     display: block;
 		@include pc {
-			width: 30px;
-			height: 30px;
-			line-height: 30px;
-			font-size: 12px;
+      width: 48px;
+      height: 25px;
+      border-radius: 2px;
+      line-height: 25px;
+      font-size: 12px;
 		}
 		@include pcmiddle{
-			width: .3rem;
-			height: .3rem;
-			line-height: .3rem;
+			width: .48rem;
+      height: .25rem;
+		  border-radius: .02rem;
+			line-height: .25rem;
 			font-size: .12rem;
-		}
+    }
+    &.active {
+      background-color: $lightBlue;
+      color: #fff;
+      pointer-events: none;
+    }
   }
-  .page-item.active .page-link {
-    background-color: $lightBlue;
-  }
-	.page-item.disabled .page-link {
-		display: none;
-	}
 }

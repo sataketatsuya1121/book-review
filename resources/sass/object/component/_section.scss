@@ -1,0 +1,40 @@
+.c-section {
+	&__title {
+		color: $fontColor;
+		@include pc {
+			font-size: 20px;
+		}
+		@include pcmiddle {
+			font-size: .2rem;
+		}
+		@include sp {
+			margin-top: .5rem;
+			font-size: .15rem;
+			text-align: center;
+    }
+  }
+	&__mypage {
+		color: $darkBlue;
+		text-align: center;
+		cursor: pointer;
+		opacity: 0.6;
+		@include pc {
+			width: 230px;
+			padding: 20px 0;
+			font-size: 15px;
+		}
+		@include pcmiddle {
+			width: 2.3rem;
+			padding: .2rem 0;
+			font-size: .15rem;
+		}
+		&:hover {
+			opacity: 0.8;
+			transition: .3s;
+		}
+		&.js-active-btn-user {
+			pointer-events: none;
+			opacity: 1;
+		}
+	}
+}
