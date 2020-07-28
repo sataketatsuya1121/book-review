@@ -292,6 +292,10 @@ $(function(){
         apiToken = cArray[1];  // [key,value]
     }
   }
+  console.log(cookies);
+  console.log(cookiesArray);
+  console.log(cArray);
+  console.log(apiToken);
 
   function getNotificationApi() {
     return $.ajax({
