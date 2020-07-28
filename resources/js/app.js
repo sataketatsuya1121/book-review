@@ -287,7 +287,7 @@ $(function(){
   let apiToken;
 
   var cArray = cookiesArray[0].split('='); //さらに=で分割して配列に
-  if( cArray[0] == ' api_token'){ // 取り出したいkeyと合致したら
+  if( cArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
       apiToken = cArray[1];  // [key,value]
   }
   console.log(cookies);
