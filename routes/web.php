@@ -52,12 +52,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/review/{reviewId}/like', 'LikeController@like')->name('like');
     Route::post('/review/{reviewId}/unLike', 'LikeController@unLike')->name('unLike');
 
+    Route::get('/review/my_info', 'UserController@showMyInfoPage')->name('myInfo');
+    Route::post('/review/user/create', 'UserController@createMyInfo')->name('createMyInfo');
     Route::put('/review/{userId}/update', 'UserController@updateUser')->name('updateUser');
     Route::delete('/review/user/destroy', 'UserController@destroyUser')->name('destroyUser');
 
     Route::post('/review/{isbn}/stock', 'StockController@storeStock')->name('stock');
     Route::delete('/review/{isbn}/unstock', 'StockController@destroyStock')->name('unstock');
     Route::delete('/review/{isbn}/unstock_mypage', 'StockController@destroyMypageStock')->name('unstockMypage');
+
+    Route::post('/review/{isbn}/recommend', 'UserController@storeRecommend')->name('recommend');
+    Route::delete('/review/{isbn}/unRecommend', 'UserController@destroyRecommend')->name('unRecommend');
 
     Route::post('/review/comment', 'CommentController@postComment')->name('postComment');
     Route::put('/review/{commentId}/comment', 'CommentController@editComment')->name('editComment');
@@ -75,5 +80,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/mark/{notificationId}/{isbn}/user', 'NotificationController@markAsReadUser')->name('markUser');
     Route::post('/markAsRead', 'NotificationController@markAsReadAllNotifications')->name('markAsReadApi');
 
-    Route::get('/results', 'BookReviewController@showResult')->name('showResult');
+    Route::get('/results/{category}', 'BookReviewController@showResult')->name('showResult');
 });
