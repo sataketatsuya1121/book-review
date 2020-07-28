@@ -288,13 +288,10 @@ $(function(){
 
   for(var c of cookiesArray){ //一つ一つ取り出して
     var cArray = c.split('='); //さらに=で分割して配列に
-    if( cArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
+    if (cArray[0] == 'api_token' || cArray[0] == ' api_token') { // 取り出したいkeyと合致したら
         apiToken = cArray[1];  // [key,value]
     }
   }
-  console.log(cookies);
-  console.log(cookiesArray);
-  console.log(apiToken);
 
   function getNotificationApi() {
     return $.ajax({
