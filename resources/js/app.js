@@ -344,6 +344,10 @@ $(function(){
 
   //Pusher通信
   window.Pusher = require('pusher-js');
+  Push.Permission.request(onGranted, onDenied);
+
+  console.log(Push.Permission.has());
+  console.log(Push.Permission.get());
 
   window.Echo = new Echo({
     broadcaster: 'pusher',
@@ -364,12 +368,14 @@ $(function(){
     window.Echo.channel(key)
     .listen(pushNotifications[key], function(data){
       console.log(data);
-      if (key == "rankUpChannel") {
-        setTimeout(function() {
+      if (Push.Permission.has()) {
+        if (key == "rankUpChannel") {
+          setTimeout(function() {
+              return push(data['message']);
+          }, 10000)
+        } else {
           return push(data['message']);
-        }, 10000)
-      } else {
-        return push(data['message']);
+        }
       }
     });
   }
