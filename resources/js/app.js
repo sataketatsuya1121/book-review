@@ -368,14 +368,12 @@ $(function(){
     window.Echo.channel(key)
     .listen(pushNotifications[key], function(data){
       console.log(data);
-      if (Push.Permission.has()) {
-        if (key == "rankUpChannel") {
-          setTimeout(function() {
-              return push(data['message']);
-          }, 10000)
-        } else {
-          return push(data['message']);
-        }
+      if (key == "rankUpChannel") {
+        setTimeout(function() {
+            return push(data['message']);
+        }, 10000)
+      } else {
+        return push(data['message']);
       }
     });
   }
