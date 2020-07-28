@@ -344,10 +344,6 @@ $(function(){
 
   //Pusher通信
   window.Pusher = require('pusher-js');
-  Push.Permission.request(onGranted, onDenied);
-
-  console.log(Push.Permission.has());
-  console.log(Push.Permission.get());
 
   window.Echo = new Echo({
     broadcaster: 'pusher',
@@ -357,6 +353,8 @@ $(function(){
   });
 
   console.log(window.Echo);
+  console.log(process.env.MIX_PUSHER_APP_KEY);
+  console.log(process.env.MIX_PUSHER_APP_CLUSTER);
 
   let pushNotifications = {
     rankUpChannel: "RankUpEvent",
@@ -370,7 +368,7 @@ $(function(){
       console.log(data);
       if (key == "rankUpChannel") {
         setTimeout(function() {
-            return push(data['message']);
+          return push(data['message']);
         }, 10000)
       } else {
         return push(data['message']);
