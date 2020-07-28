@@ -6,6 +6,7 @@ return [
         'RANK_BRONZE' => 10,
         'RANK_SILVER' => 20,
         'RANK_GOLD' => 50,
+        'LIMIT_BOOK' => 20,
     ],
     'department_name' => [
         'FRONT' => 1,
