@@ -54,7 +54,7 @@ class CommentCompleted extends Notification
     {
         return [
             'data' => Auth::user()->name . 'さんがあなたの投稿にコメントしました',
-            'isbn' => Auth::user()->reviews->last()->ISBN,
+            'isbn' => $notifiable->reviews->last()->ISBN,
         ];
     }
 }

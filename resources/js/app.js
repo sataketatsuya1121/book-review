@@ -358,19 +358,6 @@ $(function(){
     reviewChannel: "ReviewEvent",
   }
 
-  console.log(Notification.permission);
-  console.log(window.Echo);
-
-  Push.Permission.request(onGranted, onDenied);
-
-  function onGranted() {
-      console.log('Granted!');
-  }
-
-  function onDenied() {
-      console.log('Denied...');
-  }
-
   Notification.requestPermission().then(function (permission) {
     // If the user accepts, let's create a notification
     if (permission === "granted") {
