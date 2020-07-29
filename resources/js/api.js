@@ -243,8 +243,8 @@ function getStarCountApi(Items, count, deferred) {
           <p class="p-result__title">${substr(item.Item.title, 35, '...')}</p>
           <p class="p-result__review">レビュー件数：<span>${reviewCountArray[item.Item.isbn]}</span>件</p>
           <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="${data[item.Item.isbn]}"></div>
+            <p class="c-evaluation__text">評価</p>
+            <div class="c-evaluation__star" data-count="${data[item.Item.isbn]}"></div>
           </div>
         </a>
       </li>`);
@@ -256,17 +256,17 @@ function getStarCountApi(Items, count, deferred) {
 
 //APIから取得した書籍情報に対して、平均評価の星を追加
 function addAvarageStar(count = 1) {
-  $('.c-evaluation-star').slice((count - 1) * getBooksCount, count * getBooksCount).each(function() {
+  $('.c-evaluation__star').slice((count - 1) * getBooksCount, count * getBooksCount).each(function() {
     let evaluationNumber = $(this).data('count');
     let remainingEvaluationNumber = 5 - evaluationNumber;
     if(evaluationNumber == 0) {
-      $(this).append('<p class="c-evaluation-txt">なし</p>');
+      $(this).append('<p class="c-evaluation__text">なし</p>');
     } else {
       for(let i = 0; i < evaluationNumber; i++) {
-        $(this).append('<span class="c-evaluation-star-icon is-star-colord">★</span>');
+        $(this).append('<span class="c-evaluation__star-icon is-star-colord">★</span>');
       }
       for(let i = 0; i < remainingEvaluationNumber; i++) {
-        $(this).append('<span class="c-evaluation-star-icon">★</span>');
+        $(this).append('<span class="c-evaluation__star-icon">★</span>');
       }
     }
   });

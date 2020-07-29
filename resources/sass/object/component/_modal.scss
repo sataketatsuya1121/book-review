@@ -12,7 +12,7 @@
   &.is-delete {
     z-index: 50;
   }
-  &-bg {
+  &__bg {
     position: absolute;
     background: #fff;
     z-index: 10;
@@ -36,10 +36,10 @@
       border-radius: .1rem;
     }
   }
-  &-content {
+  &__content {
     margin: 0 auto;
   }
-  &-close {
+  &__close {
     cursor:pointer;
     background: url('../img/icon_close.png') center/cover;
     position: absolute;
@@ -56,25 +56,15 @@
       height: .43rem;
     }
   }
-  &-err {
+  &__err {
     @include pc {
       margin-left: 20px;
     }
     @include pcmiddle {
       margin-left: .2rem;
     }
-    &.is-profile {
-      @include pc {
-        margin-left: 180px;
-        margin-top: 6px;
-      }
-      @include pcmiddle {
-        margin-left: 1.8rem;
-        margin-top: .06rem;
-      }
-    }
   }
-  &-text-count {
+  &__text-count {
     display: block;
     font-weight: 400;
     text-align: right;
@@ -94,7 +84,7 @@
       right: .5rem;
     }
   }
-  &-comment-count {
+  &__comment-count {
     display: block;
     font-weight: 400;
     text-align: right;
@@ -113,9 +103,9 @@
 
 // <!-- modal -->
 // <div class="c-modal js-modal">
-//   <div class="c-modal-bg">
-//     <div class="c-modal-content">
-//       <a class="c-modal-close js-modal-close"></a>
+//   <div class="c-modal__bg">
+//     <div class="c-modal__content">
+//       <a class="c-modal__close js-modal-close"></a>
 //         ここにそれぞれの中身が入ります。
 //     </div>
 //   </div>

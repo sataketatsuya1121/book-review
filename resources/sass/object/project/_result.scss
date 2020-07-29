@@ -48,6 +48,9 @@
         padding-top: .08rem;
         font-size: .16rem;
       }
+      &.js-active-tabbtn {
+        color: $fontColor;
+      }
       &:first-child {
         margin: 0;
       }
@@ -79,10 +82,12 @@
     @include pc {
       margin-top: 10px;
       font-size: 11px;
+      line-height: 13px;
     }
     @include pcmiddle {
       margin-top: .1rem;
       font-size: .1rem;
+      line-height: .13rem;
     }
   }
   &__review {
@@ -118,27 +123,21 @@
   &.release {
     transition: all .3s ease-in;
     @include pc {
-      left: -5px;
+      left: 99px;
     }
     @include pcmiddle {
-      left: -.05rem;
+      left: .99rem;
     }
   }
   &.sales {
     transition: all .3s ease-in;
     @include pc {
-      left: 66px;
+      left: -7px;
       width: 76px;  
     }
     @include pcmiddle {
-      left: .66rem;
+      left: -.07rem;
       width: .76rem; 
     }
   }
-}
-.active-tabbtn {
-  color: $fontColor;
-}
-.active-tabcontents {
-  display: block!important;
 }

@@ -104,7 +104,6 @@ img {
 
 .bg-whitegray {
   background-color: $whiteGray;
-  transition: all .5s;
   @include pc {
     margin-top: 85px;
     padding-left: 230px;
@@ -114,6 +113,15 @@ img {
     padding-left: 2.3rem;
   }
   &.activeside {
+    // transition: all .5s;
+    @include pc {
+      padding-left: 86px;
+    }
+    @include pcmiddle {
+      padding-left: .86rem;
+    }
+  }
+  &.transition {
     @include pc {
       padding-left: 86px;
     }
@@ -155,7 +163,10 @@ img {
 	@include pcmiddle {
 		margin-top: .3rem;
 	}
-	&__item {
+}
+
+.page {
+  &-item {
 		&:nth-child(n + 2) {
 			@include pc {
 				margin-left: 10px;
@@ -167,8 +178,13 @@ img {
     &.disabled {
       display: none;
     }
+    &.active {
+      background-color: $lightBlue;
+      color: #fff;
+      pointer-events: none;
+    }
 	}
-	&__link {
+	&-link {
 		color: $fontColor;
 		font-weight: 400;
 		padding: 0;

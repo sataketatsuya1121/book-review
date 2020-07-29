@@ -34,13 +34,11 @@ $(function() {
 
   // 新刊ボタンをクリック時にソート
   $('.js-release').on('click', function() {
-    console.log('release clicked!!');
     sortName = '-releaseDate';
     showBooksApiBrowse(sortName);
   });
   // 売り上げボタンをクリック時にソート
   $('.js-sales').on('click', function() {
-    console.log('sales clicked!!');
     sortName = 'sales';
     showBooksApiBrowse(sortName);
   });
@@ -56,31 +54,34 @@ $(function() {
       pace = '?';
     }
 
+    // pagination < > をnext prevへ置換
+    $('.pagination .page-link').first().text("prev");
+    $('.pagination .page-link').last().text("next");
+
     if (page > 1) {
-      $('.p-result-paginate__list').append(`<li class="pagination__item"><a class="pagination__link" href="${url + pace}page=${page - 1}" rel="previous" lavel="aria-label="pagination.previous">prev</a></li>`);
+      $('.p-result-paginate__list').append(`<li class="page-item"><a class="page-link" href="${url + pace}page=${page - 1}" rel="previous" lavel="aria-label="pagination.previous">prev</a></li>`);
     }
 
     if (page < '6') {
       for (let i = 1; i < 11; i++) {
-        $('.p-result-paginate__list').append(`<li class="pagination__item"><a class="pagination__link" href="${url + pace}page=${i}" data-num="${i}"><span>${i}</span></a></li>`);
+        $('.p-result-paginate__list').append(`<li class="page-item"><a class="page-link" href="${url + pace}page=${i}" data-num="${i}"><span>${i}</span></a></li>`);
       }
     } else {
       for (let i = page -5; i < page + 5; i++) {
-        $('.p-result-paginate__list').append(`<li class="pagination__item"><a class="pagination__link" href="${url + pace}page=${i}" data-num="${i}"><span">${i}</span></a></li>`);
+        $('.p-result-paginate__list').append(`<li class="page-item"><a class="page-link" href="${url + pace}page=${i}" data-num="${i}"><span">${i}</span></a></li>`);
       };
     }
 
     $('[data-num = ' + page + ']').addClass('active');
-    $('.p-result-paginate__list').append(`<li class="pagination__item"><a class="pagination__link" href="${url + pace}page=${page + 1}" rel="next" aria-label="pagination.next">next</a></li>`);
+    $('.p-result-paginate__list').append(`<li class="page-item"><a class="page-link" href="${url + pace}page=${page + 1}" rel="next" aria-label="pagination.next">next</a></li>`);
   }
 
   $('[data-tab-trigger]').click(function(){
-    var activeBtn = 'active-tabbtn'
-    var activeContents = 'active-tabcontents'
+    var activeBtn = 'js-active-tabbtn'
     var target = $(this).data('tab-trigger');
 
     $('#result-line').removeClass().addClass('#result-line').addClass(target);
-    $('.active-tabbtn').removeClass(activeBtn);
+    $('.js-active-tabbtn').removeClass(activeBtn);
 		$('[data-tab-trigger = ' + target + ']').addClass(activeBtn);
   });
 });

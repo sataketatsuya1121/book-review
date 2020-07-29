@@ -1,21 +1,21 @@
 .c-icon {
   text-align: center;
-  &-img img {
+  &__img img {
     border-radius: 50%;
     object-fit: cover;
     object-position: center center;
   }
-  &-name {
+  &__name {
     font-weight: bold;
     color: $darkBlue;
   }
 }
 
-// 使用する際は、class="c-icon"が付いているdivタグにwidth、"c-icon-img"の中のimgタグに対して、widthとheightを指定してください。
+// 使用する際は、class="c-icon"が付いているdivタグにwidth、"c-icon__img"の中のimgタグに対して、widthとheightを指定してください。
 // object-fitで画像が中央切り抜きになるように調整しているので、imgタグにも必ずwidth,heightを指定してください。
 // <div class="c-icon">
-//   <div class="c-icon-img">
+//   <div class="c-icon__img">
 //     <img src="{{ asset('img/user-icon-img.png') }}" alt="">
 //   </div>
-//   <p class="c-icon-name">佐竹 達也</p>
+//   <p class="c-icon__name">佐竹 達也</p>
 // </div>

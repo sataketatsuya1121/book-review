@@ -7,12 +7,12 @@
       <img src="../img/left-arrow.png">
     </a>
     <h1 class="p-register-box__head">新規登録</h1>
-    <div class="p-register-formarea">
+    <div class="p-register-box__formarea">
       <form method="POST" action="{{ route('register') }}">
         @csrf
-        <div class="p-register-formarea__item">
-          <p class="c-form__title p-register-formarea__text">名前</p>
-          <div class="p-register-formarea__input">
+        <div class="p-register-box__item">
+          <p class="c-form__title p-register-box__text">名前</p>
+          <div class="p-register-box__input">
             <input id="name" type="text" class="c-form__text @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
             @if ($errors->has('name'))
             <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
             @endif
           </div>
         </div>
-        <input type="submit" class="p-register-formarea__submit c-button is-orange" value="登録する">
+        <input type="submit" class="p-register-box__submit c-button is-orange" value="登録する">
       </form>
     </div>
   </div>

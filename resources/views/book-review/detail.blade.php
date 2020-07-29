@@ -17,22 +17,22 @@
     </div>
     @endif
     <div class="p-detail-book__item">
-      <a href="{{ $book['itemUrl'] }}" class="p-detail-book__btn c-button-small is-sober" target="_blank">商品ページをみる</a>
+      <a href="{{ $book['itemUrl'] }}" class="p-detail-book__btn c-button__small is-sober" target="_blank">商品ページをみる</a>
       @if ($isMyStock)
-      <a class="p-detail-book__btn c-button-small stock is-remove">
+      <a class="p-detail-book__btn c-button__small stock is-remove">
         リストから削除
       </a>
       @else
-      <a class="p-detail-book__btn c-button-small stock">
+      <a class="p-detail-book__btn c-button__small stock">
         読みたい本リストに追加
       </a>
       @endif
       @if ($isRecomend)
-      <a class="p-detail-book__btn c-button-small recommend is-remove">おすすめの本から削除</a>
+      <a class="p-detail-book__btn c-button__small recommend is-remove">おすすめの本から削除</a>
       @elseif (filled($hasRecomend))
-      <a class="p-detail-book__btn c-button-small recommend is-orange">おすすめ本を変更する</a>
+      <a class="p-detail-book__btn c-button__small recommend is-orange">おすすめ本を変更する</a>
       @else
-      <a class="p-detail-book__btn c-button-small recommend is-orange">おすすめの本に設定</a>
+      <a class="p-detail-book__btn c-button__small recommend is-orange">おすすめの本に設定</a>
       @endif
     </div>
   </div>
@@ -42,7 +42,7 @@
     @if (empty($reviews->first()))
     <div class="c-err__card">
       <p>レビュー履歴がありません</p>
-      <button class="c-button p-detail-reviews__btn is-first-review is-paused js-modal-open" data-target="post">投稿する</button>
+      <button class="c-button p-detail-reviews__btn js-modal-open" data-target="post">投稿する</button>
     </div>
     @else
     <div class="back1 p-detail-reviews__sorts" scope="col" style="white-space:nowrap;">
@@ -54,7 +54,7 @@
     <div class="p-detail-reviews__item">
       <div class="p-detail-reviews__info">
         <a href="{{ route('user', $review->user->id) }}">
-          <div class="c-icon-img p-detail-reviews__icon">
+          <div class="c-icon__img p-detail-reviews__icon">
             @if (!empty($review->user->avatar))
             <img src="{{ $review->user->avatar }}" alt="">
             @else
@@ -62,10 +62,10 @@
             @endif
           </div>
         </a>
-        <p class="c-icon-name p-detail-reviews__name">{{ $review->user->name }}</p>
+        <p class="c-icon__name p-detail-reviews__name">{{ $review->user->name }}</p>
         <div class="p-detail-reviews__evaluation">
           <p class="p-detail-reviews__tag">評価</p>
-          <div class="c-evaluation-star p-detail-reviews__star" data-count="{{ $review->evaluation }}"></div>
+          <div class="c-evaluation__star p-detail-reviews__star" data-count="{{ $review->evaluation }}"></div>
         </div>
         <p class="p-detail-reviews__date">_{{ $review->created_at->format('Y/m/d') }}</p>
       </div>
@@ -90,15 +90,15 @@
         </div>
         <div class="p-detail-reviews__commentbtn-area">
           @if (!empty($review->comments->first()))
-          <button class="c-button-small p-detail-reviews__commentbtn is-view js-comment-button" data-reviewid="{{ $review->id }}" data-text-default="コメントを見る" data-text-clicked="コメントを閉じる">
+          <button class="c-button__small p-detail-reviews__commentbtn is-view js-comment-button" data-reviewid="{{ $review->id }}" data-text-default="コメントを見る" data-text-clicked="コメントを閉じる">
             コメントを見る
           </button>
           @else
-          <button class="c-button-small p-detail-reviews__commentbtn js-comment-button" data-reviewid="{{ $review->id }}" style="display:none;" data-text-default="コメントを見る" data-text-clicked="コメントを閉じる">
+          <button class="c-button__small p-detail-reviews__commentbtn js-comment-button" data-reviewid="{{ $review->id }}" style="display:none;" data-text-default="コメントを見る" data-text-clicked="コメントを閉じる">
             コメントを見る
           </button>
           @endif
-          <button class="c-button-small js-modal-open js-comment-modal-open p-detail-reviews__commentbtn comment-post-button is-orange" data-reviewid="{{ $review->id }}" data-target="comment">
+          <button class="c-button__small js-modal-open js-comment-modal-open p-detail-reviews__commentbtn comment-post-button is-orange" data-reviewid="{{ $review->id }}" data-target="comment">
             コメントを投稿する
           </button>
         </div>
@@ -111,7 +111,7 @@
         <li class="p-detail-comments__item">
           <div class="c-icon p-detail-comments__info">
             <a href="{{ route('user', $comment->user->id) }}">
-              <div class="c-icon-img p-detail-comments__icon">
+              <div class="c-icon__img p-detail-comments__icon">
                 @if (!empty($comment->user->avatar))
                 <img src="{{ $comment->user->avatar }}" alt="">
                 @else
@@ -119,7 +119,7 @@
                 @endif
               </div>
             </a>
-            <p class="c-icon-name p-detail-comments__name">{{ $comment->user->name }}</p>
+            <p class="c-icon__name p-detail-comments__name">{{ $comment->user->name }}</p>
             <p class="p-detail-comments__date">_{{ $review->created_at->format('Y/m/d') }}</p>
           </div>
           <p class="p-detail-comments__text">{!! nl2br(e($comment->content)) !!}</p>
@@ -149,19 +149,19 @@
 
 <!-- modal -->
 <div class="c-modal js-modal p-detail-modal js-post-modal">
-  <div class="c-modal-bg p-detail-modal--bg">
-    <div class="c-modal-content">
+  <div class="c-modal__bg p-detail-modal--bg">
+    <div class="c-modal__content">
     {{ Form::open(['route' => ['createReview']]) }}
       {{ Form::hidden('ISBN', $book['isbn']) }}
-      <a class="c-modal-close js-modal-close"></a>
+      <a class="c-modal__close js-modal-close"></a>
       <div class="p-detail-modal__evaluation">
         <p class="c-form__title">評価</p>
-        <div class="c-evaluation-star">
-          <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-          <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-          <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-          <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-          <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
+        <div class="c-evaluation__star">
+          <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+          <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+          <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+          <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+          <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
           {{ Form::number('evaluation', null, ['class' => 'starIndexInput js-form-input js-input-star']) }}
         </div>
         <span id="input-star-err"></span>
@@ -170,7 +170,7 @@
         <p class="c-form__title">内容</p><span id="input-text-err"></span>
         {{ Form::textarea('content', null, ['class' => 'c-form__textbox js-form-input js-input-text', 'placeholder' => 'テキストを入力してください。']) }}
         <br>
-        <span class="c-modal-text-count"></span>
+        <span class="c-modal__text-count"></span>
         {{ Form::submit('投稿する', ['class' => 'c-button p-detail-modal__btn js-form-submit js-form-submit-review']) }}
       </div>
     {{ Form::close() }}
@@ -181,9 +181,9 @@
 
 <!-- err-modal -->
 <div class="c-modal js-modal js-err-modal">
-  <div class="c-modal-bg p-detail-err--bg">
-    <div class="c-modal-content p-detail-err__content">
-      <a class="c-modal-close js-modal-close"></a>
+  <div class="c-modal__bg p-detail-err--bg">
+    <div class="c-modal__content p-detail-err__content">
+      <a class="c-modal__close js-modal-close"></a>
         <p class="p-detail-err__message">すでに投稿されています</p>
     </div>
   </div>
@@ -192,17 +192,17 @@
 
 <!-- modal-comment -->
 <div class="c-modal js-modal p-detail-modal js-comment-modal">
-  <div class="c-modal-bg p-detail-modal--bg">
-    <div class="c-modal-content">
+  <div class="c-modal__bg p-detail-modal--bg">
+    <div class="c-modal__content">
     {{ Form::open(['route' => ['postComment'], 'method' => 'POST']) }}
       {{ Form::hidden('ISBN', $book['isbn']) }}
       {{ Form::hidden('review_id', null, ['class' => 'comment-review-id']) }}
-      <a class="c-modal-close js-modal-close"></a>
+      <a class="c-modal__close js-modal-close"></a>
       <div class="p-detail-modal__detail">
         <p class="c-form__title">内容</p><span id="input-comment-err"></span>
         {{ Form::textarea('content', null, ['class' => 'c-form__textbox js-comment-text js-form-input', 'placeholder' => 'テキストを入力してください。']) }}
         <br>
-        <span class="c-modal-comment-count"></span>
+        <span class="c-modal__comment-count"></span>
         {{ Form::submit('コメントを投稿する', ['class' => 'c-button p-detail-modal__btn js-form-submit-comment js-form-submit is-orange']) }}
       </div>
     {{ Form::close() }}

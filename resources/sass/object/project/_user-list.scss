@@ -1,4 +1,13 @@
 .p-userlist {
+  margin: 0 auto;
+  @include pc {
+    width: 740px;
+    margin-right: 60px;
+  }
+  @include pcmiddle {
+    width: 7.4rem;
+    margin-right: .6rem;
+  }
   &-wrapper {
     display: flex;
     @include pc {
@@ -10,37 +19,33 @@
       padding: .22rem 0 .45rem;
     }
   }
-  &-main {
-    margin: 0 auto;
-    @include pc {
-      width: 740px;
-      margin-right: 60px;
-    }
-    @include pcmiddle {
-      width: 7.4rem;
-      margin-right: .6rem;
-    }
-  }
-  &-head {
-    position: relative;
-    &-tabs {
-      display: inline-block;
-      color: $lightGray;
-      transition: all .3s ease-in;
-      cursor: pointer;
+  &__head {
+    &.is-small {
       @include pc {
-        margin-left: 38px;
-        padding-top: 15px;
-        font-size: 21px;
+        font-size: 14px;
       }
       @include pcmiddle {
-        margin-left: .38rem;
-        padding-top: .15rem;
-        font-size: .21rem;
+        font-size: .14rem;
       }
-      &:first-child {
-        margin: 0;
+    }
+    &.is-middle {
+      @include pc {
+        font-size: 16px;
       }
+      @include pcmiddle {
+        font-size: .16rem;
+      }
+    }
+    &.is-large {
+      @include pc {
+        font-size: 18px;
+      }
+      @include pcmiddle {
+        font-size: .18rem;
+      }
+    }
+    &.is-top {
+      position: relative;
     }
   }
   &-glance {
@@ -51,11 +56,14 @@
     @include pcmiddle {
       margin-top: .45rem;
     }
-    &-list {
+    &.js-active-tabcontents {
+      display: block!important;
+    }
+    &__list {
       display: flex;
       flex-wrap: wrap;
     }
-    &-item {
+    &__item {
       position: relative;
       @include pc {
         margin-left: 60px;
@@ -94,151 +102,90 @@
           border: .01rem solid $lightGray;
         }
       }
-      &-link {
-        border-radius: 50%;
-        &-img {
-          position: relative;
-          border-radius: 50%;
-          object-fit: cover;
-          object-position: center center;
-          @include pc {
-            width: 135px;
-            height: 135px;
-          }
-          @include pcmiddle {
-            width: 1.35rem;
-            height: 1.35rem;
-          }
-        }
-        &-star {
-          position: absolute;
-          @include pc {
-            top: 2px;
-            left: -7px;
-            width: 35px;
-          }
-          @include pcmiddle {
-            top: .02rem;
-            left: -.07rem;
-            width: .35rem;
-          }
-        }
+    }
+    &__depart{
+      font-weight: 400;
+      white-space: nowrap;
+      @include pc {
+        width: 135px;
+        margin-top: 10px;
+        font-size: 12px;
       }
-      &-contents {
-        text-align: center;
-        @include pc {
-          margin-top: 20px;
-        }
-        @include pcmiddle {
-          margin-top: .2rem;
-        }
-        &-name {
-          @include pc {
-            width: 135px;
-            font-size: 20px;
-          }
-          @include pcmiddle {
-            width: 1.35rem;
-            font-size: .2rem;
-          }
-        }
-        &-depart{
-          font-weight: 400;
-          white-space: nowrap;
-          @include pc {
-            width: 135px;
-            margin-top: 10px;
-            font-size: 12px;
-          }
-          @include pcmiddle {
-            width: 1.35rem;
-            margin-top: .1rem;
-            font-size: .12rem;
-          }
-        }
-        &-fav {
-          background-color: $orange;
-          color: #fff;
-          font-weight: 400;
-          @include pc {
-            width: 123px;
-            margin-top: 10px;
-            padding: 7px 0;
-            border-radius: 5px;
-            font-size: 12px;
-          }
-          @include pcmiddle {
-            width: 1.23rem;
-            margin-top: .1rem;
-            padding: .07rem 0;
-            border-radius: .05rem;
-            font-size: .12rem;
-          }
-        }
+      @include pcmiddle {
+        width: 1.35rem;
+        margin-top: .1rem;
+        font-size: .12rem;
+      }
+    }
+    &__img {
+      position: relative;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center center;
+      @include pc {
+        width: 135px;
+        height: 135px;
+      }
+      @include pcmiddle {
+        width: 1.35rem;
+        height: 1.35rem;
+      }
+    }
+    &__star {
+      position: absolute;
+      @include pc {
+        top: 2px;
+        left: -7px;
+        width: 35px;
+      }
+      @include pcmiddle {
+        top: .02rem;
+        left: -.07rem;
+        width: .35rem;
+      }
+    }
+    &__contents {
+      text-align: center;
+      @include pc {
+        margin-top: 20px;
+      }
+      @include pcmiddle {
+        margin-top: .2rem;
+      }
+    }
+    &__name {
+      @include pc {
+        width: 135px;
+        font-size: 20px;
+      }
+      @include pcmiddle {
+        width: 1.35rem;
+        font-size: .2rem;
+      }
+    }
+    &__fav {
+      background-color: $orange;
+      color: #fff;
+      font-weight: 400;
+      @include pc {
+        width: 123px;
+        margin-top: 10px;
+        padding: 7px 0;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+      @include pcmiddle {
+        width: 1.23rem;
+        margin-top: .1rem;
+        padding: .07rem 0;
+        border-radius: .05rem;
+        font-size: .12rem;
       }
     }
   }
   &-ranking {
     display: none;
-    &-section {
-      position: relative;
-      @include pc {
-        margin-top: 45px;
-        padding-bottom: 25px;
-      }
-      @include pcmiddle {
-        margin-top: .45rem;
-        padding-bottom: .25rem;
-      }
-      &-head {
-        @include pc {
-          font-size: 18px;
-        }
-        @include pcmiddle {
-          font-size: .18rem;
-        }
-      }
-      &-more {
-        @include pc {
-          top: 7px;
-          right: 22px;
-        }
-        @include pcmiddle {
-          top: .07rem;
-          right: .22rem;
-        }
-      }
-      &-category {
-        position: relative;
-        @include pc {
-          margin-top: 20px;
-          padding-bottom: 25px;
-        }
-        @include pcmiddle {
-          margin-top: .20rem;
-          padding-bottom: .25rem;
-        }
-        &-smallhead {
-          @include pc {
-            font-size: 14px;
-          }
-          @include pcmiddle {
-            font-size: .14rem;
-          }
-        }
-        &-more {
-          @include pc {
-            top: 4px;
-            right: 22px;
-          }
-          @include pcmiddle {
-            top: .04rem;
-            right: .22rem;
-          }
-        }
-      }
-    }
-    &-list {
+    &__list {
       display: flex;
       justify-content: space-between;
       @include pc {
@@ -248,7 +195,7 @@
         margin-top: .25rem;
       }
     }
-    &-item {
+    &__item {
       position: relative;
       text-align: center;
       @include pc {
@@ -280,78 +227,109 @@
           border: .01rem solid $lightGray;
         }
       }
-      &-link {
+    }
+    &__link {
+      border-radius: 50%;
+      & img {
+        position: relative;
         border-radius: 50%;
-        & img {
-          position: relative;
-          border-radius: 50%;
-          object-fit: cover;
-          object-position: center center;
-          overflow: hidden;
-          @include pc {
-            width: 98px;
-            height: 98px;
-          }
-          @include pcmiddle {
-            width: .98rem;
-            height: .98rem;
-          }
-        }
-      }
-      &-rank {
-        display: inline-block;
-        position: absolute;
-        border-radius: 100% 0 0 0;
-        background: $lightBlue;
-        color: #fff;
-        z-index: 10;
+        object-fit: cover;
+        object-position: center center;
+        overflow: hidden;
         @include pc {
-          width: 49px;
-          height: 49px;
-          padding-top: 21px;
-          font-size: 14px;
+          width: 98px;
+          height: 98px;
         }
         @include pcmiddle {
-          width: .49rem;
-          height: .49rem;
-          padding-top: .21rem;
-          font-size: .14rem;
-        }
-        &.is-gold {
-          background: #FFC345;
-        }
-        &.is-silver {
-          background: #C7C7C7;
-        }
-        &.is-bronze {
-          background: #8B813F;
+          width: .98rem;
+          height: .98rem;
         }
       }
     }
-    &-contents {
+    &__rank {
+      display: inline-block;
+      position: absolute;
+      border-radius: 100% 0 0 0;
+      background: $lightBlue;
+      color: #fff;
+      z-index: 10;
+      @include pc {
+        width: 49px;
+        height: 49px;
+        padding-top: 21px;
+        font-size: 14px;
+      }
+      @include pcmiddle {
+        width: .49rem;
+        height: .49rem;
+        padding-top: .21rem;
+        font-size: .14rem;
+      }
+      &.is-gold {
+        background: #FFC345;
+      }
+      &.is-silver {
+        background: #C7C7C7;
+      }
+      &.is-bronze {
+        background: #8B813F;
+      }
+    }
+    &__contents {
       @include pc {
         margin-top: 20px;
       }
       @include pcmiddle {
         margin-top: .2rem;
       }
-      &-name {
+    }
+    &__name {
+      @include pc {
+        font-size: 17px;
+      }
+      @include pcmiddle {
+        font-size: .17rem;
+      }
+    }
+    &__category {
+      position: relative;
+      @include pc {
+        margin-top: 20px;
+        padding-bottom: 25px;
+      }
+      @include pcmiddle {
+        margin-top: .20rem;
+        padding-bottom: .25rem;
+      }
+      &-more {
         @include pc {
-          font-size: 17px;
+          top: 4px;
+          right: 22px;
         }
         @include pcmiddle {
-          font-size: .17rem;
+          top: .04rem;
+          right: .22rem;
         }
       }
-      &-depart{
-        font-weight: 400;
+    }
+    &__section {
+      position: relative;
+      @include pc {
+        margin-top: 45px;
+        padding-bottom: 25px;
+      }
+      @include pcmiddle {
+        margin-top: .45rem;
+        padding-bottom: .25rem;
+      }
+      &-more {
         @include pc {
-          margin-top: 10px;
-          font-size: 11px;
+          top: 7px;
+          right: 22px;
         }
         @include pcmiddle {
-          margin-top: .10rem;
-          font-size: .11rem;
+          top: .07rem;
+          right: .22rem;
         }
       }
     }
@@ -381,15 +359,79 @@
       width: 1.8rem;
       margin-top: .6rem;
     }
-    &-head {
+    &__refine {
+      font-weight: 300;
+      overflow: hidden;
       @include pc {
-        font-size: 16px;
+        width: 180px;
+        margin-top: 14px;
+        border: 2px solid $lightGray;
+        border-radius: 10px;
       }
       @include pcmiddle {
-        font-size: .16rem;
+        width: 1.80rem;
+        margin-top: .14rem;
+        border: .02rem solid $lightGray;
+        border-radius: .1rem;
       }
     }
-    &-section {
+    &__head {
+      background: #F0F0F0;
+      @include pc {
+        padding: 12px 0;
+        border-top: 2px solid $lightGray;
+        border-bottom: 2px solid $lightGray;
+        font-size: 15px;
+      }
+      @include pcmiddle {
+        padding: .12rem 0;
+        border-top: .02rem solid $lightGray;
+        border-bottom: .02rem solid $lightGray;
+        font-size: .15rem;
+      }
+      &:first-child {
+        border-top: 0;
+      }
+    }
+    &__contents {
+      background: #fff;
+      @include pc {
+        padding: 12px 0;
+        font-size: 13px;
+      }
+      @include pcmiddle {
+        padding: .12rem 0;
+        font-size: .13rem;
+      }
+      select,input {
+        @include pc {
+          width: 140px;
+        }
+        @include pcmiddle {
+          width: 1.4rem;
+        }
+      }
+      input[name="month"] {
+        outline: none;
+        border: none;
+      }
+    }
+    &__btn {
+      font-weight: 300;
+      @include pc {
+        width: 166px;
+        margin-bottom: 5px;
+        padding: 10px 0;
+        font-size: 13px;
+      }
+      @include pcmiddle {
+        width: 1.66rem;
+        margin-bottom: .05rem;
+        padding: .1rem 0;
+        font-size: .13rem;
+      }
+    }
+    &__section {
       @include pc {
         margin-top: 35px;
       }
@@ -436,74 +478,6 @@
           right: -.70rem;
         }
       }
-      &-refine {
-        font-weight: 300;
-        overflow: hidden;
-        @include pc {
-          width: 180px;
-          margin-top: 14px;
-          border: 2px solid $lightGray;
-          border-radius: 10px;
-        }
-        @include pcmiddle {
-          width: 1.80rem;
-          margin-top: .14rem;
-          border: .02rem solid $lightGray;
-          border-radius: .1rem;
-        }
-        &-head {
-          background: #F0F0F0;
-          @include pc {
-            padding: 12px 0;
-            border-top: 2px solid $lightGray;
-            border-bottom: 2px solid $lightGray;
-            font-size: 15px;
-          }
-          @include pcmiddle {
-            padding: .12rem 0;
-            border-top: .02rem solid $lightGray;
-            border-bottom: .02rem solid $lightGray;
-            font-size: .15rem;
-          }
-          &:first-child {
-            border-top: 0;
-          }
-        }
-        &-contents {
-          background: #fff;
-          @include pc {
-            padding: 12px 0;
-            font-size: 13px;
-          }
-          @include pcmiddle {
-            padding: .12rem 0;
-            font-size: .13rem;
-          }
-          select[name="job"] {
-            @include pc {
-              width: 140px;
-            }
-            @include pcmiddle {
-              width: 1.4rem;
-            }
-          }
-          &-btn {
-            font-weight: 300;
-            @include pc {
-              width: 166px;
-              margin-bottom: 5px;
-              padding: 10px 0;
-              font-size: 13px;
-            }
-            @include pcmiddle {
-              width: 1.66rem;
-              margin-bottom: .05rem;
-              padding: .1rem 0;
-              font-size: .13rem;
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -536,11 +510,4 @@
       width: 1.87rem;
     }
   }
-}
-
-.active-tabbtn {
-  color: $fontColor;
-}
-.active-tabcontents {
-  display: block!important;
 }

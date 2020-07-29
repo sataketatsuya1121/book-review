@@ -30,19 +30,29 @@
         height: 1.08rem;
       }
     }
-  }
-  &-contents {
-    @include pc {
-      margin-top: 40.4px;
+    &__contents {
+      @include pc {
+        margin-top: 40.4px;
+      }
+      @include pcmiddle {
+        margin-top: .404rem;
+      }
+      @include pcall {
+        display: flex;
+        justify-content: center;
+      }
+      & hr {
+        border: none;
+        background: #EFEFEF;
+        @include pc {
+        width: 2px;
+        }
+        @include pcmiddle {
+          width: .02rem;
+        }
+      }
     }
-    @include pcmiddle {
-      margin-top: .404rem;
-    }
-    @include pcall {
-      display: flex;
-      justify-content: center;
-    }
-    &-heading {
+    &__head {
       @include pc {
         font-size: 15px;
       }
@@ -50,7 +60,7 @@
         font-size: .15rem;
       }
     }
-    &-maillogin {
+    &__maillogin {
       @include pc {
         padding-right: 48px;
       }
@@ -58,59 +68,43 @@
         padding-right: .48rem;
       }
     }
-    & hr {
-      border: none;
-      background: #EFEFEF;
-      @include pc {
-      width: 2px;
-      }
-      @include pcmiddle {
-        width: .02rem;
-      }
-    }
-    &-accountlogin {
-      @include pc {
-        padding-left: 48px;
-      }
-      @include pcmiddle {
-        padding-left: .48rem;
-      }
-    }
-    &-form {
+    &__form {
       @include pc {
         margin-top: 15.7px;
       }
       @include pcmiddle {
         margin-top: .157rem;
       }
-      &-input {
-        display: block;
-        border-radius: 0;
-        background: #F0F0F0;
-        color: #4A4A4A;
-        font-weight: 700;
-        @include pc {
-          width: 247px;
-          margin-top: 11.9px;
-          padding: 16px 0 16px 25px;
-          border-left: solid 7px $lightBlue!important;
-          font-size: 13px;
-        }
-        @include pcmiddle {
-          width: 2.47rem;
-          margin-top: .119rem;
-          padding: .16rem 0 .16rem .25rem;
-          border-left: solid .07rem $lightBlue!important;
-          font-size: .13rem;
-        }
-        &:first-child {
-          margin: 0;
-        }
-        &::placeholder {
-        color: #B3B3B3;
-        }
+    }
+    &__input {
+      display: block;
+      border-radius: 0;
+      background: #F0F0F0;
+      color: #4A4A4A;
+      font-weight: 700;
+      @include pc {
+        width: 247px;
+        margin-top: 11.9px;
+        padding: 16px 0 16px 25px;
+        border-left: solid 7px $lightBlue!important;
+        font-size: 13px;
       }
-      &-submit {
+      @include pcmiddle {
+        width: 2.47rem;
+        margin-top: .119rem;
+        padding: .16rem 0 .16rem .25rem;
+        border-left: solid .07rem $lightBlue!important;
+        font-size: .13rem;
+      }
+      &:first-child {
+        margin: 0;
+      }
+      &::placeholder {
+      color: #B3B3B3;
+      }
+    }
+    &__btn {
+      &.is-submit {
         display: block;
         @include pc{
           margin-top: 21.3px;
@@ -121,15 +115,7 @@
           padding: .143rem 0;
         }
       }
-    }
-    &-sns {
-      @include pc {
-        margin-top: 15.7px;
-      }
-      @include pcmiddle {
-        margin-top: .157rem;
-      }
-      &-google {
+      &.is-google {
         background: #FFFFFF;
         color: #5F6368;
         background-image: url(../img/google-icon.png);
@@ -147,7 +133,7 @@
           background-size: .23rem;
         }
       }
-      &-github {
+      &.is-github {
         background: #818282;
         color: #F9F9F6;
         @include pc {
@@ -157,16 +143,7 @@
           margin-top: .119rem;
         }
       }
-      
-    }
-    &-newaccount {
-      @include pc {
-        margin-top: 21.8px;
-      }
-      @include pcmiddle {
-        margin-top: .218rem;
-      }
-      &-btn {
+      &.is-newaccount {
         background: #E8AC6A;
         @include pc {
           margin-top: 15px;
@@ -174,6 +151,30 @@
         @include pcmiddle {
           margin-top: .15rem;
         }
+      }
+    }
+    &__accountlogin {
+      @include pc {
+        padding-left: 48px;
+      }
+      @include pcmiddle {
+        padding-left: .48rem;
+      }
+    }
+    &__sns {
+      @include pc {
+        margin-top: 15.7px;
+      }
+      @include pcmiddle {
+        margin-top: .157rem;
+      }
+    }
+    &__newaccount {
+      @include pc {
+        margin-top: 21.8px;
+      }
+      @include pcmiddle {
+        margin-top: .218rem;
       }
     }
   }

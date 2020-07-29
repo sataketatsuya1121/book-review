@@ -6,15 +6,15 @@ $(function() {
   let stock_readbook =$('#js-get-stock').data();
 
   $(document).ready( function() {
-    $('.c-evaluation-star').each(function() {
+    $('.c-evaluation__star').each(function() {
       const evaluation = $(this).data('count');
       const normalStar = 5 - evaluation;
       var starList = '';
       for ( var i = 0; i < evaluation; i++ ) {
-        starList += '<span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>';
+        starList += '<span class="c-evaluation__star-icon js-star-icon is-star-colord">★</span>';
       }
       for ( var i = 0; i < normalStar; i++ ) {
-        starList += '<span class="c-evaluation-star-icon js-star-icon">★</span>';
+        starList += '<span class="c-evaluation__star-icon js-star-icon">★</span>';
       }
       $(this).append(starList);
     })
@@ -75,7 +75,7 @@ $(function() {
     $('.p-detail-columns-reviews-sorts p').removeClass('sort-active');
     $(this).addClass('sort-active');
   });
-  $('.c-modal-close').on('click', function() {
+  $('.c-modal__close').on('click', function() {
     $('.js-form-input').val(null);
     $('.js-star-icon').removeClass('is-star-colord');
   });

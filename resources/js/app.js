@@ -58,18 +58,6 @@ $(function(){
     $(this).siblings('.starIndexInput').val(starIndex + 1);
   });
 
-  //scrollTop
-  $(window).scroll(function() {
-    if($(this).scrollTop() > 100) {
-      $('#scroll-top').fadeIn(300);
-    } else {
-      $('#scroll-top').fadeOut(300);
-    }
-  });
-  $('#scroll-top').click(function() {
-    $('body,html').animate({scrollTop: 0},500);
-  });
-
   // modal
   let scrollPosition;
   let targetModal = "";
@@ -108,7 +96,7 @@ $(function(){
 
   $('.js-modal-open').on('click', (e) => {
     bodyFixedOn();
-    $('.c-modal-err').html('');
+    $('.c-modal__err').html('');
     let $this = $(e.currentTarget);
     let target = $this.attr('data-target');
     targetModal = ".js-" + target + "-modal";
@@ -116,20 +104,18 @@ $(function(){
       deleteModalState = true;
     }
     $(targetModal).fadeIn(300);
-    $('.is-first-review').addClass('is-paused');
 
     currentTextLength = $('.js-input-text').val().length;
     currentCommentLength = $('.js-comment-text').val().length;
 
-    $('.c-modal-text-count').html(currentTextLength + "/1000文字");
-    $('.c-modal-comment-count').html(currentCommentLength + "/1000文字");
+    $('.c-modal__text-count').html(currentTextLength + "/1000文字");
+    $('.c-modal__comment-count').html(currentCommentLength + "/1000文字");
   });
 
   $(".js-modal-close").on('click', (e) => {
     $('.p-user-dotbox').fadeOut(300);
     $(targetModal).fadeOut(300);
     bodyFixedOff();
-    $('.is-first-review').removeClass('is-paused');
     let $this = $(e.currentTarget);
     $this.parents('.js-modal').fadeOut(300);
   });
@@ -137,19 +123,18 @@ $(function(){
   $(".js-modal-back").on('click', (e) => {
     bodyFixedOff();
     $(targetModal).fadeOut(300);
-    $('.is-first-review').removeClass('is-paused');
     let $this = $(e.currentTarget);
     $this.parents('.js-modal').fadeOut(300);
   });
 
   $('.js-input-text').bind('keydown keyup keypress change',function(){
     currentTextLength = $(this).val().length;
-    $('.c-modal-text-count').html(currentTextLength + "/1000文字");
+    $('.c-modal__text-count').html(currentTextLength + "/1000文字");
   });
 
   $('.js-comment-text').bind('keydown keyup keypress change',function(){
     currentCommentLength = $(this).val().length;
-    $('.c-modal-comment-count').html(currentCommentLength + "/1000文字");
+    $('.c-modal__comment-count').html(currentCommentLength + "/1000文字");
   });
 
   $('.js-loading').on('click', (e) => {
@@ -173,7 +158,6 @@ $(function(){
   }
 
   // validation
-
   Validator.useLang('ja');
 
   $('.js-comment-text').attr("id", "input-comment");
@@ -201,7 +185,7 @@ $(function(){
   });
 
   $('.js-form-submit').on('click', (e) => {
-    $('.c-modal-err').html('');
+    $('.c-modal__err').html('');
     let rules = {};
     let valueObj = {};
   $(".js-form-input").each(function() {
@@ -252,10 +236,10 @@ $(function(){
       errKey = Object.keys(errors);
       errValue = Object.values(errors);
       errKey.forEach(function(value, i, array) {
-        $('#' + errKey[i] + '-err').html('<span class="c-err__text c-modal-err">' + errValue[i] + '</span>');
+        $('#' + errKey[i] + '-err').html('<span class="c-err__text c-modal__err">' + errValue[i] + '</span>');
       });
     } else {
-      $('.c-err__text .c-modal-err').html('');
+      $('.c-err__text .c-modal__err').html('');
       if(isIOS || isSafari) {
         $('.c-modal').append('<div class="now-loading">Now Loading...</div>')
       } else {
@@ -310,7 +294,7 @@ $(function(){
 
   for(var c of cookiesArray){ //一つ一つ取り出して
     var cArray = c.split('='); //さらに=で分割して配列に
-    if(cArray[0] == 'api_token' || cArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
+    if( cArray[0] == ' api_token'){ // 取り出したいkeyと合致したら
         apiToken = cArray[1];  // [key,value]
     }
   }

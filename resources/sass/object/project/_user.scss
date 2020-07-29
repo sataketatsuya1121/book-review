@@ -14,12 +14,12 @@
 			@include pc {
 				font-size: 13px;
 				padding: 9px;
-				margin-left: 10px;
+				margin-left: 20px;
 			}
 			@include pcmiddle {
 				font-size: .13rem;
 				padding: .09rem;
-				margin-left: .1rem;
+				margin-left: .2rem;
 			}
 		}
 		&__favarea {
@@ -53,11 +53,11 @@
 		}
 		&__name {
 			@include pc {
-				width: 190px;
+				max-width: 300px;
 				margin-top: 5px;
 			}
 			@include pcmiddle {
-				width: 1.9rem;
+				max-width: 3rem;
 				margin-top: .05rem;
 			}
 		}
@@ -144,10 +144,20 @@
 			}
 			& td {
 				@include pc {
-					width: 320px;
+					width: 360px;
 				}
 				@include pcmiddle {
-					width: 3.2rem;
+					width: 3.6rem;
+				}
+				p {
+					@include pc {
+						font-size: 15px;
+						line-height: 20px;
+					}
+					@include pcmiddle {
+						font-size: .15rem;
+						line-height: .2rem;
+					}
 				}
 			}
 		}

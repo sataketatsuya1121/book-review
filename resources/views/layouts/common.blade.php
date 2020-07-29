@@ -10,12 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
   <title>Book Review</title>
 </head>
 <body id="test">
 	<header class="l-header">
 		<div class="l-header__sidebar">
-			<div class="l-header__barmenu">
+			<div class="l-header__barmenu" id="sidebar-btn">
 				<div class="l-header__bar"></div>
 				<div class="l-header__bar is-second"></div>
 				<div class="l-header__bar is-third"></div>
@@ -101,7 +102,7 @@
 
 	<!-- カテゴリ別モーダル -->
 	<div class="c-modal l-header-modal js-modal">
-		<div class="c-modal-bg l-header-modal__bg">
+		<div class="c-modal__bg l-header-modal__bg">
 			<div class="l-header-modal__content">
 				<div class="l-header-modal__select active">
 					<div class="l-header-modal__select-content">

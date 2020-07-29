@@ -19,10 +19,10 @@ $(function(){
       const normalStar = 5 - evaluation;
       var starList = '';
       for( var i = 0; i < evaluation; i++ ){
-        starList += '<span class="c-evaluation-star-icon is-form-star js-star-icon is-star-colord">★</span>';
+        starList += '<span class="c-evaluation__star-icon is-form-star js-star-icon is-star-colord">★</span>';
       }
       for( var i = 0; i < normalStar; i++ ){
-        starList += '<span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>';
+        starList += '<span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>';
       }
       $(this).html(starList);
     })
@@ -39,15 +39,15 @@ $(function(){
   });
 
   $(document).ready(function() {
-    $('.c-evaluation-star').each(function(){
+    $('.c-evaluation__star').each(function(){
       const int = $(this).data('count');
       const bint = 5 - int;
       for( var i = 0; i < int; i++ ){
-          $(this).append('<span class="c-evaluation-star-icon a">★</span>');
+          $(this).append('<span class="c-evaluation__star-icon a">★</span>');
           $('.a').addClass('is-star-colord');
       }
       for( var i = 0; i < bint; i++ ){
-          $(this).append('<span class="c-evaluation-star-icon">★</span>');
+          $(this).append('<span class="c-evaluation__star-icon">★</span>');
       }
     })
   })
@@ -84,7 +84,7 @@ $(function(){
   let csrf_token= $('#js-get-token').data();
   let img_normalicon =$('#js-get-img-normal').data();
   let img_goodicon =$('#js-get-img-good').data();
-  $('.favorites-flag').each(function() {
+  $('.js-favorites-flag').each(function() {
     $(this).on('click', (e) => {
       var favoriteId = $(this).find('.favoriteId').data('favoriteid');
       if ($(this).hasClass('done')) {

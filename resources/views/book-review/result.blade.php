@@ -5,7 +5,9 @@
 <div class="l-wrapper-inner p-result-wrapper">
   <!-- レビューのある本 -->
   @if (isset($reviewedBooks))
-  <h1 class="c-section__title">レビューのある本</h1>
+  <div class="p-result-head">
+    <h1 class="c-section__title ">レビューのある本</h1>
+  </div>
   <ul class="p-result">
     @foreach ($reviewedBooks as $reviewedBook)
     <li>
@@ -14,8 +16,8 @@
         <p class="p-result__title">{{ Str::limit($reviewedBook->book->title, 15) }}</p>
         <p class="p-result__review">レビュー件数： {{ $reviewedBook->review_count }}件</p>
         <div class="c-evaluation">
-          <p class="c-evaluation-txt">評価</p>
-          <div class="c-evaluation-star" data-count="{{ $reviewedBook->evaluation_avg }}"></div>
+          <p class="c-evaluation__text">評価</p>
+          <div class="c-evaluation__star" data-count="{{ $reviewedBook->evaluation_avg }}"></div>
         </div>
       </a>
     </li>
@@ -26,9 +28,11 @@
   <div class="p-result-head">
     <h1 class="c-section__title"></h1>
     <ul class="p-result-head__tabs">
-      <h2 class="p-result-head__tab js-release active-tabbtn" data-tab-trigger="release">新刊</h2>
-      <h2 class="p-result-head__tab js-sales" data-tab-trigger="sales">売り上げ</h2>
-      <div id='result-line' class='release'></div>
+      <!-- <h2 class="p-result-head__tab js-release active-tabbtn" data-tab-trigger="release">新刊</h2>
+      <h2 class="p-result-head__tab js-sales" data-tab-trigger="sales">売り上げ</h2> -->
+      <h2 class="p-result-head__tab js-sales js-active-tabbtn" data-tab-trigger="sales">売り上げ</h2>
+      <h2 class="p-result-head__tab js-release" data-tab-trigger="release">新刊</h2>
+      <div id='result-line' class='sales'></div>
     </ul>
   </div>
   <!-- カテゴリ洗濯時 -->

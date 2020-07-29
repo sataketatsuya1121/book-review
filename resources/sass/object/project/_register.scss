@@ -59,14 +59,14 @@
         }
       }
     }
-  }
-  &-formarea {
-    text-align: left;
-    @include pc {
-      margin-top: 33px;
-    }
-    @include pcmiddle {
-      margin-top: .33rem;
+    &__formarea {
+      text-align: left;
+      @include pc {
+        margin-top: 33px;
+      }
+      @include pcmiddle {
+        margin-top: .33rem;
+      }
     }
     &__item {
       display: flex;
@@ -160,5 +160,5 @@
         }
       }
     }
-  }
+  }  
 }

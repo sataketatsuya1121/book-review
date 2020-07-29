@@ -8,9 +8,9 @@
   @include pcmiddle {
     margin-top: .04rem;
   }
-  &-txt {
+  &__text {
     color: $fontColor;
-    font-weight: 300;
+    font-weight: 400;
     @include pc {
 			font-size: 10px;
 		}
@@ -21,7 +21,7 @@
 			font-size: .1rem;
     }
   }
-  &-star {
+  &__star {
     display: flex;
 		@include pc {
 			margin-left: 12px;
@@ -31,27 +31,27 @@
     }
     @include sp {
 			margin-left: .06rem;
-		}
+    }
+    &-icon {
+      color: $fontColor;
+      @include pc {
+        font-size: 14px;
+      }
+      @include pcmiddle {
+        font-size: .1rem;
+      }
+      @include sp {
+        font-size: .12rem;
+      }
+      &.is-form-star {
+        cursor: pointer;
+      }
+      &.is-star-colord {
+        color: #FFD000!important;
+      }
+    }
   }
-  &-star-icon {
-    color: $fontColor;
-    @include pc {
-      font-size: 14px;
-    }
-    @include pcmiddle {
-      font-size: .1rem;
-    }
-    @include sp {
-      font-size: .12rem;
-    }
-    &.is-form-star {
-      cursor: pointer;
-    }
-    &.is-star-colord {
-      color: #FFD000!important;
-    }
-  }
-  &-nothing {
+  &__nothing {
     @include pc {
       font-size: 14px;
     }
@@ -62,7 +62,7 @@
       font-size: .07rem;
     }
   }
-  &-date {
+  &__date {
     @include pc {
       font-size: 13px;
       margin-left: 14px;
@@ -75,15 +75,6 @@
       font-size: .13rem;
       margin-left: .14rem;
     }
-    &-readbookList {
-      margin-left: 0;
-      @include pc {
-        font-size: 13px;
-      }
-      @include pcmiddle {
-        font-size: .13rem;
-      }
-    }
   }
 }
 
@@ -93,32 +84,32 @@
 
 // これをコピペしてください
 // <div class="c-evaluation">
-//   <div class="c-evaluation-stars">
-//     <p class="c-evaluation-txt">平均評価</p>
-//     <div class="c-evaluation-star">
-//       <span class="c-evaluation-star-icon">★</span>
-//       <span class="c-evaluation-star-icon">★</span>
-//       <span class="c-evaluation-star-icon">★</span>
-//       <span class="c-evaluation-star-icon">★</span>
-//       <span class="c-evaluation-star-icon">★</span>
+//   <div class="c-evaluation__stars">
+//     <p class="c-evaluation__text">平均評価</p>
+//     <div class="c-evaluation__star">
+//       <span class="c-evaluation__star-icon">★</span>
+//       <span class="c-evaluation__star-icon">★</span>
+//       <span class="c-evaluation__star-icon">★</span>
+//       <span class="c-evaluation__star-icon">★</span>
+//       <span class="c-evaluation__star-icon">★</span>
 //     </div>
 //   </div>
-//   <p class="c-evaluation-date">- 2020/03/31</p>
+//   <p class="c-evaluation__date">- 2020/03/31</p>
 // </div>
 
 
 // 評価機能を変更できる画面では、こちらを使用してください
 // <div class="c-evaluation">
-//   <div class="c-evaluation-stars">
-//     <p class="c-evaluation-txt">評価</p>
-//     <div class="c-evaluation-star">
-//       <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-//       <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-//       <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-//       <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
-//       <span class="c-evaluation-star-icon is-form-star js-star-icon">★</span>
+//   <div class="c-evaluation__stars">
+//     <p class="c-evaluation__text">評価</p>
+//     <div class="c-evaluation__star">
+//       <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+//       <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+//       <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+//       <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
+//       <span class="c-evaluation__star-icon is-form-star js-star-icon">★</span>
 //       <input type="number" class="starIndexInput">
 //     </div>
 //   </div>
-//   <p class="c-evaluation-date">- 2020/03/31</p>
+//   <p class="c-evaluation__date">- 2020/03/31</p>
 // </div>

@@ -13,13 +13,13 @@
           <p class="slick__title">{{ Str::limit($reviewedBook->book->title, 15) }}</p>
           <p class="slick__review">レビュー件数： {{ $reviewedBook->review_count }}件</p>
           <div class="c-evaluation">
-            <p class="c-evaluation-txt">評価</p>
-            <div class="c-evaluation-star" data-count="{{ $reviewedBook->evaluation_avg }}">
+            <p class="c-evaluation__text">評価</p>
+            <div class="c-evaluation__star" data-count="{{ $reviewedBook->evaluation_avg }}">
               @for ($i = 0; $i < ceil($reviewedBook->evaluation_avg); $i++)
-              <span class="c-evaluation-star-icon js-star-icon is-star-colord">★</span>
+              <span class="c-evaluation__star-icon js-star-icon is-star-colord">★</span>
               @endfor
               @for ($i = 0; $i < 5 - ceil($reviewedBook->evaluation_avg); $i++)
-              <span class="c-evaluation-star-icon js-star-icon">★</span>
+              <span class="c-evaluation__star-icon js-star-icon">★</span>
               @endfor
             </div>
           </div>

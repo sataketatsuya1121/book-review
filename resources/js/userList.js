@@ -2,20 +2,20 @@ $(function() {
 
   // タブ切り替え
   $('[data-tab-trigger]').click(function(){
-    var activeBtn = 'active-tabbtn'
-    var activeContents = 'active-tabcontents'
+    var activeBtn = 'js-active-tabbtn'
+    var activeContents = 'js-active-tabcontents'
     var target = $(this).data('tab-trigger');
 
     $('#line').removeClass().addClass('#line').addClass(target);
-    $('.active-tabbtn').removeClass(activeBtn);
+    $('.js-active-tabbtn').removeClass(activeBtn);
 		$('[data-tab-trigger = ' + target + ']').addClass(activeBtn);
-    $('.active-tabcontents').removeClass(activeContents);
+    $('.js-active-tabcontents').removeClass(activeContents);
 			$('[data-tab-target = ' + target + ']').addClass(activeContents).hide().fadeIn(300);
   });
 
   let csrf_token= $('#js-get-token').data();
   let img_normalicon =$('#js-get-img-normal').data();
-  $('.favorites-flag').each(function() {
+  $('.js-favorites-flag').each(function() {
     $(this).on('click', (e) => {
       var favoriteId = $(this).find('.favoriteId').data('favoriteid');
       if ($(this).hasClass('is-remove')) {

@@ -4,25 +4,25 @@
 
 <div class="l-wrapper-inner p-user-wrapper">
   <div class="p-user-profile">
-    <div class="p-user-profile__img c-icon-img">
+    <div class="p-user-profile__img c-icon__img">
       <img src="{{ $user->avatar ?: 'https://www.pondokindahmall.co.id/assets/img/default.png' }}" alt="">
       <div class="p-user-profile__favarea">
         <!-- ↓こちら切り替えお願いします！ -->
-        <a class="p-user-profile__fav c-button-small favorites-flag">
+        <a class="p-user-profile__fav c-button__small js-favorites-flag">
           <p>お気に入り登録</p>
           <input type="hidden" class="favoriteId" data-favoriteid="{{ $user->id }}">
         </a>
-        <a class="p-user-profile__fav c-button-small favorites-flag is-remove">
+        <a class="p-user-profile__fav c-button__small js-favorites-flag is-remove">
           <p>お気に入り登録解除</p>
           <input type="hidden" class="favoriteId" data-favoriteid="{{ $user->id }}">
         </a>
       </div>
     </div>
     <div class="p-user-profile__status">
-      <div class="p-user-profile__line c-icon-name p-user__text is-large">
+      <div class="p-user-profile__line c-icon__name p-user__text is-large">
         <p class="p-user-profile__name">{{ $user->name }}</p>
         @if ($user->id === Auth::id())
-        <p class="p-user-profile__btn c-button-small js-modal-open" data-target="profile">プロフィールを変更する</p>
+        <p class="p-user-profile__btn c-button__small js-modal-open" data-target="profile">プロフィールを変更する</p>
         @endif
       </div>
       <div class="p-user-profile__title">
@@ -76,8 +76,8 @@
           <img class="p-user-review__img js-modal-open"  data-target="detail" src="{{ $review->book->img }}" alt="">
           <p class="p-user-review__title">{{ Str::limit($review->book->title, 40) }}</p>
           <div class="c-evaluation p-user-review__evaluation">
-            <div class="c-evaluation-stars">
-              <div class="c-evaluation-star p-user-review__star" data-count="{{ $review->evaluation }}"></div>
+            <div class="c-evaluation__stars">
+              <div class="c-evaluation__star p-user-review__star" data-count="{{ $review->evaluation }}"></div>
             </div>
           </div>
         </li>
@@ -103,9 +103,9 @@
 
   <!-- プロフィール編集modal -->
   <div class="c-modal js-modal js-profile-modal" @if ($errors->has('email')) style="display: block;" @endif>
-    <div class="c-modal-bg p-user-profilemodal">
-      <div class="c-modal-content">
-        <a class="c-modal-close js-modal-close"></a>
+    <div class="c-modal__bg p-user-profilemodal">
+      <div class="c-modal__content">
+        <a class="c-modal__close js-modal-close"></a>
         {{ Form::open(['route' => ['updateUser', $user->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
           <table class="p-user-profilemodal__new p-user-profilemodal__table">
             <tr>
@@ -189,8 +189,8 @@
 
   <!-- レビュー詳細モーダル -->
   <div class="c-modal p-user-detailmodal js-detail-modal">
-    <div class="c-modal-bg p-user-detailmodal__bg">
-      <a class="c-modal-close p-user-detailmodal__close js-modal-close"></a>
+    <div class="c-modal__bg p-user-detailmodal__bg">
+      <a class="c-modal__close p-user-detailmodal__close js-modal-close"></a>
       <a class="p-user-detailmodal__dot">…</a>
       <!-- 「…」を押したときに開くメニュー -->
       <div class="p-user-dotbox">
@@ -199,7 +199,7 @@
         <p class="p-user-dotbox__text js-dotbox-cancel">キャンセル</p>
       </div>
       <!-- 「…」を押したときに開くメニュー -->
-      <div class="c-modal-content p-user-detailmodal__content">
+      <div class="c-modal__content p-user-detailmodal__content">
         <img src="../img/book-img.png">
         <div class="p-user-detailmodal__review">
           <div class="p-user-detailmodal__me">
@@ -210,7 +210,7 @@
               <img src="https://www.pondokindahmall.co.id/assets/img/default.png" alt="">
               @endif
             </div>
-            <p class="c-icon-name p-user-detailmodal__name">{{ $review->user->name }}</p>
+            <p class="c-icon__name p-user-detailmodal__name">{{ $review->user->name }}</p>
           </div>
           <div class="p-user-detailmodal__item">
             <p class="p-user-detailmodal__title">嫌われる勇気</p>
@@ -218,7 +218,7 @@
             <div class="p-user-detailmodal__datas">
               <div class="p-user-detailmodal__evaluation">
                 <span class="p-user-detailmodal__tag">評価</span>
-                <div class="c-evaluation-star p-user-detailmodal__star" data-count="{{ $review->evaluation }}"></div>
+                <div class="c-evaluation__star p-user-detailmodal__star" data-count="{{ $review->evaluation }}"></div>
               </div>
               <span class="p-user-detailmodal__date">_{{ $review->created_at->format('Y/m/d') }}</span>
             </div>
@@ -231,19 +231,19 @@
     </div>
     
     <!-- レビュー編集モーダル -->
-    <div class="c-modal-bg p-user-editmodal__bg js-edit-modal">
-      <div class="c-modal-content p-user-editmodal__content">
+    <div class="c-modal__bg p-user-editmodal__bg js-edit-modal">
+      <div class="c-modal__content p-user-editmodal__content">
         {{ Form::open(['method' => 'put']) }}
-          <a class="c-modal-close js-modal-close js-edit-close"></a>
+          <a class="c-modal__close js-modal-close js-edit-close"></a>
           <a class="p-user-editmodal__back js-editmodal-back"></a>
           <div>
             <p class="c-form__title p-user-editmodal__evaluation">レビュー評価</p>
-            <div class="c-evaluation-star p-user-editmodal__star">
-              <span class="c-evaluation-star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
-              <span class="c-evaluation-star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
-              <span class="c-evaluation-star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
-              <span class="c-evaluation-star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
-              <span class="c-evaluation-star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
+            <div class="c-evaluation__star p-user-editmodal__star">
+              <span class="c-evaluation__star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
+              <span class="c-evaluation__star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
+              <span class="c-evaluation__star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
+              <span class="c-evaluation__star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
+              <span class="c-evaluation__star-icon is-form-star js-star-icon p-user-editmodal__staricon">★</span>
             </div>
             {{ Form::number('evaluation', null, ['class' => 'starIndexInput js-form-input js-input-star']) }}
             <span id="input-star-err"></span>
@@ -252,7 +252,7 @@
             <p class="c-form__title p-user-editmodal__text">レビュー内容</p><span id="input-text-err"></span>
             {{ Form::textarea('content', null, ['class' => 'c-form__textbox is-review js-form-input js-input-text', 'placeholder' => 'テキストを入力してください。']) }}
             <br>
-            <span class="c-modal-text-count"></span>
+            <span class="c-modal__text-count"></span>
             {{ Form::submit('更新する', ['class' => 'c-button p-user-editmodal__submit js-form-submit']) }}
           </div>
         {{ Form::close() }}
