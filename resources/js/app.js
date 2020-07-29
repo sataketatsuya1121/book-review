@@ -389,6 +389,8 @@ $(function(){
     }
   });
 
+  console.log(Push.Permission.has());
+
   for (let key in pushNotifications) {
     window.Echo.channel(key)
     .listen(pushNotifications[key], function(data){
@@ -405,7 +407,7 @@ $(function(){
 
   //デスクトップ通知
   function push(message){
-    if (Push.Permission.has()) {
+    // if (Push.Permission.has()) {
       Push.create('Book Reviewからのお知らせです', {
         body: message,
         icon: '../favicon.ico',
@@ -415,6 +417,6 @@ $(function(){
             this.close();
         }
       });
-    }
+    // }
   }
 });
