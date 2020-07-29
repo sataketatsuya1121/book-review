@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
         factory(App\Models\User::class, 50)->create()->each(function ($user) {
             $user->userDetail()->save(factory(App\Models\UserDetail::class)->make());
         });
