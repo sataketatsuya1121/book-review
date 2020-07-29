@@ -389,8 +389,6 @@ $(function(){
     }
   });
 
-  console.log(Push.Permission.has());
-
   for (let key in pushNotifications) {
     window.Echo.channel(key)
     .listen(pushNotifications[key], function(data){
