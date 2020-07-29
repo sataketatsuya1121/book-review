@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\User;
 use App\Models\Stock;
 use App\Models\Review;
+use App\Models\Favorite;
 use App\Models\Department;
 use App\Models\UserDetail;
 use App\Traits\RakutenApi;
