@@ -292,7 +292,7 @@ $(function(){
 
   for(var c of cookiesArray){ //一つ一つ取り出して
     var cArray = c.split('='); //さらに=で分割して配列に
-    if(cArray[0] == ' api_token' || aArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
+    if(cArray[0] == ' api_token' || cArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
         apiToken = cArray[1];  // [key,value]
     }
   }
@@ -387,16 +387,14 @@ $(function(){
 
   //デスクトップ通知
   function push(message){
-    // if (Push.Permission.has()) {
-      Push.create('Book Reviewからのお知らせです', {
-        body: message,
-        icon: '../favicon.ico',
-        timeout: 5000,
-        onClick: function () {
-            window.focus();
-            this.close();
-        }
-      });
-    // }
+    Push.create('Book Reviewからのお知らせです', {
+      body: message,
+      icon: '../favicon.ico',
+      timeout: 5000,
+      onClick: function () {
+          window.focus();
+          this.close();
+      }
+    });
   }
 });
