@@ -2,7 +2,7 @@
 
 return [
     'book_review' => [
-        'MAX_PAGINATE_NUM' => 5,
+        'MAX_PAGINATE_NUM' => 20,
         'RANK_BRONZE' => 10,
         'RANK_SILVER' => 20,
         'RANK_GOLD' => 50,

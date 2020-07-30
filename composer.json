@@ -21,7 +21,7 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "pusher/pusher-php-server": "v3.0.3",
         "laravel/ui": "^2.0",
-        "fzaninotto/faker": "^1.9.1"
+        "sendgrid/sendgrid": "^7.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
