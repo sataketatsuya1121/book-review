@@ -3,19 +3,22 @@
 namespace App\Services;
 
 use App\Models\User;
+use App\Models\Favorite;
+use App\Mail\CommentMail;
+use App\Mail\FavoriteMail;
 use App\Mail\RankUpMail;
 use App\Mail\ReviewMail;
-use App\Mail\CommentMail;
 use App\Mail\RegisterMail;
 use App\Events\RankUpEvent;
 use App\Events\ReviewEvent;
 use App\Events\RegisterEvent;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+use App\Notifications\CommentCompleted;
+use App\Notifications\FavoriteCompleted;
 use App\Notifications\RankUpCompleted;
 use App\Notifications\ReviewCompleted;
-use App\Notifications\CommentCompleted;
 use App\Notifications\RegisterCompleted;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class NotificationService
@@ -36,6 +39,8 @@ class NotificationService
         $user = new User();
         $emails = $user->getEmailsExceptLoginUser();
         Mail::to($emails)->send(new ReviewMail());
+
+        $this->mailFavoriteUser();
     }
 
     /**
@@ -91,6 +96,27 @@ class NotificationService
             $user = new User();
             $email = $user->getEmailByUserId($userId);
             Mail::to($email)->send(new CommentMail());
+        }
+    }
+
+    /**
+     * notificationsテーブルにデータを保存
+     * レビューを投稿者をお気に入り登録しているユーザー全員にメール通知
+     *
+     * @return void
+     */
+    public function mailFavoriteUser()
+    {
+        $favorite = new Favorite();
+        $favorites = $favorite->getUsersFavoriteAuthUser();
+        if (filled($favorites)) {
+            foreach($favorites as $favorite) {
+                $users[] = $favorite->favoritedUser;
+                $emails[] = $favorite->favoritedUser->email;
+            }
+            Notification::send($users, new FavoriteCompleted());
+
+            Mail::to($emails)->send(new FavoriteMail());
         }
     }
 }

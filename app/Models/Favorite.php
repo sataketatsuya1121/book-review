@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Favorite extends Model
@@ -17,6 +18,11 @@ class Favorite extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'fav_user_id');
+    }
+
+    public function favoritedUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -55,5 +61,17 @@ class Favorite extends Model
             ->where('fav_user_id', $favoriteId)
             ->first()
             ->delete();
+    }
+
+    /**
+     * ログインして入るユーザーをお気に入り登録しているユーザーを取得
+     *
+     * @return Collection
+     */
+    public function getUsersFavoriteAuthUser(): Collection
+    {
+        return $this->select(['user_id', 'fav_user_id'])
+                    ->where('fav_user_id', Auth::id())
+                    ->get();
     }
 }

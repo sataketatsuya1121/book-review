@@ -43,14 +43,14 @@ class BookReviewController extends Controller
         return view('book-review.index', compact('reviewedBooks'));
     }
 
-    public function showResult(Request $request, string $category, BookReviewService $bookReviewService): View
+    public function showResult(Request $request, string $booksGenreId, BookReviewService $bookReviewService): View
     {
-        if ($category === 'review') {
+        if ($booksGenreId === 'review') {
             $reviewedBooks = $this->review->getReviewGroupByIsbn();
-            return view('book-review.result', compact('category', 'reviewedBooks'));
+            return view('book-review.result', compact('booksGenreId', 'reviewedBooks'));
         } else {
             $queryParams = $request->all();
-            return view('book-review.result', compact('category', 'queryParams'));
+            return view('book-review.result', compact('booksGenreId', 'queryParams'));
         }
     }
 
