@@ -278,11 +278,12 @@ $(function(){
   });
 
   // サイドバーの挙動
-  $('.l-header-barmenu').on('click', function() {
+  $('.l-header__barmenu').on('click', function() {
     $('.l-sidebar').toggleClass('activeside');
-    $('.l-sidebar-item-text').stop().fadeToggle(150);
+    $('.l-sidebar__text').stop().fadeToggle(150);
     $('.bg-whitegray').toggleClass('activeside');
   });
+
   // バックエンドで作成したAPIから、通知情報を取得
   let csrf_token= $('#js-getToken').data();
   let cookies = document.cookie; //全てのcookieを取り出して
