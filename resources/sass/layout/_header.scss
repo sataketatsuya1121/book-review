@@ -397,16 +397,18 @@
     text-align: center;
     display: none;
     padding: 10px 0;
+    background-color: #fff;
   }
 
   &-notifications:before {
     content: "";
     position: absolute;
     top: -20px;
-    right: 65px;
+    right: 75px;
     transform: translateX(-50%);
     border: 10px solid;
     border-color: transparent transparent black transparent;
+    z-index: 1;
   }
 
   &-allread {

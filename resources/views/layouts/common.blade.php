@@ -105,57 +105,13 @@
 		<div class="c-modal__bg l-header-modal__bg">
 			<div class="l-header-modal__content">
 				<div class="l-header-modal__select active">
-					<div class="l-header-modal__select-content">
-						<p class="l-header-modal__category" data-category="小説・エッセイ">小説・エッセイ</p>
-						<p class="l-header-modal__category">ビジネス・経済・就職</p>
-						<p class="l-header-modal__category">エンタメ・ゲーム</p>
-						<p class="l-header-modal__category">ライトノベル</p>
-						<p class="l-header-modal__category">語学・学習参考書</p>
-						<p class="l-header-modal__category">楽譜</p>
-						<p class="l-header-modal__category">ボーイズラブ(BL)</p>
-						<p class="l-header-modal__category">資格・検定</p>
-						<p class="l-header-modal__category">付録付き</p>
-						<p class="l-header-modal__category">文庫</p>
-						<p class="l-header-modal__category">科学・技術</p>
-						<p class="l-header-modal__category">バーゲン本</p>
-						<p class="l-header-modal__category">新書</p>
-						<p class="l-header-modal__category">医学・薬学・看護学・歯科学</p>
-						<p class="l-header-modal__category">セット本</p>
-						<p class="l-header-modal__category">美容・暮らし・健康・料理</p>
-						<p class="l-header-modal__category">パソコン・システム開発</p>
-						<p class="l-header-modal__category">カレンダー・手帳・家計簿</p>
-						<p class="l-header-modal__category">絵本・児童書・図鑑</p>
-						<p class="l-header-modal__category">人文・思想・社会</p>
-						<p class="l-header-modal__category">文具・雑貨</p>
-						<p class="l-header-modal__category">ホビー・スポーツ・美術</p>
-						<p class="l-header-modal__category">漫画(コミック)</p>
-						<p class="l-header-modal__category">旅行・留学・アウトドア</p>
-						<p class="l-header-modal__category">写真集・タレント</p>
-					</div>
+					<div class="l-header-modal__select-content"></div>
 				</div>
-				<div class="l-header-modal__detail" data-category="小説・エッセイ">
-					<p class="l-header-modal__head">小説・エッセイ</p>
+				<div class="l-header-modal__detail">
+					<p class="l-header-modal__head"></p>
 					<hr class="c-line l-header-modal__line">
-					<div class="l-header-modal__detail-content">
-						<p class="l-header-modal__category">日本の小説</p>
-						<p class="l-header-modal__category">外国の小説</p>
-						<p class="l-header-modal__category">ミステリー・サスペンス</p>
-						<p class="l-header-modal__category">SF・ホラー</p>
-						<p class="l-header-modal__category">エッセイ</p>
-						<p class="l-header-modal__category">ノンフィクション</p>
-						<p class="l-header-modal__category">ロマンス</p>
-						<p class="l-header-modal__category">その他</p>
-						<p class="l-header-modal__category">日本の小説</p>
-						<p class="l-header-modal__category">外国の小説</p>
-						<p class="l-header-modal__category">ミステリー・サスペンス</p>
-						<p class="l-header-modal__category">日本の小説</p>
-						<p class="l-header-modal__category">外国の小説</p>
-						<p class="l-header-modal__category">ミステリー・サスペンス</p>
-						<p class="l-header-modal__category">日本の小説</p>
-						<p class="l-header-modal__category">外国の小説</p>
-						<p class="l-header-modal__category">ミステリー・サスペンス</p>
-						<a class="l-header-modal__back"></a>
-					</div>
+					<div class="l-header-modal__detail-content"></div>
+					<a class="l-header-modal__back"></a>
 				</div>
 			</div>
 		</div>

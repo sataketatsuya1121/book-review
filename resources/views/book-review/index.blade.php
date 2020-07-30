@@ -31,19 +31,19 @@
   <hr class="c-line">
   <div class="p-books-contents">
     <h2 class="p-books-contents__head">プログラミング</h2>
-    <a href="{{ route('showResult', 'program') }}" class="p-books-contents__more">もっとみる</a>
+    <a href="{{ route('showResult', '001005005') }}" class="p-books-contents__more">もっとみる</a>
     <ul class="slick program"></ul>
   </div>
   <hr class="c-line">
   <div class="p-books-contents">
     <h2 class="p-books-contents__head">自己啓発</h2>
-    <a href="{{ route('showResult', 'self') }}" class="p-books-contents__more">もっとみる</a>
+    <a href="{{ route('showResult', '001006009') }}" class="p-books-contents__more">もっとみる</a>
     <ul class="slick self"></ul>
   </div>
   <hr class="c-line">
   <div class="p-books-contents">
     <h2 class="p-books-contents__head">ビジネスマナー</h2>
-    <a href="{{ route('showResult', 'business') }}" class="p-books-contents__more">もっとみる</a>
+    <a href="{{ route('showResult', '001006023') }}" class="p-books-contents__more">もっとみる</a>
     <ul class="slick business"></ul>
   </div>
   <hr class="c-line">

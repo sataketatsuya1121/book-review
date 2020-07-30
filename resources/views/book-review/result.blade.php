@@ -28,8 +28,6 @@
   <div class="p-result-head">
     <h1 class="c-section__title"></h1>
     <ul class="p-result-head__tabs">
-      <!-- <h2 class="p-result-head__tab js-release active-tabbtn" data-tab-trigger="release">新刊</h2>
-      <h2 class="p-result-head__tab js-sales" data-tab-trigger="sales">売り上げ</h2> -->
       <h2 class="p-result-head__tab js-sales js-active-tabbtn" data-tab-trigger="sales">売り上げ</h2>
       <h2 class="p-result-head__tab js-release" data-tab-trigger="release">新刊</h2>
       <div id='result-line' class='sales'></div>
@@ -51,7 +49,7 @@
 <span id="js-getUrl" data-name="{{ Config::get('app.url') }}/review"></span>
 <span id="js-getToken" data-name="{{ csrf_token() }}"></span>
 <span id="js-getPath" data-name="{{ Config::get('app.rakuten_api_path') }}"></span>
-<span id="js-search-query" data-name="{{ $category }}"></span>
+<span id="js-search-query" data-name="{{ $booksGenreId }}"></span>
 <span id="js-condition" data-name="{{ $queryParams['condition'] ?? null }}"></span>
 <span id="js-keyword" data-name="{{ $queryParams['keyword'] ?? null }}"></span>
 <span id="js-page" data-name="{{ $queryParams['page'] ?? '1' }}"></span>

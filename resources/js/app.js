@@ -4,9 +4,9 @@ import Echo from 'laravel-echo';
 $(function(){
 
    //iosの判別と、使用ブラウザがsafariのときの判別
-   const isIOS = /iP(hone|(o|a)d)/.test(navigator.userAgent);
-   const ua = window.navigator.userAgent.toLowerCase();
-   const isSafari = ua.indexOf('safari') !== -1 && ua.indexOf('chrome') === -1 && ua.indexOf('edge') === -1;
+  const isIOS = /iP(hone|(o|a)d)/.test(navigator.userAgent);
+  const ua = window.navigator.userAgent.toLowerCase();
+  const isSafari = ua.indexOf('safari') !== -1 && ua.indexOf('chrome') === -1 && ua.indexOf('edge') === -1;
 
   //通知アイコン
   let dropState = false;
@@ -248,13 +248,6 @@ $(function(){
     };
   });
 
-  // サイドバーの挙動
-  $('.l-header__barmenu').on('click', function() {
-    $('.l-sidebar').toggleClass('activeside');
-    $('.l-sidebar__text').stop().fadeToggle(150);
-    $('.bg-whitegray').toggleClass('activeside');
-  });
-
   //絞り込み年数
   var time = new Date();
   var year = time.getFullYear();
@@ -265,11 +258,16 @@ $(function(){
     $('#month').append('<option value="' + i + '">' + i + '</option>');
   }
 
+  // カテゴリモーダル
+  const api = require('./api');
+  api.selectCategory('001');
   $('.l-header__category').on('click', function() {
     $('.l-header-modal').stop().fadeToggle();
   });
 
-  $('.l-header-modal__category').on('click', function() {
+  $(document).on('click', '.l-header-modal__category', function() {
+    let booksGenreId = $(this).data('category');
+    api.selectCategory(booksGenreId);
     $('.l-header-modal__select').hide();
     $('.l-header-modal__detail').fadeIn();
   });
@@ -294,7 +292,7 @@ $(function(){
 
   for(var c of cookiesArray){ //一つ一つ取り出して
     var cArray = c.split('='); //さらに=で分割して配列に
-    if(cArray[0] == ' api_token' || cArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
+    if(cArray[0] == ' api_token' || aArray[0] == 'api_token'){ // 取り出したいkeyと合致したら
         apiToken = cArray[1];  // [key,value]
     }
   }

@@ -8,26 +8,15 @@ $(function() {
   let page = $('#js-page').data('name');
   let booksGenreId = '001';
 
-  showBooksApiBrowse();
-
-  // もっとみるボタン・カテゴリ検索
-  function showBooksApiBrowse(sortName = 'sales') {
-    if (searchQuery === 'program') {
-      booksGenreId = '001005005';
-    } else if (searchQuery === 'self') {
-      booksGenreId = '001006009';
-    } else if (searchQuery === 'business') {
-      booksGenreId = '001006023';
-    }
-    showSearchedBooksApiBrowse(sortName);
-  }
+  showSearchedBooksApiBrowse();
 
   // ワードorカテゴリ検索
-  function showSearchedBooksApiBrowse(sortName) {
+  function showSearchedBooksApiBrowse(sortName = 'sales') {
     if (keyword) {
       $('input[name="condition"]').prop("checked", false);
       api.getBooksOnKeyword(page, condition, keyword, sortName, booksGenreId);
     } else {
+      booksGenreId = searchQuery;
       api.getBooksApi(page, sortName, booksGenreId);
     }
   }
@@ -35,12 +24,12 @@ $(function() {
   // 新刊ボタンをクリック時にソート
   $('.js-release').on('click', function() {
     sortName = '-releaseDate';
-    showBooksApiBrowse(sortName);
+    showSearchedBooksApiBrowse(sortName);
   });
   // 売り上げボタンをクリック時にソート
   $('.js-sales').on('click', function() {
     sortName = 'sales';
-    showBooksApiBrowse(sortName);
+    showSearchedBooksApiBrowse(sortName);
   });
 
   showPaginateButton(page);

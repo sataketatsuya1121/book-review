@@ -6,6 +6,34 @@ let baseUrl = base.name;
 let getBooksCount = 30;
 let reviewCountArray;
 let apiRequestCount = 1;
+let categoryArray;
+
+exports.selectCategory = function(booksGenreId) {
+  $.ajax({
+    url: 'https://app.rakuten.co.jp/services/api/BooksGenre/Search/20121128',
+    type: 'GET',
+    datatype: 'json',
+    data: {
+      applicationId: rakutenId.name,
+      booksGenreId: booksGenreId,
+    },
+  }).done(function(data) {
+    if (booksGenreId == '001') {
+      $.each(data.children, function(i, item) {
+        $('.l-header-modal__select-content').append(`<p class="l-header-modal__category" data-category="${item.child.booksGenreId}">${item.child.booksGenreName}</p>`);
+      });
+    } else {
+      categoryArray = '';
+      $('.l-header-modal__head').html(data.current.booksGenreName);
+      $.each(data.children, function(i, item) {
+        categoryArray += `<a href="${baseUrl + '/' + item.child.booksGenreId + '/results'}" class="l-header-modal__category">${item.child.booksGenreName}</a>`;
+      });
+      $('.l-header-modal__detail-content').html(categoryArray);
+    }
+  }).fail(function(err) {
+    console.log(err);
+  });
+}
 
 exports.getBooksApiByCategory = function(booksGenreId, category) {
   $.ajax({
